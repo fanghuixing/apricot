@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Apricot
+tagline: An object-oriented language for hybrid systems
 ---
 {% include JB/setup %}
 
