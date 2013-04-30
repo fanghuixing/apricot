@@ -9,12 +9,12 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : Apricot
+tagline: An object-oriented modeling language for hybrid systems.
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
+  name : Huixing Fang
+  email : fang.huixing@gmail.com
+  github : fanghuixing
   twitter : username
   feedburner : feedname
 
@@ -101,7 +101,7 @@ JB :
   analytics :
     provider : google 
     google : 
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-38748289-3'
     getclicky :
       site_id : 
     mixpanel :
