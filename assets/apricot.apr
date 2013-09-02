@@ -1,0 +1,92 @@
+System SubwayControlSystem{
+
+
+
+}
+
+System PSDS{
+
+}
+
+
+Plant Train{
+	Real time;
+	Int direction=1;
+	
+	//Motion(Real time, distance, velocity, acceleration, direction)
+	Dynamic init = new Motion(time,distance,velocity,0,direction);
+	Interval TmIn = [Delay, Inf), DisIn = [0,0], VelIn = [0,0];
+	init.setInv(TmIn,DisIn,VelIn);
+	
+	Dynamic stop = new Motion(time,distance,velocity,0,direction);
+	
+	Dynamic run = new Motion(time,distance,velocity,0.5,direction);
+	
+	Dynamic near = new Motion(time,distance,velocity,0,direction);
+	
+	Dynamic urgentDec = new Motion(time,distance,velocity,-1.5,direction);
+	
+	Dynamic stable = new Motion();
+	
+
+
+
+}
+
+Plant TrainDoor{
+
+}
+
+Plant ScreenDoor{
+
+}
+
+Dynamic Motion{
+	Real time, distance, velocity;
+	real acceleration;
+	Int direction, 
+	int rate=0;
+	
+	Interval TmIn, DisIn, VelIn;
+
+	Motion(Real time, Real distance, Real velocity, real acceleration, Int direction){
+		this.time = time;
+		this.distance = distance;
+		this.velocity = velocity;
+		this.acceleration = acceleration;
+		this.direction = direction;
+	}
+	
+	Motion(Real time, Real distance, Real velocity, real acceleration){
+		this.time = time;
+		this.distance = distance;
+		this.velocity = velocity;
+		this.acceleration = acceleration;
+	}
+
+	void setDirection(direction){
+		this.direction = direction;
+	}
+	
+	Continuous(){
+		dot(time,1) == rate;
+		dot(distance,1)==direction*velocity;
+		dot(velocity,1)==acceleration;
+	}
+	
+	void setRate(rate){
+		this.rate = rate;
+	}
+	void setInv(Interval TmIn, Interval DisIn, Interval VelIn){	
+		this.TmIn = TmIn;
+		this.DisIn = DisIn;
+		this.VelIn = VelIn;	
+	}
+	
+	Invariant(){
+		time in TmIn;
+		distance in DisIn;
+		velocity in VelIn;
+	}
+}
+
