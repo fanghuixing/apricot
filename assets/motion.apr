@@ -1,0 +1,49 @@
+Dynamic Motion{
+	Real time, distance, velocity;
+	real acceleration;
+	Int direction, 
+	int rate=0;
+	
+	Interval TmIn, DisIn, VelIn;
+
+	Motion( Real time, Real distance, Real velocity, real acceleration, Int direction ){
+		this.time = time;
+		this.distance = distance;
+		this.velocity = velocity;
+		this.acceleration = acceleration;
+		this.direction = direction;
+	}
+	
+	Motion( Real time, Real distance, Real velocity, real acceleration ){
+		this.time = time;
+		this.distance = distance;
+		this.velocity = velocity;
+		this.acceleration = acceleration;
+	}
+
+	setDirection( Int direction ){
+		this.direction = direction;
+	}
+	
+	Continuous(){
+		dot(time,1) == rate;
+		dot(distance,1)==direction*velocity;
+		dot(velocity,1)==acceleration;
+	}
+	
+	setRate( int rate ){
+		this.rate = rate;
+	}
+	
+	setInv( Interval TmIn, Interval DisIn, Interval VelIn ){	
+		this.TmIn = TmIn;
+		this.DisIn = DisIn;
+		this.VelIn = VelIn;	
+	}
+	
+	Invariant(){
+		time in TmIn;
+		distance in direction*DisIn; // reset the interval (-1)
+		velocity in VelIn;
+	}
+}

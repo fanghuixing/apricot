@@ -1,44 +1,187 @@
-System SubwayControlSystem{
-
-
-
-}
-
-System PSDS{
-
-}
-
-
 Plant Train{
-	Real time;
-	Int direction=1;
-	
-	//Motion(Real time, distance, velocity, acceleration, direction)
-	Dynamic init = new Motion(time,distance,velocity,0,direction);
-	Interval TmIn = [Delay, Inf), DisIn = [0,0], VelIn = [0,0];
-	init.setInv(TmIn,DisIn,VelIn);
-	
-	Dynamic stop = new Motion(time,distance,velocity,0,direction);
-	
-	Dynamic run = new Motion(time,distance,velocity,0.5,direction);
-	
-	Dynamic near = new Motion(time,distance,velocity,0,direction);
-	
-	Dynamic urgentDec = new Motion(time,distance,velocity,-1.5,direction);
-	
-	Dynamic stable = new Motion();
-	
+	Real time, position, velocity, maxp, frontStPos, acc; //subway station position
+	Real[] stationPos = {0, 2284, 3297, 9097};
+	int trainId;
+	Int direction=1, stationId=0;
+	real Delay;
+	int N;
 
-
-
+	Dynamic init = new Motion(time,position,velocity,0,direction);
+	init.setInv([Delay, +Inf),[0,0],[0,0]);
+	
+	Dynamic stopAtStation = new Motion(time,position,velocity,0,direction);
+	stop.setInv([0,0], [frontStPos, frontStPos], [0,0]);
+	
+	Dynamic run = new Motion(time,position,velocity,0.5,direction);
+	run.setInv([0,+Inf), (-Inf, frontStPos-500], [0,20]);
+	
+	Dynamic near = new Motion(time,position,velocity,acc,direction);
+	near.setInv([0,+inf), (-Inf, frontStPos], [0,20]));
+	near.Invariant.append(acc in [-0.4,0]);
+	
+	Dynamic urgentDec = new Motion(time,position,velocity,-1.5,direction);
+	urgentDec.setInv([0,+Inf), (-Inf,+Inf), [0,20]);
+	
+	Dynamic stable = new Motion(time,position,velocity,0,direction);
+	stable.setInv([0,+Inf), (-Inf,frontStPos-500], [20,20]);
+	
+	Dynamic urgentInc = new Motion(time,position,velocity,0.5,direction);
+	urgentInc.setInv([0, +Inf), (-Inf,maxp], [0, 20]);
+	
+	Dynamic urgentRecover = new Motion(time,position,velocity,-0.5,direction);
+	urgentRecover.setInv([0, +Inf), (-Inf, frontStPos+1], [0, 20]);
+	
+	Dynamic urgentStop = new Motion(time,position,velocity,0,direction);
+	urgentStop.setInv([0, +Inf), (-Inf, +Inf), [0, 0]);
+	
+	Dynamic changeDirection = new Motion(time,position,velocity,0,direction);
+	changeDirection.setInv([0,30], (-Inf,+Inf), [0,0]);
+	
+	Assignment reset = ResetAction(position,velocity,frontStPos,stationId,time, maxp, acc);
+		
+	setId(int id){ this.trainId = id; }
+	
+	Composition(){
+	
+		@Assignment{reset.Discrete(0,0,0,0,0);}
+		stop!(init,reset,stopAtStation){
+			Condition{ time == Delay; };
+		}
+		
+		@Assignment{reset.Discrete(frontStPos, 0,  frontStPos, stationId, 0);}
+		stop!(near, reset, stopAtStation){
+			Condition :: StopCondition{  //StopCondition is the name for local using
+				(position - fontStPos) in [-1,1];
+				velocity in [0,0.1];
+			};
+		}
+		
+		@Assignment{reset.Discrete(frontStPos,0, frontStPos, stationId, 0);}
+		stop!(urgentRecover, reset, stopAtStation){
+			StopCondition; 
+		}
+		
+		@Assignment{reset.SetTime(0);}
+		start?(stopAtStation, reset, changeDirection){
+			Condition{
+				(stationId==N-1 and direction==1) or (stationId==0 and direction==-1);
+			};
+		}
+		
+		@Assignment{reset.Discrete(position,0, frontStPos, stationId, -1*direction);}
+		stop!(changeDirection, reset, stopAtStation){
+			Condition{ time==30;}; 
+		}
+		
+		@Assignment{reset.Discrete(position,0, stationPos[stationId+direction], 
+		stationId+direction, direction)}
+		start?(stopAtStation, reset, run){
+			Condition{(direction==1 and stationId<N-1) or (direction==-1 and stationId>0);};
+		}
+		
+		@Assignment{reset.SetAcc(position,velocity,frontStPos);}
+		tau(run,reset,near){
+			Condition :: nearStation{frontStPos - position <= 500;}
+		}
+		
+		tau(run, ,stable){
+			Condition{velocity == 20;};
+		}
+		
+		urStop?(run,,urgentDec){
+			Condition{True;};
+		}
+		
+		@Assignment{reset.SetAcc(position,velocity,frontStPos);}
+		tau(stable,,near){
+			nearStation;
+		}
+		
+		urStop?(stable,,urgentDec){
+			Condition{True;};
+		}
+		
+		
+		urStop?(near,,urgentDec){
+			Condition{True;};
+		}
+		
+		@Assignment{reset.Discrete(position, 0, frontStPos, stationId, direction);}
+		trainUrStopped(urgentDec,reset,urgentStop){
+			Condition{velocity <= 0.1;}
+		}
+		
+		urStart?(urgentStop,,run){
+			Condition{ frontStPos - position > 800;};
+		}
+		
+		@Assignment{reset.SetMaxPos(frontStPos,position);};
+		urStart?(urgentStop,reset,urgentInc){
+			Condition{frontStPos - position in [0,800];}
+		}
+				
+		urStop!(urgentStop,,urgentInc){
+			Condition{True;};
+		}
+		
+		tau(urgentInc,,urgentRecover){
+			Condition{ position == maxp; };
+		}
+		
+		urStop?(urgentInc,,urgentDec){
+			Condition{True;};
+		}
+		
+		urStop?(urgentRecover,,urgentDec){
+			Condition{True;};
+		}
+		
+		int getDirection(){
+			return direction;
+		}
+		
+		real getPosition(){
+			return position;
+		}
+	}
 }
 
-Plant TrainDoor{
 
-}
 
-Plant ScreenDoor{
-
+ParallelAssignment ResetAction{
+	Real position, velocity, frontStPos, time, maxp, acc;
+	Int stationId;
+	
+	ResetAction(Real position, Real velocity, Real frontStPos, Int stationId, 
+	Real time, Real maxp, Real acc){
+		this.position = position;
+		this.velocity = velocity;
+		this.frontStPos = frontStPos;
+		this.stationId = stationId;
+		this.time = time;
+		this.maxp = maxp;
+		this.acc = acc;
+	}
+	
+	Discrete(real position, real velocity, real frontStPos, int stationId, real time){
+		position = pos;
+		velocity = vel;
+		frontStPos = fs;
+		stationId = cs;
+		time = t;
+	}
+	
+	SetTime(real t){
+		time = t;
+	}
+	
+	SetMaxPos(Real frontStPos, Real position){
+		maxp = 0.5*(frontStPos+position);
+	}
+	
+	SetAcc(real position, real velocity, real frontStPos ){
+		acc = -sqrt(velocity)/(2*abs(frontStPos-position));
+	}
 }
 
 Dynamic Motion{
@@ -49,7 +192,7 @@ Dynamic Motion{
 	
 	Interval TmIn, DisIn, VelIn;
 
-	Motion(Real time, Real distance, Real velocity, real acceleration, Int direction){
+	Motion( Real time, Real distance, Real velocity, real acceleration, Int direction ){
 		this.time = time;
 		this.distance = distance;
 		this.velocity = velocity;
@@ -57,14 +200,14 @@ Dynamic Motion{
 		this.direction = direction;
 	}
 	
-	Motion(Real time, Real distance, Real velocity, real acceleration){
+	Motion( Real time, Real distance, Real velocity, real acceleration ){
 		this.time = time;
 		this.distance = distance;
 		this.velocity = velocity;
 		this.acceleration = acceleration;
 	}
 
-	void setDirection(direction){
+	setDirection( Int direction ){
 		this.direction = direction;
 	}
 	
@@ -74,19 +217,114 @@ Dynamic Motion{
 		dot(velocity,1)==acceleration;
 	}
 	
-	void setRate(rate){
+	setRate( int rate ){
 		this.rate = rate;
 	}
-	void setInv(Interval TmIn, Interval DisIn, Interval VelIn){	
+	
+	setInv( Interval TmIn, Interval DisIn, Interval VelIn ){	
 		this.TmIn = TmIn;
 		this.DisIn = DisIn;
 		this.VelIn = VelIn;	
 	}
 	
-	Invariant(){
+	Invariant{
 		time in TmIn;
-		distance in DisIn;
+		distance in direction*DisIn; // reset the interval (-1)
 		velocity in VelIn;
 	}
 }
 
+Dynamic Waiting{
+
+	Real time;
+	
+	Interval TmIn;
+	
+	
+	Waiting(Real time){
+		this.time = time;
+	}
+	
+	Continuous() {
+		dot(time,1) = 1;		
+	}
+	
+	setInv(Interval TmIn){
+		this.TmIn = TmIn;
+	}
+	
+	Invariant{
+		time in TmIn;
+	}
+
+}
+
+SequentialAssignment Calculating{
+	int N;
+	Train[] train;	
+	Real time;
+	
+	Calculating(N,train,time){
+		this.N = N;
+		this.train = train;
+		this.time = time;
+	}
+	
+	setTrains(train){
+		this.train = train;
+	}
+
+	Discrete(){
+		int current,other;
+		int MINDIS = +Inf;
+		for(current=0:N-1){
+			Train CTrain = train[current];
+			int CDir = CTrain.getDirection();
+			real CPos = CTrain.getPosition();
+			for(other=0:N-1){
+				Train OTrain = train[other];
+				int ODir = OTrain.getDirection();
+				real OPos = OTrain.getPosition();
+				if(CTrain != OTrain and  CDir != ODir){
+					real tempDistance = CDir * (OPos-CPos);
+					if (tempDistance <= 300 
+						and tempDistance>0 
+						and tempDistance < MINDIS){
+						MINDIS = tempDistance;
+					}//end if inner
+				}//end if outer
+			}//end for other
+			if(MINDIS < +Inf){
+				CTrain.urStop!;
+				MINDIS = +Inf;
+			}
+			else if(CTrain in urgentStop){
+				CTrain.urStart!;			
+			}							
+		}//end for current		
+		time = 0;
+	}//end run
+}
+
+Controller UrgentControl{
+	int N;
+	Train[] train;
+	Real time;
+	
+	Dynamic Delay = new Waiting(time);
+	Delay.setInv([0,150]);
+	
+	Dynamic wait = new Waiting(time);
+	wait.setInv([0,1]);
+	
+	Assignment run = new Calculating(N,train,time);
+	
+	Composition(){		
+		tau(Delay,run,wait){
+			Condition{ time == 150; };
+		}
+		tau(wait,run,wait){
+			Condition{ time == 1; };
+		}
+	}
+}
