@@ -1,0 +1,13 @@
+module types/Main
+imports
+  types/PrimitiveTypes
+  types/ReferenceTypes
+
+
+exports
+  sorts
+    Type
+
+  context-free syntax
+    PrimType -> Type
+    RefType  -> Type

@@ -1,0 +1,17 @@
+
+P
+Class System{
+	int x;
+
+	
+    Discrete(){
+		x=1;
+		for (x=1;x<10;x++){
+			;
+		}
+		this.Discrete();
+	}
+	
+	
+	
+}

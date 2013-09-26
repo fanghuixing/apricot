@@ -1,0 +1,62 @@
+module classes/MethodDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  types/Main
+  classes/FieldDeclarations
+  interfaces/Annotations
+  statements/Blocks
+
+exports
+  sorts
+    MethodDec
+    MethodDecHead
+    ResultType
+
+  context-free syntax
+    MethodDecHead MethodBody -> MethodDec {cons("MethodDec")}
+
+    (Anno)* ResultType Id "(" {FormalParam ","}* ")"      -> MethodDecHead {cons("MethodDecHead")}    
+	(MethodMod)* ResultType Id "(" {FormalParam ","}* ")"      -> MethodDecHead {cons("MethodDecHead")}
+    Type   -> ResultType
+    "void" -> ResultType {cons("Void")}
+
+  sorts FormalParam
+  context-free syntax
+    (Anno)* Type       VarDecId -> FormalParam {cons("Param")}
+	(VarMod)* Type       VarDecId -> FormalParam {cons("Param")}
+  sorts VarMod
+  context-free syntax
+
+  sorts MethodMod
+  context-free syntax
+    Public         -> MethodMod
+
+    Private        -> MethodMod
+
+    Abstract       -> MethodMod
+    Static         -> MethodMod
+    Final          -> MethodMod
+    Synchronized   -> MethodMod
+    Native         -> MethodMod
+    StrictFP       -> MethodMod
+
+  %%%
+   %% Section 8.4.6: Method Throws
+   %%%
+  sorts
+    Throws
+    ExceptionType
+
+  context-free syntax
+    "throws" {ExceptionType ","}+ -> Throws {cons("ThrowsDec")}
+    ClassType -> ExceptionType
+    %% TypeVar -> ExceptionType
+
+  %%%
+   %% Section 8.4.7: Method Body
+   %%% 
+  sorts MethodBody
+  context-free syntax
+    Block -> MethodBody
+    ";"   -> MethodBody {cons("NoMethodBody")}

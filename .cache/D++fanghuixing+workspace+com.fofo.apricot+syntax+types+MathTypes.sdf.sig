@@ -1,0 +1,1 @@
+module(unparameterized("types/MathTypes"),[],[exports(conc-grammars(sorts([sort("MathType")]),context-free-syntax([prod([lit("\"Int\"")],sort("MathType"),attrs([term(default(appl(unquoted("cons"),[fun(quoted("\"IntMath\""))])))])),prod([lit("\"Real\"")],sort("MathType"),attrs([term(default(appl(unquoted("cons"),[fun(quoted("\"RealMath\""))])))]))])))])

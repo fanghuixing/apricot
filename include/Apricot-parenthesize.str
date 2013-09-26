@@ -1,0 +1,94 @@
+module include/Apricot-parenthesize
+
+imports
+  libstratego-lib
+  include/Apricot
+
+
+strategies
+  io-Apricot-parenthesize =
+    io-wrap(parenthesize-Apricot)
+
+  parenthesize-Apricot =
+    innermost(ApricotParenthesize)
+
+
+rules
+
+  ApricotParenthesize :
+    Cond(t_0, t_1, t_2) -> Cond(Parenthetical(t_0), t_1, t_2)
+    where <(?Cond(_, _, _) + fail)> t_0
+
+  ApricotParenthesize :
+    LogicXOR(t_0, t_1) -> LogicXOR(t_0, Parenthetical(t_1))
+    where <(?LogicXOR(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    LogicOr(t_0, t_1) -> LogicOr(t_0, Parenthetical(t_1))
+    where <(?LogicOr(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    LogicAnd(t_0, t_1) -> LogicAnd(t_0, Parenthetical(t_1))
+    where <(?LogicAnd(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    LogicIn(t_0, t_1) -> LogicIn(t_0, Parenthetical(t_1))
+    where <(?LogicIn(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Asynchronous(t_0, t_1) -> Asynchronous(t_0, Parenthetical(t_1))
+    where <(?Asynchronous(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Synchronous(t_0, t_1) -> Synchronous(t_0, Parenthetical(t_1))
+    where <(?Synchronous(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    NotEq(t_0, t_1) -> NotEq(t_0, Parenthetical(t_1))
+    where <(?NotEq(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Eq(t_0, t_1) -> Eq(t_0, Parenthetical(t_1))
+    where <(?Eq(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    GtEq(t_0, t_1) -> GtEq(t_0, Parenthetical(t_1))
+    where <(?GtEq(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    LtEq(t_0, t_1) -> LtEq(t_0, Parenthetical(t_1))
+    where <(?LtEq(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Gt(t_0, t_1) -> Gt(t_0, Parenthetical(t_1))
+    where <(?Gt(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Lt(t_0, t_1) -> Lt(t_0, Parenthetical(t_1))
+    where <(?Lt(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Minus(t_0, t_1) -> Minus(t_0, Parenthetical(t_1))
+    where <(?Minus(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Plus(t_0, t_1) -> Plus(t_0, Parenthetical(t_1))
+    where <(?Plus(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Remain(t_0, t_1) -> Remain(t_0, Parenthetical(t_1))
+    where <(?Remain(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Div(t_0, t_1) -> Div(t_0, Parenthetical(t_1))
+    where <(?Div(_, _) + fail)> t_1
+
+  ApricotParenthesize :
+    Mul(t_0, t_1) -> Mul(t_0, Parenthetical(t_1))
+    where <(?Mul(_, _) + fail)> t_1
+
+
+signature
+  constructors
+    Parenthetical : Unknown -> Unknown
+

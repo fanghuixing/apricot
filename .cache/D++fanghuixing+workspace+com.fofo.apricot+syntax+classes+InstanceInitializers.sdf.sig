@@ -1,0 +1,1 @@
+module(unparameterized("classes/InstanceInitializers"),[imports([module(unparameterized("statements/Blocks"))])],[exports(conc-grammars(sorts([sort("InstanceInit")]),context-free-syntax([prod([sort("Block")],sort("InstanceInit"),attrs([term(default(appl(unquoted("cons"),[fun(quoted("\"InstanceInit\""))])))]))])))])

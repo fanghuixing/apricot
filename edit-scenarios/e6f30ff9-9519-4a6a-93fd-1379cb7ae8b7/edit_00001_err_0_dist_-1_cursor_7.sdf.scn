@@ -1,0 +1,10 @@
+module languages/java-15/lexical/literals/BooleanLiterals
+exports
+  sorts
+    Bool
+    BoolLiteral
+
+  context-free syntax
+    Bool -> BoolLiteral {cons("Bool")}
+    "true"  -> Bool {cons("True")}
+    "false" -> Bool {cons("False")}

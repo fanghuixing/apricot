@@ -1,0 +1,8 @@
+module lexical/literals/Main
+imports
+  lexical/literals/IntegerLiterals
+  lexical/literals/FloatingPointLiterals
+  lexical/literals/BooleanLiterals  
+  lexical/literals/CharacterLiterals  
+  lexical/literals/StringLiterals
+  lexical/literals/NullLiteral

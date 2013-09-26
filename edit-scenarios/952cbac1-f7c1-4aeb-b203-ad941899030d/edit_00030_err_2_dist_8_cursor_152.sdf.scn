@@ -1,0 +1,30 @@
+module Apricot
+
+imports 
+	expressions/Main
+	types/Main
+	classes/Main
+	arrays/Main
+	lexical/Main
+	names/Main
+	interfaces/Main
+	statements/Main
+	packages/
+	
+exports
+  context-free start-symbols
+    Anno
+    AnnoDec
+    Block
+    BlockStm
+    ClassBodyDec
+    ClassMemberDec
+    Expr
+    FormalParam
+    Id
+    InterfaceDec
+    InterfaceMemberDec
+    PackageName
+    Stm
+    Type
+    TypeName

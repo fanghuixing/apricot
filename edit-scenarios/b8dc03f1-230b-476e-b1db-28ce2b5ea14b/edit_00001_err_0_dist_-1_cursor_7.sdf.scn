@@ -1,0 +1,3 @@
+module languages/java-15/arrays/Main
+imports
+  languages/java-15/arrays/ArrayInitializers

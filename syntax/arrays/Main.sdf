@@ -1,0 +1,3 @@
+module arrays/Main
+imports
+  arrays/ArrayInitializers

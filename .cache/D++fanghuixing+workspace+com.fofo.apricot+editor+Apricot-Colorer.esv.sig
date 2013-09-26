@@ -1,0 +1,1 @@
+Module("Apricot-Colorer",Imports([Import("Apricot-Colorer.generated")]),[Colorer("",[])])

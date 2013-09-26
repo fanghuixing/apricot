@@ -1,0 +1,17 @@
+module statements/Blocks
+imports
+  classes/ClassDeclarations
+  statements/LocalVariableDeclarations
+  statements/Statements
+
+exports
+  sorts
+    BlockStm
+    Block
+
+  context-free syntax
+    "{" BlockStm* "}" -> Block {cons("Block")}
+
+    LocalVarDecStm  -> BlockStm 
+    ClassDec        -> BlockStm {cons("ClassDecStm")}
+    Stm             -> BlockStm

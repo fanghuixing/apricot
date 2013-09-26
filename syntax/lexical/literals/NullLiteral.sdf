@@ -1,0 +1,6 @@
+module lexical/literals/NullLiteral
+exports
+  sorts NullLiteral
+  context-free syntax
+    "null"  -> NullLiteral {cons("Null")}
+    "Null"  -> NullLiteral {cons("Null")}

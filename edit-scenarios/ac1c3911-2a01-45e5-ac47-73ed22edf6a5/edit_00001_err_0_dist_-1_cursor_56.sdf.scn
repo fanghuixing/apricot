@@ -1,0 +1,15 @@
+module Apricot
+
+imports 
+	expressions/Mian
+	types/Main
+
+exports
+
+  context-free start-symbols
+  
+    Start
+
+  context-free syntax
+  
+    -> Start {"Dummy"}

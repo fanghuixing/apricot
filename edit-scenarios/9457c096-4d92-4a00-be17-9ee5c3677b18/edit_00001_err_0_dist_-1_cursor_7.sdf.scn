@@ -1,0 +1,7 @@
+module languages/java-15/lexical/UnicodeEscapes
+exports
+  sorts
+    UnicodeEscape
+
+  syntax
+    "\\" [u]+ [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] -> UnicodeEscape {cons("UnicodeEscape")}

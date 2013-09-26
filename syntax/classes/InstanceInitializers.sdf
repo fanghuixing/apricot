@@ -1,0 +1,10 @@
+module classes/InstanceInitializers
+imports
+  statements/Blocks
+
+exports
+  sorts
+    InstanceInit
+
+  context-free syntax
+    Block -> InstanceInit {cons("InstanceInit")}

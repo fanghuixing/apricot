@@ -1,0 +1,16 @@
+module interfaces/ConstantDeclarations
+imports
+  lexical/Modifiers
+  types/Main
+  classes/MethodDeclarations
+  interfaces/Annotations
+
+exports
+  sorts
+    ConstantDec
+    ConstantMod
+
+  context-free syntax
+    (Anno | ConstantMod)* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
+	(ConstantMod)* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
+    Public -> ConstantMod

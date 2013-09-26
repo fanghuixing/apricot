@@ -1,0 +1,31 @@
+module interfaces/AnnotationTypes
+imports
+  lexical/Identifiers
+  classes/ClassDeclarations
+  interfaces/InterfaceDeclarations
+  interfaces/AbstractMethodDeclarations
+  interfaces/ConstantDeclarations
+  interfaces/Annotations
+
+exports
+  sorts
+    AnnoDec
+    AnnoDecHead
+
+  context-free syntax
+    AnnoDecHead "{" AnnoElemDec* "}" -> AnnoDec {cons("AnnoDec")}
+    (Anno)* "@" "interface" Id -> AnnoDecHead {cons("AnnoDecHead")}
+    (InterfaceMod)* "@" "interface" Id -> AnnoDecHead {cons("AnnoDecHead")}
+
+  sorts
+    AnnoElemDec
+    DefaultVal
+
+  context-free syntax    
+    ConstantDec  -> AnnoElemDec
+    ClassDec     -> AnnoElemDec
+    InterfaceDec -> AnnoElemDec
+    AnnoDec      -> AnnoElemDec
+    ";"          -> AnnoElemDec {cons("Semicolon")}
+
+    "default" ElemVal -> DefaultVal {cons("DefaultVal")}

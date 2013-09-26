@@ -1,0 +1,1 @@
+module(unparameterized("arrays/Main"),[imports([module(unparameterized("arrays/ArrayInitializers"))])],[])

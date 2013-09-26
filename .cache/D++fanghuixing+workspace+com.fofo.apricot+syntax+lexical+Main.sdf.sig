@@ -1,0 +1,1 @@
+module(unparameterized("lexical/Main"),[imports([module(unparameterized("lexical/Identifiers")),module(unparameterized("lexical/Keywords")),module(unparameterized("lexical/LineTerminators")),module(unparameterized("lexical/WhiteSpace")),module(unparameterized("lexical/literals/Main"))])],[])

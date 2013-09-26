@@ -1,0 +1,37 @@
+module expressions/BinaryOperators
+imports
+  expressions/Main
+  types/Main
+
+exports
+  sorts CondMid
+  context-free syntax
+    Expr "instanceof" RefType -> Expr {cons("InstanceOf")}
+
+    Expr "*"   Expr -> Expr  {left, cons("Mul")}
+    Expr "/"   Expr -> Expr  {left, cons("Div")}
+    Expr "%"   Expr -> Expr  {left, cons("Remain")}
+
+    Expr "+"   Expr -> Expr  {left, cons("Plus")}
+    Expr "-"   Expr -> Expr  {left, cons("Minus")}
+
+
+    Expr "<"   Expr -> Expr  {left, cons("Lt")}
+    Expr ">"   Expr -> Expr  {left, cons("Gt")}
+    Expr "<="  Expr -> Expr  {left, cons("LtEq")}
+    Expr ">="  Expr -> Expr  {left, cons("GtEq")}
+    Expr "=="  Expr -> Expr  {left, cons("Eq")}
+    Expr "!="  Expr -> Expr  {left, cons("NotEq")}
+
+    Expr "||"  Expr -> Expr  {left, cons("Synchronous")}
+    Expr "~"  Expr -> Expr  {left, cons("Asynchronous")}
+	
+	Expr "in"  Expr -> Expr  {left, cons("LogicIn")}
+	Expr "and"  Expr -> Expr  {left, cons("LogicAnd")}
+    Expr "or"  Expr -> Expr  {left, cons("LogicOr")}
+    Expr "xor"  Expr -> Expr  {left, cons("LogicXOR")}
+
+    Expr CondMid Expr -> Expr {right, cons("Cond")}
+    "?" Expr ":" -> CondMid {bracket}
+
+    

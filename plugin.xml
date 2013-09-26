@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?eclipse version="3.0"?>
+
+<plugin>
+       <extension point="org.eclipse.imp.runtime.languageDescription">
+          <language extensions="apr" description="Apricot" language="Apricot" derivedFrom="DynamicRoot" validator="com.fofo.apricot.ApricotValidator" validatorClass="com.fofo.apricot.ApricotValidator"></language>
+       </extension>
+       <extension id="com.fofo.apricot.parser" name="Apricot Parser" point="org.eclipse.imp.runtime.parser">
+          <parser class="com.fofo.apricot.ApricotParseController" language="Apricot">
+          </parser>
+       </extension>    
+    </plugin>

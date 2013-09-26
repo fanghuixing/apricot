@@ -1,0 +1,1 @@
+Module("Apricot-Completions",Imports([Import("Apricot-Completions.generated")]),[Completions("",[]),Completions("",[]),Completions("",[CompletionProposer([],Strategy("editor-complete")),CompletionTrigger(String("\".\""),None)])])

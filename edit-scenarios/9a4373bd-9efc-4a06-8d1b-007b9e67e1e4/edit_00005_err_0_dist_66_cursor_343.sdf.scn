@@ -1,0 +1,13 @@
+module statements/LocalVariableDeclarations
+imports
+  classes/MethodDeclarations
+  classes/FieldDeclarations
+
+exports
+  sorts
+    LocalVarDecStm
+    LocalVarDec
+
+  context-free syntax
+    LocalVarDec ";" -> LocalVarDecStm {prefer, cons("LocalVarDecStm")}
+    (Anno)* Type {VarDec ","}+ -> LocalVarDec {prefer, cons("LocalVarDec")}

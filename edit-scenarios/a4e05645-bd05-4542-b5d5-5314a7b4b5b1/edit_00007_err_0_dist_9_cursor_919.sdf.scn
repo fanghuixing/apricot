@@ -1,0 +1,23 @@
+module expressions/MethodInvocation
+imports
+  expressions/Main
+
+exports
+  sorts MethodSpec
+  context-free syntax
+    MethodSpec "(" {Expr ","}* ")" -> Expr {cons("Invoke")}
+
+                               MethodName -> MethodSpec {cons("Method")}
+                    Expr "."  Id -> MethodSpec {cons("Method")}
+                 "super" "."  Id -> MethodSpec {cons("SuperMethod")}
+    TypeName "." "super" "."  Id -> MethodSpec {cons("QSuperMethod")}
+                 AmbName "."   Id -> MethodSpec {cons("GenericMethod")}
+
+  %% This priority forbids a Expr "." MethodSpec if the expression is a plain ExprName.
+  %% This solves an ambiguity with the MethodName and AmbName . TypeArgs MethodSpecs.
+  %% foo.bar.fred() results in a MethodName MethodSpec.
+  %% (foo.bar).fred() results in the Expr. MethodSpec
+  %% foo.bar.<T>fred() results in a GenericMethod
+  context-free priorities
+      Expr "."  Id -> MethodSpec
+    > ExprName  -> Expr

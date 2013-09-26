@@ -1,0 +1,16 @@
+module Apricot.main
+
+imports Apricot-Builders Apricot-Refactorings Apricot-Colorer Apricot-Completions Apricot-Folding Apricot-Outliner Apricot-References Apricot-Syntax
+
+language General properties
+                  
+  name          : Apricot
+  id            : com.fofo.apricot
+  extends       : Root
+                  
+  description   : "Spoofax/IMP-generated editor for the Apricot language"
+  url           : http://strategoxt.org
+                  
+  extensions    : apr
+  table         : include/Apricot.tbl
+  start symbols : Start

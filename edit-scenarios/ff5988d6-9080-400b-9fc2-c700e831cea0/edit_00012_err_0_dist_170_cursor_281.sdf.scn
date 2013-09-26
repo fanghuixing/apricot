@@ -1,0 +1,16 @@
+module types/MathTypes
+
+exports
+  sorts
+  	MathType
+  	
+  	context-free syntax
+    NumType   -> PrimType
+    "boolean" -> PrimType {cons("Boolean")}
+
+    IntType   -> NumType
+    FloatType -> NumType
+
+
+    "int"    -> IntType   {cons("int")}
+    "real"  -> FloatType {cons("real")}

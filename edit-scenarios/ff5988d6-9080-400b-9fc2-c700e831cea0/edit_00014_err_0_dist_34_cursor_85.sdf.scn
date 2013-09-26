@@ -1,0 +1,14 @@
+module types/MathTypes
+
+exports
+  sorts
+  	MathType
+  	
+  	context-free syntax
+    
+
+
+
+
+    "int"    -> IntType   {cons("int")}
+    "real"  -> FloatType {cons("real")}

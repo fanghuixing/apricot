@@ -1,0 +1,1 @@
+Module("generate",[Imports([Import("libstratego-lib"),Import("libstratego-gpp"),Import("libstratego-aterm"),Import("include/Apricot"),Import("lib/editor-common.generated"),Import("lib/compilation-library.generated")]),Rules([])])

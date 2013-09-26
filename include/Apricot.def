@@ -1,0 +1,1342 @@
+definition
+module packages/PackageDeclarations
+imports
+  names/Main
+  interfaces/Annotations
+
+exports
+  sorts
+    PackageDec
+
+  context-free syntax
+    Anno* "package" PackageName ";" -> PackageDec {cons("PackageDec")}
+
+module packages/ImportDeclarations
+imports
+  lexical/Identifiers
+  names/Main
+
+exports
+  sorts
+    ImportDec
+
+  context-free syntax
+    "import" TypeName                  ";"  -> ImportDec {cons("TypeImportDec")}
+    "import" PackageName       "." "*" ";"  -> ImportDec {cons("TypeImportOnDemandDec")}
+    "import" "static" TypeName "." Id  ";"  -> ImportDec {cons("StaticImportDec")}
+    "import" "static" TypeName "." "*" ";"  -> ImportDec {cons("StaticImportOnDemandDec")}
+
+module packages/TypeDeclarations
+imports
+  classes/ClassDeclarations
+  interfaces/InterfaceDeclarations
+
+exports
+  sorts
+    TypeDec
+
+  context-free syntax
+    ClassDec      -> TypeDec
+    InterfaceDec  -> TypeDec
+    ";"           -> TypeDec {cons("Semicolon")}
+
+module packages/CompilationUnits
+imports
+  packages/PackageDeclarations
+  packages/ImportDeclarations
+  packages/TypeDeclarations
+
+exports
+  sorts
+    CompilationUnit
+
+  context-free syntax
+    PackageDec? ImportDec* TypeDec+ -> CompilationUnit   {cons("CompilationUnit")}
+
+module packages/Main
+imports
+  packages/CompilationUnits
+  packages/ImportDeclarations
+  packages/PackageDeclarations
+
+
+module statements/Main
+imports
+  statements/Blocks
+  statements/LocalVariableDeclarations
+  statements/Statements
+
+module interfaces/Main
+imports
+  interfaces/InterfaceDeclarations
+  interfaces/AnnotationTypes
+  interfaces/Annotations
+
+module names/Main
+imports
+  lexical/Identifiers
+exports
+  sorts PackageName
+  context-free syntax
+    {Id "."}+ -> PackageName {cons("PackageName")}
+
+  sorts
+    TypeName
+    ExprName
+    MethodName
+    PackageOrTypeName
+    AmbName
+
+  context-free syntax
+    Id             -> AmbName {cons("AmbName")}
+    AmbName "." Id -> AmbName {cons("AmbName")}
+
+    Id                       -> TypeName {cons("TypeName")}
+    PackageOrTypeName "." Id -> TypeName {cons("TypeName")}
+
+    Id             -> ExprName {cons("ExprName")}
+    AmbName "." Id -> ExprName {cons("ExprName")}
+
+    Id             -> MethodName  {cons("MethodName")}
+    AmbName "." Id -> MethodName  {cons("MethodName")}
+
+    Id                       -> PackageOrTypeName {cons("PackageOrTypeName")}
+    PackageOrTypeName "." Id -> PackageOrTypeName {cons("PackageOrTypeName")}
+
+module lexical/WhiteSpace
+exports
+  lexical syntax
+    [\ \t\12\r\n] -> LAYOUT
+
+  context-free restrictions
+    LAYOUT? -/- [\ \t\12\n\r]
+
+module lexical/LineTerminators
+exports
+  sorts
+    LineTerminator CarriageReturn EndOfFile
+
+  lexical syntax
+    [\n]           -> LineTerminator
+    [\r][\n]       -> LineTerminator
+    CarriageReturn -> LineTerminator
+    EndOfFile      -> LineTerminator
+
+    [\r] -> CarriageReturn
+
+  lexical restrictions
+    CarriageReturn -/- [\n]
+
+  %% End of file is empty.
+  lexical syntax    
+    -> EndOfFile
+
+  lexical restrictions
+    EndOfFile -/- ~[]
+
+module lexical/Main
+imports
+  lexical/Identifiers
+  lexical/Keywords
+  lexical/LineTerminators
+  lexical/WhiteSpace
+  lexical/literals/Main
+
+module arrays/Main
+imports
+  arrays/ArrayInitializers
+
+module classes/Main
+imports
+  classes/ClassDeclarations
+
+module types/MathTypes
+
+exports
+  sorts
+  	MathType
+  	
+  	context-free syntax
+
+    "Int"    -> MathType {cons("IntMath")}
+    "Real"  -> MathType {cons("RealMath")}
+
+module types/PrimitiveTypes
+exports
+  sorts
+    PrimType
+    NumType
+    IntType  
+    FloatType
+
+  context-free syntax
+    NumType   -> PrimType
+    "boolean" -> PrimType {cons("Boolean")}
+
+    IntType   -> NumType
+    FloatType -> NumType
+
+
+    "int"    -> IntType   {cons("int")}
+    "real"  -> FloatType {cons("real")}
+
+module types/Main
+imports
+  types/PrimitiveTypes
+  types/ReferenceTypes
+  types/MathTypes
+
+exports
+  sorts
+    Type
+
+  context-free syntax
+    PrimType -> Type
+    RefType  -> Type
+    MathType -> Type
+
+module expressions/MethodInvocation
+imports
+  expressions/Main
+
+exports
+  sorts MethodSpec
+  context-free syntax
+    MethodSpec "(" {Expr ","}* ")" -> Expr {cons("Invoke")}
+
+                               MethodName -> MethodSpec {cons("Method")}
+                    Expr "."  Id -> MethodSpec {cons("Method")}
+                 "super" "."  Id -> MethodSpec {cons("SuperMethod")}
+    TypeName "." "super" "."  Id -> MethodSpec {cons("QSuperMethod")}
+                 AmbName "."   Id -> MethodSpec {cons("GenericMethod")}
+
+  %% This priority forbids a Expr "." MethodSpec if the expression is a plain ExprName.
+  %% This solves an ambiguity with the MethodName and AmbName . TypeArgs MethodSpecs.
+  %% foo.bar.fred() results in a MethodName MethodSpec.
+  %% (foo.bar).fred() results in the Expr. MethodSpec
+  context-free priorities
+      Expr "."  Id -> MethodSpec
+    > ExprName  -> Expr
+
+module expressions/Postfix
+imports 
+  expressions/Main
+
+exports
+  context-free syntax
+    ExprName  -> Expr
+    Expr "++" -> Expr {cons("PostIncr")}
+    Expr "--" -> Expr {cons("PostDecr")}
+
+module lexical/literals/NullLiteral
+exports
+  sorts NullLiteral
+  context-free syntax
+    "null"  -> NullLiteral {cons("Null")}
+    "Null"  -> NullLiteral {cons("Null")}
+
+module lexical/literals/StringLiterals
+imports
+  lexical/literals/EscapeSequences
+  lexical/UnicodeEscapes
+
+exports
+  sorts
+    StringLiteral
+    StringPart
+    StringChars
+    FooStringChars
+
+  syntax
+    StringLiteral -> <StringLiteral-CF>
+    
+    "\"" StringPart* "\"" -> StringLiteral {cons("String")}
+    StringChars    -> StringPart {cons("Chars")}
+    UnicodeEscape  -> StringPart
+    EscapeSeq      -> StringPart
+
+    <FooStringChars-LEX> -> StringChars
+    ~[\"\\\n\13]+  -> <FooStringChars-LEX>
+
+  restrictions
+    StringChars -/- ~[\"\\\n\13]
+
+module lexical/UnicodeEscapes
+exports
+  sorts
+    UnicodeEscape
+
+  syntax
+    "\\" [u]+ [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] -> UnicodeEscape {cons("UnicodeEscape")}
+
+module lexical/literals/EscapeSequences
+imports
+
+exports
+  sorts
+    EscapeSeq
+    NamedEscape
+    OctaEscape
+    LastOcta
+
+  syntax
+    OctaEscape  -> EscapeSeq
+    NamedEscape -> EscapeSeq
+
+    "\\" [btnfr\"\'\\]     -> NamedEscape {cons("NamedEscape")}
+    "\\" LastOcta          -> OctaEscape  {cons("OctaEscape1")}
+    "\\" [0-3] LastOcta    -> OctaEscape  {cons("OctaEscape2")}
+    "\\" [4-7] [0-7]       -> OctaEscape  {cons("OctaEscape2")}
+    "\\" [0-3] [0-7] [0-7] -> OctaEscape  {cons("OctaEscape3")}
+
+    [0-7] -> LastOcta
+
+  restrictions
+    LastOcta -/- [0-7]
+
+module lexical/literals/CharacterLiterals
+imports
+  lexical/literals/EscapeSequences
+  lexical/UnicodeEscapes
+
+exports
+  sorts
+    CharLiteral
+    CharContent
+    SingleChar
+
+  syntax
+    CharLiteral   -> <CharLiteral-CF>
+
+    "'" CharContent "'" -> CharLiteral {cons("Char")}
+    SingleChar    -> CharContent {cons("Single")}
+    UnicodeEscape -> CharContent
+    EscapeSeq     -> CharContent
+
+    ~[\r\n\'\\] -> SingleChar
+
+
+module lexical/literals/BooleanLiterals
+exports
+  sorts
+    Bool
+    BoolLiteral
+
+  context-free syntax
+    Bool -> BoolLiteral {cons("Bool")}
+    "true"  -> Bool {cons("True")}
+    "false" -> Bool {cons("False")}
+    "True"  -> Bool {cons("True")}
+    "False" -> Bool {cons("False")}
+
+module lexical/literals/FloatingPointLiterals
+exports
+  sorts
+    FloatLiteral
+    DeciFloatLiteral
+    HexaFloatLiteral      
+  
+  context-free syntax
+    DeciFloatLiteral -> FloatLiteral {cons("Float")}
+    HexaFloatLiteral -> FloatLiteral {cons("Float")}
+
+  lexical syntax
+    DeciFloatNumeral [fFdD]? -> DeciFloatLiteral
+    HexaFloatNumeral [fFdD]? -> HexaFloatLiteral
+    
+    %% Reject plain integer literals as decimal float literals.
+    %% A similar rejection for hexadecimal float literals is not
+    %% required, since these always contain an exponent part.
+    [0-9]+ -> DeciFloatLiteral {reject}
+
+  lexical restrictions
+    DeciFloatLiteral -/- [fFdD]
+    HexaFloatLiteral -/- [fFdD]
+
+  %%%
+   %% Decimal Floating Point Numerals
+   %%%
+  sorts
+    DeciFloatNumeral
+    DeciFloatDigits
+    DeciFloatExponentPart
+
+  lexical syntax
+    DeciFloatDigits DeciFloatExponentPart? -> DeciFloatNumeral
+
+    [0-9]* "." [0-9]* -> DeciFloatDigits
+           "."        -> DeciFloatDigits {reject}
+    [0-9]+            -> DeciFloatDigits
+
+    [eE] SignedInteger -> DeciFloatExponentPart
+    
+    [\+\-]? [0-9]+ -> SignedInteger    
+
+  lexical restrictions
+    DeciFloatDigits  -/- [0-9]
+    DeciFloatExponentPart -/- [0-9]
+
+  %%%
+   %% Hexadecimal Floating Point Literals
+   %%%
+  sorts
+    HexaFloatNumeral
+    HexaSignificand
+    BinaryExponent
+    SignedInteger
+    
+  lexical syntax
+    HexaSignificand BinaryExponent -> HexaFloatNumeral
+
+    [0][xX] [0-9a-fA-F]+                  -> HexaSignificand
+    [0][xX] [0-9a-fA-F]* "." [0-9a-fA-F]* -> HexaSignificand
+    [0][xX]              "."              -> HexaSignificand {reject}
+
+    [pP] SignedInteger -> BinaryExponent
+  lexical restrictions
+    HexaSignificand -/- [0-9a-fA-F]
+    SignedInteger   -/- [0-9]
+
+module lexical/literals/IntegerLiterals
+exports
+  sorts
+    IntLiteral
+    DeciLiteral
+    HexaLiteral
+    OctaLiteral
+    DeciNumeral
+    HexaNumeral
+    OctaNumeral
+
+  context-free syntax
+    DeciLiteral -> IntLiteral {cons("Deci")}
+    HexaLiteral -> IntLiteral {cons("Hexa")}
+    OctaLiteral -> IntLiteral {cons("Octa")}
+
+  lexical syntax
+    DeciNumeral [lL]? -> DeciLiteral
+    HexaNumeral [lL]? -> HexaLiteral
+    OctaNumeral [lL]? -> OctaLiteral
+
+    "0" -> DeciNumeral
+    [1-9][0-9]*  -> DeciNumeral
+    [0][xX] [0-9a-fA-F]+ -> HexaNumeral
+    [0]     [0-7]+       -> OctaNumeral
+
+  lexical restrictions
+    DeciNumeral -/- [0-9\.fFdD]
+    HexaNumeral -/- [0-9a-fA-F]
+    OctaNumeral -/- [0-7]
+
+    DeciLiteral -/- [lL]
+    HexaLiteral -/- [lL]
+    OctaLiteral -/- [lL]
+
+module lexical/literals/Main
+imports
+  lexical/literals/IntegerLiterals
+  lexical/literals/FloatingPointLiterals
+  lexical/literals/BooleanLiterals  
+  lexical/literals/CharacterLiterals  
+  lexical/literals/StringLiterals
+  lexical/literals/NullLiteral
+
+
+module expressions/Primary
+imports
+  lexical/literals/Main
+  names/Main
+  expressions/Main
+
+exports
+  %%%
+   %% Section 15.8.1: Lexical Literals
+   %%%
+  sorts Literal
+  context-free syntax
+    Literal -> Expr {cons("Lit")}
+
+    IntLiteral    -> Literal
+    FloatLiteral  -> Literal
+    BoolLiteral   -> Literal 
+    CharLiteral   -> Literal
+    StringLiteral -> Literal
+    NullLiteral   -> Literal
+
+  %%%
+   %% Section 15.8.2: Class Literals
+   %%%
+  sorts ClassLiteral
+  context-free syntax
+    ClassLiteral -> Literal
+    Type   "." "class" -> ClassLiteral {cons("Class")}
+    "void" "." "class" -> ClassLiteral {cons("VoidClass")}
+
+  %%%
+   %% Section 15.8.3/4: (Qualified this)
+   %%%
+  context-free syntax
+                 "this" -> Expr {cons("This")}
+    TypeName "." "this" -> Expr {cons("QThis")}
+
+  %%%
+   %% Section 15.8.5: Parenthesized Expression
+   %%%
+  context-free syntax
+    "(" Expr ")"          -> Expr {bracket}
+
+module expressions/ArrayAccess
+imports
+  expressions/Main
+exports
+  sorts
+    ArrayAccess
+    ArraySubscript
+
+  context-free syntax
+    ArrayAccess -> Expr
+
+    Expr ArraySubscript -> ArrayAccess {cons("ArrayAccess")}
+    "[" Expr "]" -> ArraySubscript {bracket}
+
+    ArrayCreationExpr ArraySubscript -> ArrayAccess {reject}
+
+module expressions/AssignmentOperators
+imports
+  expressions/Main
+
+exports
+  sorts LHS
+  context-free syntax
+    LHS "="    Expr -> Expr {cons("Assign")}
+    LHS "*="   Expr -> Expr {cons("AssignMul")}
+    LHS "/="   Expr -> Expr {cons("AssignDiv")}
+    LHS "%="   Expr -> Expr {cons("AssignRemain")}
+    LHS "+="   Expr -> Expr {cons("AssignPlus")}
+    LHS "-="   Expr -> Expr {cons("AssignMinus")}
+
+    ExprName    -> LHS
+    FieldAccess -> LHS
+    ArrayAccess -> LHS
+
+module expressions/BinaryOperators
+imports
+  expressions/Main
+  types/Main
+
+exports
+  sorts CondMid
+  context-free syntax
+    Expr "instanceof" RefType -> Expr {cons("InstanceOf")}
+
+    Expr "*"   Expr -> Expr  {left, cons("Mul")}
+    Expr "/"   Expr -> Expr  {left, cons("Div")}
+    Expr "%"   Expr -> Expr  {left, cons("Remain")}
+
+    Expr "+"   Expr -> Expr  {left, cons("Plus")}
+    Expr "-"   Expr -> Expr  {left, cons("Minus")}
+
+
+    Expr "<"   Expr -> Expr  {left, cons("Lt")}
+    Expr ">"   Expr -> Expr  {left, cons("Gt")}
+    Expr "<="  Expr -> Expr  {left, cons("LtEq")}
+    Expr ">="  Expr -> Expr  {left, cons("GtEq")}
+    Expr "=="  Expr -> Expr  {left, cons("Eq")}
+    Expr "!="  Expr -> Expr  {left, cons("NotEq")}
+
+    Expr "||"  Expr -> Expr  {left, cons("Synchronous")}
+    Expr "~"  Expr -> Expr  {left, cons("Asynchronous")}
+	
+	Expr "in"  Expr -> Expr  {left, cons("LogicIn")}
+	Expr "and"  Expr -> Expr  {left, cons("LogicAnd")}
+    Expr "or"  Expr -> Expr  {left, cons("LogicOr")}
+    Expr "xor"  Expr -> Expr  {left, cons("LogicXOR")}
+
+    Expr CondMid Expr -> Expr {right, cons("Cond")}
+    "?" Expr ":" -> CondMid {bracket}
+
+module expressions/UnaryOperators
+imports 
+  expressions/Main
+exports
+  context-free syntax
+    "+" Expr -> Expr {cons("Plus")}
+    "-" Expr -> Expr {cons("Minus")}
+
+    "++" Expr -> Expr {cons("PreIncr")}
+    "--" Expr -> Expr {cons("PreDecr")}
+
+    "!" Expr -> Expr {cons("Not")}
+
+    "(" PrimType ")" Expr -> Expr {cons("CastPrim")}
+    "(" RefType  ")" Expr -> Expr {cons("CastRef")}
+
+module expressions/FieldAccess
+imports
+  expressions/Main
+
+exports
+  sorts FieldAccess
+  context-free syntax
+    FieldAccess -> Expr
+
+  context-free syntax
+
+                    Expr "." Id -> FieldAccess {cons("Field")}
+                ExprName "." Id -> FieldAccess {reject}
+                 "super" "." Id -> FieldAccess {cons("SuperField")}
+    TypeName "." "super" "." Id -> FieldAccess {cons("QSuperField")}
+
+module expressions/ArrayCreation
+imports
+  expressions/Main
+
+exports
+  sorts
+    ArrayCreationExpr
+    ArrayBaseType
+    Dim
+    DimExpr
+
+  context-free syntax
+    ArrayCreationExpr     -> Expr
+
+    "new" ArrayBaseType DimExpr+ Dim*  -> ArrayCreationExpr {cons("NewArray")}
+    "new" ArrayBaseType Dim+ ArrayInit -> ArrayCreationExpr {cons("NewArray")}
+
+    PrimType -> ArrayBaseType
+    TypeName -> ArrayBaseType
+
+    "[" Expr "]" -> DimExpr {cons("Dim")}
+    "[" "]"      -> Dim     {cons("Dim")}
+
+module interfaces/AnnotationTypes
+imports
+  lexical/Identifiers
+  classes/ClassDeclarations
+  interfaces/InterfaceDeclarations
+  interfaces/ConstantDeclarations
+  interfaces/Annotations
+
+exports
+  sorts
+    AnnoDec
+    AnnoDecHead
+
+  context-free syntax
+    AnnoDecHead "{" AnnoElemDec* "}" -> AnnoDec {cons("AnnoDec")}
+    (Anno)* "@" "interface" Id -> AnnoDecHead {cons("AnnoDecHead")}
+    (InterfaceMod)* "@" "interface" Id -> AnnoDecHead {cons("AnnoDecHead")}
+
+  sorts
+    AnnoElemDec
+    DefaultVal
+
+  context-free syntax    
+    ConstantDec  -> AnnoElemDec
+    ClassDec     -> AnnoElemDec
+    InterfaceDec -> AnnoElemDec
+    AnnoDec      -> AnnoElemDec
+    ";"          -> AnnoElemDec {cons("Semicolon")}
+
+    "default" ElemVal -> DefaultVal {cons("DefaultVal")}
+
+module interfaces/ConstantDeclarations
+imports
+  lexical/Modifiers
+  types/Main
+  classes/MethodDeclarations
+  interfaces/Annotations
+
+exports
+  sorts
+    ConstantDec
+    ConstantMod
+
+  context-free syntax
+    (Anno)* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
+	(ConstantMod)* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
+    Public -> ConstantMod
+
+
+module interfaces/InterfaceDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  names/Main
+  types/Main
+  classes/ClassDeclarations
+  classes/MethodDeclarations
+  interfaces/ConstantDeclarations
+  interfaces/AnnotationTypes
+  interfaces/Annotations
+
+exports
+  sorts
+    InterfaceDec
+    InterfaceDecHead
+    ExtendsInterfaces
+    InterfaceMemberDec
+    InterfaceMod
+
+  context-free syntax
+    AnnoDec -> InterfaceDec
+
+    InterfaceDecHead "{" InterfaceMemberDec* "}" -> InterfaceDec {cons("InterfaceDec")}
+
+    (Anno)* ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
+    ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
+    (InterfaceMod)* "Interface" {InterfaceType ","}+ -> ExtendsInterfaces {cons("ExtendsInterfaces")}
+
+  context-free syntax
+    ConstantDec       -> InterfaceMemberDec
+    ClassDec          -> InterfaceMemberDec
+    InterfaceDec      -> InterfaceMemberDec
+    ";"               -> InterfaceMemberDec {cons("Semicolon")}
+
+  context-free syntax
+    Public         -> InterfaceMod
+    Private        -> InterfaceMod
+
+module classes/ConstructorDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  interfaces/Annotations
+  statements/Main
+  expressions/Main
+
+exports
+  sorts
+    ConstrDec
+    ConstrBody
+    ConstrHead
+    ConstrInv
+
+  context-free syntax
+    ConstrHead ConstrBody ->  ConstrDec {cons("ConstrDec")}
+    (Anno)* (ConstrMod)*  Id "(" {FormalParam ","}* ")" -> ConstrHead {cons("ConstrDecHead")}
+   
+
+
+    "{" ConstrInv? BlockStm* "}" -> ConstrBody {cons("ConstrBody")}
+
+             "this"  "(" {Expr ","}* ")" ";" -> ConstrInv {cons("AltConstrInv")}
+              "super" "(" {Expr ","}* ")" ";" -> ConstrInv {cons("SuperConstrInv")}
+    Expr "."  "super" "(" {Expr ","}* ")" ";" -> ConstrInv {cons("QSuperConstrInv")}
+
+  sorts ConstrMod
+  context-free syntax  
+    Public    -> ConstrMod
+    Private   -> ConstrMod
+
+module classes/InstanceInitializers
+imports
+  statements/Blocks
+
+exports
+  sorts
+    InstanceInit
+
+  context-free syntax
+    Block -> InstanceInit {cons("InstanceInit")}
+
+module statements/Statements
+imports
+  statements/LocalVariableDeclarations
+  statements/Blocks
+  expressions/Main
+
+exports
+  sorts
+    Stm
+
+  context-free syntax
+    Block      -> Stm
+
+  %%%
+   %% Section 14.6: The Empty Statement
+   %%%
+  context-free syntax
+    ";"        -> Stm {cons("Empty")}
+
+  %%%
+   %% Section 14.7: Labeled Statements
+   %%%
+  context-free syntax
+    Id ":" Stm -> Stm {cons("Labeled")}
+
+  %%%
+   %% Section 14.8: Expressions Statements
+   %%%
+  context-free syntax
+    Expr ";"   -> Stm {cons("ExprStm")}
+
+  %%%
+   %% Section 14.9: The If Statement
+   %%%
+  context-free syntax
+    "if" "(" Expr ")" Stm             -> Stm {prefer, cons("If")}
+    "if" "(" Expr ")" Stm  "else" Stm -> Stm {cons("If")}
+
+  %%%
+   %% Section 14.10: The Assert Statement
+   %%%
+  context-free syntax
+    "assert" Expr          ";" -> Stm  {cons("AssertStm")}
+    "assert" Expr ":" Expr ";" -> Stm  {cons("AssertStm")}
+
+
+  %%%
+   %% Section 14.11: The Switch Statement
+   %%%
+  sorts SwitchBlock SwitchGroup SwitchLabel
+  context-free syntax
+    "switch" "(" Expr ")" SwitchBlock -> Stm {cons("Switch")}
+    "{" SwitchGroup* SwitchLabel* "}" -> SwitchBlock {cons("SwitchBlock")}
+    SwitchLabel+ BlockStm+ -> SwitchGroup  {cons("SwitchGroup")}
+
+    "case" Expr ":" -> SwitchLabel {cons("Case")}
+    "default"   ":" -> SwitchLabel {cons("Default")}
+
+  %%%
+   %% Section 14.12: The While Statement
+   %%%
+  context-free syntax
+    "while" "(" Expr ")" Stm -> Stm {cons("While")}
+
+  %%%
+   %% Section 14.13: The Do Statement
+   %%%
+  context-free syntax
+  "do" Stm "while" "(" Expr ")" ";" -> Stm {cons("DoWhile")}
+
+
+  %%%
+   %% Section 14.14: The For Statement
+   %%%
+  context-free syntax
+    "for" "(" LocalVarDec ";" Expr? ";" {Expr ","}* ")" Stm -> Stm {cons("For")}
+    "for" "(" {Expr ","}* ";" Expr? ";" {Expr ","}* ")" Stm -> Stm {cons("For")}
+
+    "for" "(" FormalParam ":" Expr ")" Stm -> Stm {cons("ForEach")}
+
+  %%%
+   %% Section 14.15: The Break Statement
+   %%%
+  context-free syntax
+    "break"    Id? ";"   -> Stm {cons("Break")}
+
+  %%%
+   %% Section 14.16: The Continue Statement
+   %%%
+  context-free syntax
+    "continue" Id? ";"   -> Stm {cons("Continue")}
+
+  %%%
+   %% Section 14.17: The Return Statement
+   %%%
+  context-free syntax
+    "return"   Expr? ";" -> Stm {cons("Return")}
+
+  %%%
+   %% Section 14.18: The Throw Statement
+   %%%
+  context-free syntax
+    "throw"    Expr  ";" -> Stm {cons("Throw")}
+
+  %%%
+   %% Section 14.19: The Synchronized Statement
+   %%%
+  context-free syntax
+    "synchronized" "(" Expr ")" Block -> Stm {cons("Synchronized")}
+
+  %%%
+   %% Section 14.20: The Try Statement
+   %%%
+  sorts CatchClause
+  context-free syntax
+    "try" Block CatchClause+ -> Stm {cons("Try")}
+    "try" Block CatchClause* "finally" Block -> Stm {cons("Try")}
+    "catch" "(" FormalParam ")" Block -> CatchClause {cons("Catch")}
+
+module statements/LocalVariableDeclarations
+imports
+  classes/MethodDeclarations
+  classes/FieldDeclarations
+
+exports
+  sorts
+    LocalVarDecStm
+    LocalVarDec
+
+  context-free syntax
+    LocalVarDec ";" -> LocalVarDecStm {prefer, cons("LocalVarDecStm")}
+    (Anno)* Type {VarDec ","}+ -> LocalVarDec {prefer, cons("LocalVarDec")}
+
+module statements/Blocks
+imports
+  classes/ClassDeclarations
+  statements/LocalVariableDeclarations
+  statements/Statements
+
+exports
+  sorts
+    BlockStm
+    Block
+
+  context-free syntax
+    "{" BlockStm* "}" -> Block {cons("Block")}
+
+    LocalVarDecStm  -> BlockStm 
+    ClassDec        -> BlockStm {cons("ClassDecStm")}
+    Stm             -> BlockStm
+
+module classes/MethodDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  types/Main
+  classes/FieldDeclarations
+  interfaces/Annotations
+  statements/Blocks
+
+exports
+  sorts
+    MethodDec
+    MethodDecHead
+    ResultType
+
+  context-free syntax
+    MethodDecHead MethodBody -> MethodDec {cons("MethodDec")}
+
+    (Anno)* (MethodMod)* ResultType Id "(" {FormalParam ","}* ")"      -> MethodDecHead {cons("MethodDecHead")}    	
+    Type   -> ResultType
+    "void" -> ResultType {cons("Void")}
+
+  sorts FormalParam
+  context-free syntax
+    (Anno)* Type       VarDecId -> FormalParam {cons("Param")}
+
+  context-free syntax
+
+  sorts MethodMod
+  context-free syntax
+    Public         -> MethodMod
+    Private        -> MethodMod
+
+
+    Native         -> MethodMod
+
+
+  %%%
+   %% Section 8.4.6: Method Throws
+   %%%
+  sorts
+    ExceptionType
+
+  context-free syntax
+    ClassType -> ExceptionType
+    %% TypeVar -> ExceptionType
+
+  %%%
+   %% Section 8.4.7: Method Body
+   %%% 
+  sorts MethodBody
+  context-free syntax
+    Block -> MethodBody
+    ";"   -> MethodBody {cons("NoMethodBody")}
+
+module arrays/ArrayInitializers
+imports
+  classes/FieldDeclarations
+
+exports
+  sorts ArrayInit
+  context-free syntax
+    "{" {VarInit ","}*     "}" -> ArrayInit {cons("ArrayInit")}
+    "{" {VarInit ","}* "," "}" -> ArrayInit {cons("ArrayInit")}
+
+module interfaces/Annotations
+imports
+  lexical/Identifiers
+  names/Main
+  expressions/Main
+
+exports
+  sorts
+    Anno
+    ElemVal
+    ElemValPair
+
+  context-free syntax
+    "@" TypeName "(" {ElemValPair ","}* ")" -> Anno {cons("Anno")}
+    "@" TypeName "(" ElemVal ")"            -> Anno {cons("SingleElemAnno")}
+    "@" TypeName                            -> Anno {cons("MarkerAnno")}
+
+  context-free syntax  
+    Id "=" ElemVal -> ElemValPair {cons("ElemValPair")}
+
+    Expr -> ElemVal
+    Anno -> ElemVal
+
+    "{" {ElemVal ","}*     "}" -> ElemVal {cons("ElemValArrayInit")}
+    "{" {ElemVal ","}* "," "}" -> ElemVal {cons("ElemValArrayInit")}
+
+    %% Assignments are not allowed as element values.
+    LHS "=" Expr -> ElemVal {reject}
+
+module classes/FieldDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  types/Main
+  interfaces/Annotations
+  arrays/ArrayInitializers
+  expressions/Main
+
+exports
+  sorts
+    FieldDec
+    VarDec
+    VarDecId
+    Dim
+    VarInit
+
+  context-free syntax
+    (Anno)* (FieldMod)* Type { VarDec ","}+ ";" -> FieldDec {cons("FieldDec")}
+    VarDecId             -> VarDec {cons("VarDec")}
+    VarDecId "=" VarInit -> VarDec {cons("VarDec")}
+
+    Id      -> VarDecId
+    Id Dim+ -> VarDecId {cons("ArrayVarDecId")}
+
+    "[" "]" -> Dim {cons("Dim")}
+
+    Expr      -> VarInit
+    ArrayInit -> VarInit
+
+  sorts FieldMod
+  context-free syntax
+    Public    -> FieldMod
+    Private   -> FieldMod
+
+
+module types/ReferenceTypes
+imports
+  lexical/Identifiers
+  names/Main
+  types/Main  
+
+
+exports
+  sorts
+    RefType
+    ClassOrInterfaceType
+    ClassType
+    InterfaceType
+    TypeDecSpec
+    ArrayType
+
+  context-free syntax
+    ClassOrInterfaceType -> RefType
+    ArrayType            -> RefType
+    
+    %% This production rule is highly ambiguous, since every
+    %% TypeVar can be a ClassOrInterfaceType. A later disambiguation
+    %% phase has to find out if a ClassOrInterfaceType is in fact
+    %% a TypeVar.
+    
+    %% TypeVar -> RefType {avoid}
+
+  context-free syntax
+  
+    %% ClassType and InterfaceType are ambiguous. We modify the
+    %% production of ClassOrInterfaceType to make this ambiguity explicit.
+    
+    TypeDecSpec  -> ClassOrInterfaceType {cons("ClassOrInterfaceType")}
+    TypeDecSpec  -> ClassType {cons("ClassType")}
+    TypeDecSpec  -> InterfaceType {cons("InterfaceType")}
+
+    TypeName -> TypeDecSpec
+    TypeDecSpec  "." Id -> TypeDecSpec {cons("Member")}
+    
+
+
+  context-free syntax
+    Type "[" "]" -> ArrayType  {cons("ArrayType")}
+
+module lexical/Modifiers
+exports
+  sorts
+    Public
+    Private
+    Native
+
+  context-free syntax
+    "public"       -> Public       {cons("Public")}
+    "private"      -> Private      {cons("Private")}
+
+    "Native"       -> Native       {cons("Native")}
+
+    Public       -> Modifier
+    Private      -> Modifier
+    Native       -> Modifier
+
+
+module lexical/Keywords
+exports
+  sorts Keyword
+  lexical syntax
+    "abstract"      -> Keyword
+    "assert"        -> Keyword
+    "boolean"       -> Keyword
+    "Boolean"       -> Keyword
+    "break"         -> Keyword
+    "byte"          -> Keyword
+    "case"          -> Keyword
+    "catch"         -> Keyword
+    "char"          -> Keyword
+    "class"         -> Keyword
+    "Class"         -> Keyword
+    "const"         -> Keyword
+    "continue"      -> Keyword
+    "Controller"	-> Keyword
+    "default"       -> Keyword
+    "do"            -> Keyword
+    "double"        -> Keyword
+    "else"          -> Keyword
+    "enum"          -> Keyword
+    "extends"       -> Keyword
+    "final"         -> Keyword
+    "finally"       -> Keyword
+    "float"         -> Keyword
+    "for"           -> Keyword
+    "goto"          -> Keyword
+    "if"            -> Keyword
+    "implements"    -> Keyword
+    "import"        -> Keyword
+    "in"			-> Keyword
+    "instanceof"    -> Keyword    
+    "int"           -> Keyword
+    "Int"           -> Keyword
+    "interface"     -> Keyword
+    "Interface"     -> Keyword
+    "long"          -> Keyword
+    "native"        -> Keyword
+    "new"           -> Keyword
+    "package"       -> Keyword
+    "private"       -> Keyword
+    "protected"     -> Keyword
+    "public"        -> Keyword
+    "real"			-> Keyword
+    "Real"			-> Keyword
+    "return"        -> Keyword
+    "short"         -> Keyword
+    "static"        -> Keyword
+    "strictfp"      -> Keyword
+    "super"         -> Keyword
+    "switch"        -> Keyword
+    "synchronized"  -> Keyword
+    "this"          -> Keyword
+    "throw"         -> Keyword
+    "throws"        -> Keyword
+    "transient"     -> Keyword
+    "try"           -> Keyword
+    "void"          -> Keyword
+    "volatile"      -> Keyword
+    "while"         -> Keyword
+
+
+  lexical restrictions
+
+    "abstract"
+    "assert"
+    "boolean"
+    "Boolean" 
+    "break"   
+    "byte"    
+    "case"    
+    "catch"   
+    "char"     
+    "class"
+    "Class"
+    "const"    
+    "continue" 
+    "default"  
+    "do"       
+    "double"   
+    "else"     
+    "enum"
+    "extends"  
+    "final"     
+    "finally"   
+    "float"     
+    "for"       
+    "goto"       
+    "if"         
+    "implements" 
+    "import"     
+    "instanceof" 
+    "in"
+    "int"
+    "Int"
+    "real"
+    "Real"        
+    "interface"  
+    "Interface"
+    "long"       
+    "native"     
+    "new"        
+    "package"    
+    "private"    
+    "protected"   
+    "public"      
+    "real"
+    "Real"
+    "return"       
+    "short"        
+    "static"     
+    "strictfp"
+    "super"        
+    "switch"       
+    "synchronized" 
+    "this"         
+    "throw"        
+    "throws"       
+    "transient"    
+    "try"          
+    "void"         
+    "volatile"     
+    "while"       -/- [A-Za-z0-9\_\$]
+
+module lexical/Identifiers
+imports
+  lexical/Keywords
+exports
+  sorts
+    Id
+    ID
+
+  context-free syntax
+    ID -> Id {cons("Id")}
+
+  lexical syntax
+    [A-Za-z\_\$][A-Za-z0-9\_\$]* -> ID
+    
+    Keyword -> ID {reject}
+    "True"  -> ID {reject}
+    "False" -> ID {reject}
+    "null"  -> ID {reject}
+
+  lexical restrictions
+    ID -/- [a-zA-Z0-9\_\$]
+
+module classes/ClassDeclarations
+imports
+  lexical/Identifiers
+  lexical/Modifiers
+  types/ReferenceTypes
+  classes/FieldDeclarations
+  classes/MethodDeclarations
+  classes/InstanceInitializers
+  classes/ConstructorDeclarations
+  interfaces/InterfaceDeclarations
+
+exports
+  sorts
+    ClassDec
+    ClassBody
+    ClassDecHead
+
+  context-free syntax
+    
+
+    ClassDecHead ClassBody -> ClassDec {cons("ClassDec")}
+    "{" ClassBodyDec* "}" -> ClassBody {cons("ClassBody")}
+
+    Anno* ClassMod* Super? Interfaces? "Class" Id  -> ClassDecHead {cons("ClassDecHead")}
+
+  %% 8.1.1: Class Modifiers
+  sorts ClassMod
+  context-free syntax
+    Public    -> ClassMod
+    Private   -> ClassMod
+
+  %% 8.1.4: Superclasses and Subclasses
+  sorts Super
+  context-free syntax
+
+    ClassType -> Super {cons("SuperDec")}
+
+  %% 8.1.5: Superinterfaces
+  sorts Interfaces
+  context-free syntax
+    {InterfaceType ","}+ -> Interfaces {cons("ImplementsDec")}
+
+
+  %% 8.1.6: Class Body and Member Declarations
+  sorts
+    ClassBodyDec
+    ClassMemberDec
+
+  context-free syntax
+    ClassMemberDec -> ClassBodyDec
+    InstanceInit   -> ClassBodyDec
+    ConstrDec      -> ClassBodyDec
+
+  context-free syntax
+    FieldDec     -> ClassMemberDec
+    MethodDec    -> ClassMemberDec
+    ClassDec     -> ClassMemberDec
+    InterfaceDec -> ClassMemberDec
+    ";"          -> ClassMemberDec {cons("Semicolon")}
+
+module expressions/ClassInstanceCreation
+imports
+  expressions/Main
+  classes/ClassDeclarations
+
+exports
+  context-free syntax
+
+             "new" ClassOrInterfaceType "(" {Expr ","}* ")" ClassBody? -> Expr {cons("NewInstance")}
+
+module expressions/Main
+imports
+ expressions/ClassInstanceCreation
+ expressions/ArrayCreation
+ expressions/FieldAccess
+ expressions/UnaryOperators
+ expressions/BinaryOperators
+ expressions/AssignmentOperators
+ expressions/ArrayAccess
+ expressions/Primary
+ expressions/Postfix
+ expressions/MethodInvocation
+
+
+
+exports
+  sorts
+    Expr
+
+module Apricot
+
+imports 
+	expressions/Main
+	types/Main
+	classes/Main
+	arrays/Main
+	lexical/Main
+	names/Main
+	interfaces/Main
+	statements/Main
+	packages/Main
+	
+	
+exports
+  context-free start-symbols 
+  	Start
+  context-free syntax
+  	CompilationUnit -> Start{cons("StartApricot")}

@@ -1,0 +1,1 @@
+module(unparameterized("classes/Main"),[imports([module(unparameterized("classes/ClassDeclarations"))])],[])

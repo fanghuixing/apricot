@@ -1,0 +1,1 @@
+Module("Apricot-Refactorings",Imports([Import("Apricot-Refactorings.generated")]),[Refactorings("",[]),Refactorings("",[PrettyPrint(Strategy("pp-apricot-string"))])])

@@ -1,0 +1,16 @@
+module expressions/Main
+imports
+ expressions/ClassInstanceCreation
+ expressions/ArrayCreation
+ expressions/FieldAccess
+ expressions/UnaryOperators
+ expressions/BinaryOperators
+ expressions/AssignmentOperators
+ expressions/ArrayAccess
+ e
+
+
+
+exports
+  sorts
+    Expr

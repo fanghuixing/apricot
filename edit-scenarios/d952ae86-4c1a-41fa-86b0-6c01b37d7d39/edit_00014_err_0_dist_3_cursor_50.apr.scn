@@ -1,0 +1,10 @@
+Class System{
+	int x;
+
+	
+    Discrete(){
+		x=1;
+		
+	}
+	
+}

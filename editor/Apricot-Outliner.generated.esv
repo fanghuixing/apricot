@@ -1,0 +1,35 @@
+module Apricot-Outliner.generated
+
+outliner Default outliner        
+  
+  
+  // Outliner rules indicate which syntactic constructs should be shown in the outline
+  // and quick outline views, and take one of the following forms:
+  //
+  //   <sort>.<constructor>
+  //
+  //   <sort>._
+  //
+  //   _.<constructor>
+  
+  Anno.Anno
+  Expr.NewInstance
+  FieldDec.FieldDec
+  VarDecId.ArrayVarDecId
+  MethodDecHead.MethodDecHead
+  FormalParam.Param
+  LocalVarDec.LocalVarDec
+  ClassDecHead.ClassDecHead
+  Stm.For
+  Stm.For
+  Stm.Synchronized
+  AnnoDecHead.AnnoDecHead
+  AnnoDecHead.AnnoDecHead
+  ConstantDec.ConstantDec
+  ConstantDec.ConstantDec
+  InterfaceDecHead.InterfaceDecHead
+  ConstrHead.ConstrDecHead
+  ConstrInv.QSuperConstrInv
+  ArrayCreationExpr.NewArray
+  ArrayCreationExpr.NewArray
+  Expr.Invoke

@@ -1,0 +1,5 @@
+module packages/Main
+imports
+  packages/CompilationUnits
+  packages/ImportDeclarations
+  packages/PackageDeclarations

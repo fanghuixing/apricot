@@ -1,0 +1,13 @@
+module packages/TypeDeclarations
+imports
+  classes/ClassDeclarations
+  interfaces/InterfaceDeclarations
+
+exports
+  sorts
+    TypeDec
+
+  context-free syntax
+    ClassDec      -> TypeDec
+    InterfaceDec  -> TypeDec
+    ";"           -> TypeDec {cons("Semicolon")}

@@ -1,0 +1,17 @@
+module lexical/Modifiers
+exports
+  sorts
+    Public
+    Private
+    Native
+
+  context-free syntax
+    "public"       -> Public       {cons("Public")}
+    "private"      -> Private      {cons("Private")}
+
+    "Native"       -> Native       {cons("Native")}
+
+    Public       -> Modifier
+    Private      -> Modifier
+
+    Native       -> Modifier

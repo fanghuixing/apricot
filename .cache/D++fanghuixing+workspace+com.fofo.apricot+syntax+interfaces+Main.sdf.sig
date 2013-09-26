@@ -1,0 +1,1 @@
+module(unparameterized("interfaces/Main"),[imports([module(unparameterized("interfaces/InterfaceDeclarations")),module(unparameterized("interfaces/AnnotationTypes")),module(unparameterized("interfaces/Annotations"))])],[])
