@@ -4,7 +4,7 @@ Package core
 
 Class System{
 	int x;
-
+	Real r;
 	
     Discrete(){
 		x=1;

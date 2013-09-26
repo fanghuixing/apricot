@@ -1,17 +1,17 @@
-D:\fanghuixing\workspace\com.fofo.apricot\include/apricot.ctree: \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib-refactoring/correctness-preservation.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib-refactoring/namebinding-preservation.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib-refactoring/behavior-preservation.generated.str \
-	D:/fanghuixing/workspace/com.fofo.apricot/trans/refactor.str \
-	D:/fanghuixing/workspace/com.fofo.apricot/trans/generate.str \
-	D:/fanghuixing/workspace/com.fofo.apricot/trans/check.str \
-	D:/fanghuixing/workspace/com.fofo.apricot/trans/names.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/nbl-library.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/compilation-library.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/analysis-library-internal.generated.str \
+D:\fanghuixing\workspace\com.fofo.apricot\Apricot\include/apricot.ctree: \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib-refactoring/correctness-preservation.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib-refactoring/namebinding-preservation.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib-refactoring/behavior-preservation.generated.str \
+	D:/fanghuixing/workspace/com.fofo.apricot/Apricot/trans/refactor.str \
+	D:/fanghuixing/workspace/com.fofo.apricot/Apricot/trans/generate.str \
+	D:/fanghuixing/workspace/com.fofo.apricot/Apricot/trans/check.str \
+	D:/fanghuixing/workspace/com.fofo.apricot/Apricot/trans/names.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/nbl-library.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/compilation-library.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/analysis-library-internal.generated.str \
 	 \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/analysis-library.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/index-library.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/lib/editor-common.generated.str \
-	D:\fanghuixing\workspace\com.fofo.apricot/include/Apricot.str \
-	D:\fanghuixing\workspace\com.fofo.apricot\trans/apricot.str
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/analysis-library.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/index-library.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/lib/editor-common.generated.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot/include/Apricot.str \
+	D:\fanghuixing\workspace\com.fofo.apricot\Apricot\trans/apricot.str
