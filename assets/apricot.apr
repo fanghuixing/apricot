@@ -4,7 +4,7 @@ Plant Train{
 	int trainId;
 	Int direction=1, stationId=0;
 	real Delay;
-	int N;
+	int N;//the amount of stations
 
 	Dynamic init = new Motion(time,position,velocity,0,direction);
 	init.setInv([Delay, +Inf),[0,0],[0,0]);
@@ -44,12 +44,12 @@ Plant Train{
 	Composition(){
 	
 		@Assignment{reset.Discrete(0,0,0,0,0);}
-		stop!(init,reset,stopAtStation){
+		stop(!)(init,reset,stopAtStation){
 			Condition{ time == Delay; };
 		}
 		
 		@Assignment{reset.Discrete(frontStPos, 0,  frontStPos, stationId, 0);}
-		stop!(near, reset, stopAtStation){
+		stop(!)(near, reset, stopAtStation){
 			Condition :: StopCondition{  //StopCondition is the name for local using
 				(position - fontStPos) in [-1,1];
 				velocity in [0,0.1];
@@ -57,25 +57,25 @@ Plant Train{
 		}
 		
 		@Assignment{reset.Discrete(frontStPos,0, frontStPos, stationId, 0);}
-		stop!(urgentRecover, reset, stopAtStation){
+		stop(!)(urgentRecover, reset, stopAtStation){
 			StopCondition; 
 		}
 		
 		@Assignment{reset.SetTime(0);}
-		start?(stopAtStation, reset, changeDirection){
+		start(?)(stopAtStation, reset, changeDirection){
 			Condition{
 				(stationId==N-1 and direction==1) or (stationId==0 and direction==-1);
 			};
 		}
 		
 		@Assignment{reset.Discrete(position,0, frontStPos, stationId, -1*direction);}
-		stop!(changeDirection, reset, stopAtStation){
+		stop(!)(changeDirection, reset, stopAtStation){
 			Condition{ time==30;}; 
 		}
 		
 		@Assignment{reset.Discrete(position,0, stationPos[stationId+direction], 
 		stationId+direction, direction)}
-		start?(stopAtStation, reset, run){
+		start(?)(stopAtStation, reset, run){
 			Condition{(direction==1 and stationId<N-1) or (direction==-1 and stationId>0);};
 		}
 		
@@ -88,7 +88,7 @@ Plant Train{
 			Condition{velocity == 20;};
 		}
 		
-		urStop?(run,,urgentDec){
+		urStop(?)(run,,urgentDec){
 			Condition{True;};
 		}
 		
@@ -97,12 +97,12 @@ Plant Train{
 			nearStation;
 		}
 		
-		urStop?(stable,,urgentDec){
+		urStop(?)(stable,,urgentDec){
 			Condition{True;};
 		}
 		
 		
-		urStop?(near,,urgentDec){
+		urStop(?)(near,,urgentDec){
 			Condition{True;};
 		}
 		
@@ -111,38 +111,38 @@ Plant Train{
 			Condition{velocity <= 0.1;}
 		}
 		
-		urStart?(urgentStop,,run){
+		urStart(?)(urgentStop,,run){
 			Condition{ frontStPos - position > 800;};
 		}
 		
 		@Assignment{reset.SetMaxPos(frontStPos,position);};
-		urStart?(urgentStop,reset,urgentInc){
+		urStart(?)(urgentStop,reset,urgentInc){
 			Condition{frontStPos - position in [0,800];}
 		}
 				
-		urStop!(urgentStop,,urgentInc){
-			Condition{True;};
-		}
+		
 		
 		tau(urgentInc,,urgentRecover){
 			Condition{ position == maxp; };
 		}
 		
-		urStop?(urgentInc,,urgentDec){
+		urStop(?)(urgentInc,,urgentDec){
 			Condition{True;};
 		}
 		
-		urStop?(urgentRecover,,urgentDec){
+		urStop(?)(urgentRecover,,urgentDec){
 			Condition{True;};
 		}
 		
-		int getDirection(){
+		
+	}
+	
+	int getDirection(){
 			return direction;
-		}
+	}
 		
-		real getPosition(){
-			return position;
-		}
+	real getPosition(){
+		return position;
 	}
 }
 
@@ -187,7 +187,7 @@ ParallelAssignment ResetAction{
 Dynamic Motion{
 	Real time, distance, velocity;
 	real acceleration;
-	Int direction, 
+	Int direction;
 	int rate=0;
 	
 	Interval TmIn, DisIn, VelIn;
@@ -234,12 +234,12 @@ Dynamic Motion{
 	}
 }
 
-Dynamic Waiting{
+//clock
+Dynamic Waiting{ 
 
 	Real time;
 	
-	Interval TmIn;
-	
+	Interval TmIn;	
 	
 	Waiting(Real time){
 		this.time = time;
@@ -260,8 +260,8 @@ Dynamic Waiting{
 }
 
 SequentialAssignment Calculating{
-	int N;
-	Train[] train;	
+	int N;//amount of trains
+	Train[N] train;	
 	Real time;
 	
 	Calculating(N,train,time){
@@ -278,9 +278,11 @@ SequentialAssignment Calculating{
 		int current,other;
 		int MINDIS = +Inf;
 		for(current=0:N-1){
+		
 			Train CTrain = train[current];
 			int CDir = CTrain.getDirection();
 			real CPos = CTrain.getPosition();
+			
 			for(other=0:N-1){
 				Train OTrain = train[other];
 				int ODir = OTrain.getDirection();
@@ -294,12 +296,13 @@ SequentialAssignment Calculating{
 					}//end if inner
 				}//end if outer
 			}//end for other
-			if(MINDIS < +Inf){
-				CTrain.urStop!;
+			
+			if(MINDIS < +Inf){				
+				CTrain.urStop(!); //Asynchronism
 				MINDIS = +Inf;
 			}
 			else if(CTrain in urgentStop){
-				CTrain.urStart!;			
+				CTrain.urStart(!);			
 			}							
 		}//end for current		
 		time = 0;
@@ -307,8 +310,8 @@ SequentialAssignment Calculating{
 }
 
 Controller UrgentControl{
-	int N;
-	Train[] train;
+	int N;//amount of trains
+	Train[N] train;
 	Real time;
 	
 	Dynamic Delay = new Waiting(time);
@@ -327,4 +330,13 @@ Controller UrgentControl{
 			Condition{ time == 1; };
 		}
 	}
+	
+	setTrainAmount(int N){
+		this.N = N;
+	}
+	
+	setTrains(Train[] train){
+		this.train = train;
+	}
+		
 }
