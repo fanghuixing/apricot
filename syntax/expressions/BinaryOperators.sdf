@@ -7,7 +7,6 @@ exports
   sorts CondMid
   context-free syntax
     Expr "instanceof" RefType -> Expr {cons("InstanceOf")}
-
     Expr "*"   Expr -> Expr  {left, cons("Mul")}
     Expr "/"   Expr -> Expr  {left, cons("Div")}
     Expr "%"   Expr -> Expr  {left, cons("Remain")}
@@ -33,5 +32,3 @@ exports
 
     Expr CondMid Expr -> Expr {right, cons("Cond")}
     "?" Expr ":" -> CondMid {bracket}
-
-    

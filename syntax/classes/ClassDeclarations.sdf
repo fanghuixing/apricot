@@ -21,7 +21,9 @@ exports
     ClassDecHead ClassBody -> ClassDec {cons("ClassDec")}
     "{" ClassBodyDec* "}" -> ClassBody {cons("ClassBody")}
 
-    Anno* ClassMod* Super? Interfaces? "Class" Id  -> ClassDecHead {cons("ClassDecHead")}
+    Anno* ClassMod* "Class" Id  -> ClassDecHead {cons("ClassDecHead")}
+    Anno* ClassMod* ClassOrInterfaceType  Id  -> ClassDecHead {cons("ClassDecHeadSuperOrImpl")}
+    
 
   %% 8.1.1: Class Modifiers
   sorts ClassMod

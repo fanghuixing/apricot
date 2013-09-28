@@ -20,6 +20,7 @@ outliner Default outliner
   FormalParam.Param
   LocalVarDec.LocalVarDec
   ClassDecHead.ClassDecHead
+  ClassDecHead.ClassDecHeadSuperOrImpl
   Stm.For
   Stm.For
   Stm.Synchronized

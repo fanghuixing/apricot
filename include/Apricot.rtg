@@ -77,10 +77,6 @@ regular tree grammar
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListStarOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListPlusOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <cons>(InterfaceType,ListStarOfInterfaceType0)
-    OptInterfaces32               -> <some>(Interfaces)
-    OptInterfaces32               -> <none>()
-    OptSuper0                     -> <some>(Super)
-    OptSuper0                     -> <none>()
     ListStarOfClassMod0           -> ListPlusOfClassMod0
     ListStarOfClassMod0           -> <nil>()
     ListStarOfClassMod0           -> <conc>(ListStarOfClassMod0,ListStarOfClassMod0)
@@ -95,8 +91,8 @@ regular tree grammar
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListStarOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListPlusOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <cons>(ClassBodyDec,ListStarOfClassBodyDec0)
-    OptExtendsInterfaces31        -> <some>(ExtendsInterfaces)
-    OptExtendsInterfaces31        -> <none>()
+    OptExtendsInterfaces60        -> <some>(ExtendsInterfaces)
+    OptExtendsInterfaces60        -> <none>()
     ListStarOfInterfaceMod0       -> ListPlusOfInterfaceMod0
     ListStarOfInterfaceMod0       -> <nil>()
     ListStarOfInterfaceMod0       -> <conc>(ListStarOfInterfaceMod0,ListStarOfInterfaceMod0)
@@ -249,6 +245,42 @@ regular tree grammar
     EndOfFile                     -> <string>
     CarriageReturn                -> <string>
     LineTerminator                -> <string>
+    BuiltInMethod                 -> LogBase(Expr,Expr)
+    BIMM                          -> Min()
+    BIMM                          -> Max()
+    BIM                           -> Gamma()
+    BIM                           -> GaussErf()
+    BIM                           -> LogNature()
+    BIM                           -> Exp()
+    BIMT                          -> Pow()
+    BIMT                          -> Hypot()
+    BIMT                          -> Root()
+    BIM                           -> Sqrt()
+    BIM                           -> Sign()
+    BIM                           -> Abs()
+    BIMM                          -> Lcm()
+    BIMM                          -> Gcd()
+    BIMT                          -> Mod()
+    BIMT                          -> Rem()
+    BIMT                          -> Fld()
+    BIMT                          -> Div()
+    BIM                           -> Ceil()
+    BIM                           -> Floor()
+    BIM                           -> Round()
+    BIM                           -> Sec()
+    BIM                           -> Cot()
+    BIM                           -> Tan()
+    BIM                           -> Cos()
+    BIM                           -> Sin()
+    BuiltInMethod                 -> BuiltInMethod(BIMM,ListPlusOfExpr0)
+    BuiltInMethod                 -> BuiltInMethod(BIMT,Expr,Expr)
+    BuiltInMethod                 -> BuiltInMethod(BIM,Expr)
+    Expr                          -> BuiltInMethod
+    DerivativeOverOVar            -> DerivativeOverOVar(Id,Id,IntLiteral)
+    DerivativeOverTime            -> DerivativeOverTime(Id,IntLiteral)
+    Derivative                    -> DerivativeOverOVar
+    Derivative                    -> DerivativeOverTime
+    Expr                          -> Derivative
     MethodSpec                    -> GenericMethod(AmbName,Id)
     MethodSpec                    -> QSuperMethod(TypeName,Id)
     MethodSpec                    -> SuperMethod(Id)
@@ -303,8 +335,8 @@ regular tree grammar
     DeciFloatExponentPart         -> <string>
     DeciFloatDigits               -> <string>
     DeciFloatNumeral              -> <string>
-    FloatLiteral                  -> Float(HexaFloatLiteral)
-    FloatLiteral                  -> Float(DeciFloatLiteral)
+    FloatLiteral                  -> FloatHex(HexaFloatLiteral)
+    FloatLiteral                  -> FloatDec(DeciFloatLiteral)
     HexaFloatLiteral              -> <string>
     DeciFloatLiteral              -> <string>
     IntLiteral                    -> Octa(OctaLiteral)
@@ -378,7 +410,8 @@ regular tree grammar
     Super                         -> SuperDec(ClassType)
     ClassMod                      -> Private
     ClassMod                      -> Public
-    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces32,Id)
+    ClassDecHead                  -> ClassDecHeadSuperOrImpl(ListStarOfAnno0,ListStarOfClassMod0,ClassOrInterfaceType,Id)
+    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,Id)
     ClassBody                     -> ClassBody(ListStarOfClassBodyDec0)
     ClassDec                      -> ClassDec(ClassDecHead,ClassBody)
     InterfaceMod                  -> Private
@@ -392,7 +425,7 @@ regular tree grammar
     InterfaceMemberDec            -> Constraint
     InterfaceMemberDec            -> ConstantDec
     ExtendsInterfaces             -> ExtendsInterfaces(ListPlusOfInterfaceType0)
-    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces31,Id)
+    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces60,Id)
     InterfaceDec                  -> InterfaceDec(InterfaceDecHead,ListStarOfInterfaceMemberDec0)
     AbstractInvariant             -> AbstractInvariant()
     Invariant                     -> AbstractInvariant

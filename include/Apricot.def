@@ -21,10 +21,10 @@ exports
     ImportDec
 
   context-free syntax
-    "import" TypeName                  ";"  -> ImportDec {cons("TypeImportDec")}
-    "import" PackageName       "." "*" ";"  -> ImportDec {cons("TypeImportOnDemandDec")}
-    "import" "static" TypeName "." Id  ";"  -> ImportDec {cons("StaticImportDec")}
-    "import" "static" TypeName "." "*" ";"  -> ImportDec {cons("StaticImportOnDemandDec")}
+    "Import" TypeName                  ";"  -> ImportDec {cons("TypeImportDec")}
+    "Import" PackageName       "." "*" ";"  -> ImportDec {cons("TypeImportOnDemandDec")}
+    "Import" "static" TypeName "." Id  ";"  -> ImportDec {cons("StaticImportDec")}
+    "Import" "static" TypeName "." "*" ";"  -> ImportDec {cons("StaticImportOnDemandDec")}
 
 module packages/TypeDeclarations
 imports
@@ -199,6 +199,64 @@ exports
     RefType  -> Type
     MathType -> Type
 
+module expressions/BuiltInMethods
+
+imports expressions/Main
+
+exports
+	sorts
+		BuiltInMethod
+	
+	context-free syntax
+		BuiltInMethod -> Expr
+		BIM "(" Expr ")" ->  BuiltInMethod {cons("BuiltInMethod")}
+		BIMT "(" Expr "," Expr ")" ->  BuiltInMethod {cons("BuiltInMethod")}
+		BIMM "(" {Expr ","}+ ")" -> BuiltInMethod {cons("BuiltInMethod")}
+		"sin" -> BIM {cons("Sin")}
+		"cos" -> BIM {cons("Cos")}
+		"tan" -> BIM {cons("Tan")}
+		"cot" -> BIM {cons("Cot")}
+		"sec" -> BIM {cons("Sec")}
+		"round" -> BIM {cons("Round")}
+		"floor"	 -> BIM {cons("Floor")} 
+		"ceil"	 -> BIM {cons("Ceil")} 
+		"div"	 -> BIMT {cons("Div")} 
+		"fld"	 -> BIMT {cons("Fld")} 
+		"rem"	 -> BIMT {cons("Rem")} 
+		"mod"	 -> BIMT {cons("Mod")} 
+		"gcd"	 -> BIMM {cons("Gcd")} 
+		"lcm"	 -> BIMM {cons("Lcm")} 
+		"abs"	 -> BIM {cons("Abs")} 
+		"sign"	 -> BIM {cons("Sign")} 
+		"sqrt"	 -> BIM {cons("Sqrt")} 
+		"root"	 -> BIMT {cons("Root")} 
+		"hypot"	 -> BIMT {cons("Hypot")} 
+		"pow"	 -> BIMT {cons("Pow")} 
+		"exp"    -> BIM {cons("Exp")}
+		"log"	 -> BIM {cons("LogNature")}
+		"erf"	 -> BIM {cons("GaussErf")}
+		"gamma"  -> BIM {cons("Gamma")}
+		"max"	 -> BIMM {cons("Max")}
+		"min"	 -> BIMM {cons("Min")}
+		
+		"log" "(" Expr "," Expr ")" ->  BuiltInMethod {cons("LogBase")}
+
+module expressions/Derivatives
+
+imports
+  expressions/Main
+  
+ exports
+ 	sorts Derivative
+ 	context-free syntax
+ 		Derivative -> Expr
+ 		
+	context-free syntax
+		DerivativeOverTime -> Derivative
+		DerivativeOverOVar -> Derivative
+		"dot"  "(" Id "," IntLiteral ")" -> DerivativeOverTime {cons("DerivativeOverTime")}
+		"dot"  "(" Id "," Id "," IntLiteral ")" -> DerivativeOverOVar {cons("DerivativeOverOVar")}
+
 module expressions/MethodInvocation
 imports
   expressions/Main
@@ -341,8 +399,8 @@ exports
     HexaFloatLiteral      
   
   context-free syntax
-    DeciFloatLiteral -> FloatLiteral {cons("Float")}
-    HexaFloatLiteral -> FloatLiteral {cons("Float")}
+    DeciFloatLiteral -> FloatLiteral {cons("FloatDec")}
+    HexaFloatLiteral -> FloatLiteral {cons("FloatHex")}
 
   lexical syntax
     DeciFloatNumeral [fFdD]? -> DeciFloatLiteral
@@ -532,7 +590,6 @@ exports
   sorts CondMid
   context-free syntax
     Expr "instanceof" RefType -> Expr {cons("InstanceOf")}
-
     Expr "*"   Expr -> Expr  {left, cons("Mul")}
     Expr "/"   Expr -> Expr  {left, cons("Div")}
     Expr "%"   Expr -> Expr  {left, cons("Remain")}
@@ -976,6 +1033,8 @@ exports
     ClassDec        -> BlockStm {cons("ClassDecStm")}
     Stm             -> BlockStm
 
+    
+
 module classes/MethodDeclarations
 imports
   lexical/Identifiers
@@ -1191,6 +1250,7 @@ exports
     "continue"      -> Keyword
     "default"       -> Keyword
     "do"            -> Keyword
+    "dot"			-> Keyword
     "double"        -> Keyword
     "else"          -> Keyword
     "enum"          -> Keyword
@@ -1225,6 +1285,7 @@ exports
     "Real"			-> Keyword
     "return"        -> Keyword
     "short"         -> Keyword
+    "sin"			-> Keyword
     "static"        -> Keyword
     "strictfp"      -> Keyword
     "super"         -> Keyword
@@ -1239,10 +1300,37 @@ exports
     "Void"			-> Keyword
     "volatile"      -> Keyword
     "while"         -> Keyword
+    
+    "cos" 	 		-> Keyword 
+	"tan"	 		-> Keyword 
+	"cot"	 		-> Keyword 
+	"sec"	 		-> Keyword 
+	"csc"	 		-> Keyword 
+	"round"	 		-> Keyword 
+	"floor"	 		-> Keyword 
+	"ceil"			 -> Keyword 
+	"div"			 -> Keyword 
+	"fld"			 -> Keyword 
+	"rem"	 		-> Keyword 
+	"mod"	 		-> Keyword 
+	"gcd"	 		-> Keyword 
+	"lcm"	 		-> Keyword 
+	"abs"			-> Keyword 
+	"sign"			-> Keyword 
+	"sqrt"			-> Keyword 
+	"root"			-> Keyword 
+	"hypot"	 		-> Keyword 
+	"pow"	 		-> Keyword 
+	"exp"			-> Keyword
+	"log"			-> Keyword
+	"erf"			-> Keyword
+	"gamma"			-> Keyword
+	"max"			-> Keyword
+	"min"			-> Keyword
 
 
   lexical restrictions
-
+	
     "abstract"
     "assert"
     "boolean"
@@ -1258,8 +1346,9 @@ exports
     "Constraint" 
     "continue" 
     "default"  
-    "do"       
-    "double"   
+    "do"    
+    "dot"   
+    "double"       
     "else"     
     "enum"
     "extends"  
@@ -1293,7 +1382,8 @@ exports
     "real"
     "Real"
     "return"       
-    "short"        
+    "short" 
+    "sin"       
     "static"     
     "strictfp"
     "super"        
@@ -1307,7 +1397,34 @@ exports
     "void"    
     "Void"     
     "volatile"     
-    "while"       -/- [A-Za-z0-9\_\$]
+    "while"      
+    
+    "cos"
+	"tan"
+	"cot"
+	"sec"
+	"csc"
+	"round"
+	"floor"
+	"ceil"
+	"div"
+	"fld"
+	"rem"
+	"mod"
+	"gcd"
+	"lcm"
+	"abs"
+	"sign"
+	"sqrt"
+	"root"
+	"hypot"
+	"pow"
+	"exp"   
+	"log"			
+	"erf"			
+	"gamma"			
+	"max"			
+	"min"   -/- [A-Za-z0-9\_\$]
 
 module lexical/Identifiers
 imports
@@ -1354,7 +1471,9 @@ exports
     ClassDecHead ClassBody -> ClassDec {cons("ClassDec")}
     "{" ClassBodyDec* "}" -> ClassBody {cons("ClassBody")}
 
-    Anno* ClassMod* Super? Interfaces? "Class" Id  -> ClassDecHead {cons("ClassDecHead")}
+    Anno* ClassMod* "Class" Id  -> ClassDecHead {cons("ClassDecHead")}
+    Anno* ClassMod* ClassOrInterfaceType  Id  -> ClassDecHead {cons("ClassDecHeadSuperOrImpl")}
+    
 
   %% 8.1.1: Class Modifiers
   sorts ClassMod
@@ -1413,6 +1532,8 @@ imports
  expressions/Primary
  expressions/Postfix
  expressions/MethodInvocation
+ expressions/Derivatives
+ expressions/BuiltInMethods
 
 
 

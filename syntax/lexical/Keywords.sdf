@@ -18,6 +18,7 @@ exports
     "continue"      -> Keyword
     "default"       -> Keyword
     "do"            -> Keyword
+    "dot"			-> Keyword
     "double"        -> Keyword
     "else"          -> Keyword
     "enum"          -> Keyword
@@ -52,6 +53,7 @@ exports
     "Real"			-> Keyword
     "return"        -> Keyword
     "short"         -> Keyword
+    "sin"			-> Keyword
     "static"        -> Keyword
     "strictfp"      -> Keyword
     "super"         -> Keyword
@@ -66,10 +68,37 @@ exports
     "Void"			-> Keyword
     "volatile"      -> Keyword
     "while"         -> Keyword
+    
+    "cos" 	 		-> Keyword 
+	"tan"	 		-> Keyword 
+	"cot"	 		-> Keyword 
+	"sec"	 		-> Keyword 
+	"csc"	 		-> Keyword 
+	"round"	 		-> Keyword 
+	"floor"	 		-> Keyword 
+	"ceil"			 -> Keyword 
+	"div"			 -> Keyword 
+	"fld"			 -> Keyword 
+	"rem"	 		-> Keyword 
+	"mod"	 		-> Keyword 
+	"gcd"	 		-> Keyword 
+	"lcm"	 		-> Keyword 
+	"abs"			-> Keyword 
+	"sign"			-> Keyword 
+	"sqrt"			-> Keyword 
+	"root"			-> Keyword 
+	"hypot"	 		-> Keyword 
+	"pow"	 		-> Keyword 
+	"exp"			-> Keyword
+	"log"			-> Keyword
+	"erf"			-> Keyword
+	"gamma"			-> Keyword
+	"max"			-> Keyword
+	"min"			-> Keyword
 
 
   lexical restrictions
-
+	
     "abstract"
     "assert"
     "boolean"
@@ -85,8 +114,9 @@ exports
     "Constraint" 
     "continue" 
     "default"  
-    "do"       
-    "double"   
+    "do"    
+    "dot"   
+    "double"       
     "else"     
     "enum"
     "extends"  
@@ -120,7 +150,8 @@ exports
     "real"
     "Real"
     "return"       
-    "short"        
+    "short" 
+    "sin"       
     "static"     
     "strictfp"
     "super"        
@@ -134,4 +165,31 @@ exports
     "void"    
     "Void"     
     "volatile"     
-    "while"       -/- [A-Za-z0-9\_\$]
+    "while"      
+    
+    "cos"
+	"tan"
+	"cot"
+	"sec"
+	"csc"
+	"round"
+	"floor"
+	"ceil"
+	"div"
+	"fld"
+	"rem"
+	"mod"
+	"gcd"
+	"lcm"
+	"abs"
+	"sign"
+	"sqrt"
+	"root"
+	"hypot"
+	"pow"
+	"exp"   
+	"log"			
+	"erf"			
+	"gamma"			
+	"max"			
+	"min"   -/- [A-Za-z0-9\_\$]

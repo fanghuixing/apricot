@@ -8,7 +8,7 @@ exports
     ImportDec
 
   context-free syntax
-    "import" TypeName                  ";"  -> ImportDec {cons("TypeImportDec")}
-    "import" PackageName       "." "*" ";"  -> ImportDec {cons("TypeImportOnDemandDec")}
-    "import" "static" TypeName "." Id  ";"  -> ImportDec {cons("StaticImportDec")}
-    "import" "static" TypeName "." "*" ";"  -> ImportDec {cons("StaticImportOnDemandDec")}
+    "Import" TypeName                  ";"  -> ImportDec {cons("TypeImportDec")}
+    "Import" PackageName       "." "*" ";"  -> ImportDec {cons("TypeImportOnDemandDec")}
+    "Import" "static" TypeName "." Id  ";"  -> ImportDec {cons("StaticImportDec")}
+    "Import" "static" TypeName "." "*" ";"  -> ImportDec {cons("StaticImportOnDemandDec")}

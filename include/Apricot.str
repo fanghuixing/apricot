@@ -16,6 +16,40 @@ signature
     TypeImportOnDemandDec   : PackageName -> ImportDec
     TypeImportDec           : TypeName -> ImportDec
     PackageDec              : List(Anno) * PackageName -> PackageDec
+    Min                     : BIMM
+    Max                     : BIMM
+    Lcm                     : BIMM
+    Gcd                     : BIMM
+    Pow                     : BIMT
+    Hypot                   : BIMT
+    Root                    : BIMT
+    Mod                     : BIMT
+    Rem                     : BIMT
+    Fld                     : BIMT
+    Div                     : BIMT
+    Gamma                   : BIM
+    GaussErf                : BIM
+    LogNature               : BIM
+    Exp                     : BIM
+    Sqrt                    : BIM
+    Sign                    : BIM
+    Abs                     : BIM
+    Ceil                    : BIM
+    Floor                   : BIM
+    Round                   : BIM
+    Sec                     : BIM
+    Cot                     : BIM
+    Tan                     : BIM
+    Cos                     : BIM
+    Sin                     : BIM
+    LogBase                 : Expr * Expr -> BuiltInMethod
+    BuiltInMethod           : BIMM * List(Expr) -> BuiltInMethod
+    BuiltInMethod           : BIMT * Expr * Expr -> BuiltInMethod
+    BuiltInMethod           : BIM * Expr -> BuiltInMethod
+    DerivativeOverOVar      : Id * Id * IntLiteral -> DerivativeOverOVar
+    DerivativeOverTime      : Id * IntLiteral -> DerivativeOverTime
+                            : DerivativeOverOVar -> Derivative
+                            : DerivativeOverTime -> Derivative
     GenericMethod           : AmbName * Id -> MethodSpec
     QSuperMethod            : TypeName * Id -> MethodSpec
     SuperMethod             : Id -> MethodSpec
@@ -53,8 +87,8 @@ signature
     False                   : Bool
     True                    : Bool
     Bool                    : Bool -> BoolLiteral
-    Float                   : HexaFloatLiteral -> FloatLiteral
-    Float                   : DeciFloatLiteral -> FloatLiteral
+    FloatHex                : HexaFloatLiteral -> FloatLiteral
+    FloatDec                : DeciFloatLiteral -> FloatLiteral
                             : String -> HexaFloatLiteral
                             : String -> DeciFloatLiteral
     Octa                    : OctaLiteral -> IntLiteral
@@ -77,6 +111,8 @@ signature
                             : PrimType -> ArrayBaseType
     NewArray                : ArrayBaseType * List(Dim) * ArrayInit -> ArrayCreationExpr
     NewArray                : ArrayBaseType * List(DimExpr) * List(Dim) -> ArrayCreationExpr
+                            : BuiltInMethod -> Expr
+                            : Derivative -> Expr
     Invoke                  : MethodSpec * List(Expr) -> Expr
     PostDecr                : Expr -> Expr
     PostIncr                : Expr -> Expr
@@ -128,11 +164,10 @@ signature
                             : ConstrDec -> ClassBodyDec
                             : InstanceInit -> ClassBodyDec
                             : ClassMemberDec -> ClassBodyDec
-    ImplementsDec           : List(InterfaceType) -> Interfaces
-    SuperDec                : ClassType -> Super
                             : Private -> ClassMod
                             : Public -> ClassMod
-    ClassDecHead            : List(Anno) * List(ClassMod) * Option(Super) * Option(Interfaces) * Id -> ClassDecHead
+    ClassDecHeadSuperOrImpl : List(Anno) * List(ClassMod) * ClassOrInterfaceType * Id -> ClassDecHead
+    ClassDecHead            : List(Anno) * List(ClassMod) * Id -> ClassDecHead
     ClassBody               : List(ClassBodyDec) -> ClassBody
     ClassDec                : ClassDecHead * ClassBody -> ClassDec
                             : Private -> InterfaceMod
@@ -239,7 +274,6 @@ signature
     Member                  : TypeDecSpec * Id -> TypeDecSpec
                             : TypeName -> TypeDecSpec
     InterfaceType           : TypeDecSpec -> InterfaceType
-    ClassType               : TypeDecSpec -> ClassType
     ClassOrInterfaceType    : TypeDecSpec -> ClassOrInterfaceType
                             : ArrayType -> RefType
                             : ClassOrInterfaceType -> RefType

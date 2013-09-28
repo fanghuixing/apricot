@@ -6,8 +6,8 @@ exports
     HexaFloatLiteral      
   
   context-free syntax
-    DeciFloatLiteral -> FloatLiteral {cons("Float")}
-    HexaFloatLiteral -> FloatLiteral {cons("Float")}
+    DeciFloatLiteral -> FloatLiteral {cons("FloatDec")}
+    HexaFloatLiteral -> FloatLiteral {cons("FloatHex")}
 
   lexical syntax
     DeciFloatNumeral [fFdD]? -> DeciFloatLiteral
