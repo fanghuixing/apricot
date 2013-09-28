@@ -1,0 +1,15 @@
+module expressions/Derivatives
+
+imports
+  expressions/Main
+  
+ exports
+ 	sorts Derivative
+ 	context-free syntax
+ 		Derivative -> Expr
+ 		
+	context-free syntax
+		DerivativeOverTime -> Derivative
+		DerivativeOverOVar -> Derivative
+		"dot"  "(" Id "," IntLiteral ")" -> DerivativeOverTime {cons("DerivativeOverTime")}
+		"dot"  "(" Id "," Id "," IntLiteral ")" -> DerivativeOverOVar {cons("DerivativeOverOVar")}		 		

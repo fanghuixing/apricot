@@ -1,0 +1,42 @@
+module expressions/BuiltInMethods
+
+imports expressions/Main
+
+exports
+	sorts
+		BuiltInMethod
+	
+	context-free syntax
+		BuiltInMethod -> Expr
+		BIM "(" Expr ")" ->  BuiltInMethod {cons("BuiltInMethod")}
+		BIMT "(" Expr "," Expr ")" ->  BuiltInMethod {cons("BuiltInMethod")}
+		BIMM "(" {Expr ","}+ ")" -> BuiltInMethod {cons("BuiltInMethod")}
+		"sin" -> BIM {cons("Sin")}
+		"cos" -> BIM {cons("Cos")}
+		"tan" -> BIM {cons("Tan")}
+		"cot" -> BIM {cons("Cot")}
+		"sec" -> BIM {cons("Sec")}
+		"round" -> BIM {cons("Round")}
+		"floor"	 -> BIM {cons("Floor")} 
+		"ceil"	 -> BIM {cons("Ceil")} 
+		"div"	 -> BIMT {cons("Div")} 
+		"fld"	 -> BIMT {cons("Fld")} 
+		"rem"	 -> BIMT {cons("Rem")} 
+		"mod"	 -> BIMT {cons("Mod")} 
+		"gcd"	 -> BIMM {cons("Gcd")} 
+		"lcm"	 -> BIMM {cons("Lcm")} 
+		"abs"	 -> BIM {cons("Abs")} 
+		"sign"	 -> BIM {cons("Sign")} 
+		"sqrt"	 -> BIM {cons("Sqrt")} 
+		"root"	 -> BIMT {cons("Root")} 
+		"hypot"	 -> BIMT {cons("Hypot")} 
+		"pow"	 -> BIMT {cons("Pow")} 
+		"exp"    -> BIM {cons("Exp")}
+		"log"	 -> BIM {cons("LogNature")}
+		"erf"	 -> BIM {cons("GaussErf")}
+		"gamma"  -> BIM {cons("Gamma")}
+		"max"	 -> BIMM {cons("Max")}
+		"min"	 -> BIMM {cons("Min")}
+		
+		"log" "(" Expr "," Expr ")" ->  BuiltInMethod {cons("LogBase")}
+		

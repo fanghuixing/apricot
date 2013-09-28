@@ -1,0 +1,19 @@
+Package com.fofo.apricot.model;
+Import com.fofo.core.System;
+
+System x{
+	int x;
+	
+	Void Init(){
+		dot(x,1) == (1+1);
+		dot(x,x,2) == Min(1,2);
+		
+		
+		for(int i;i<10;i++){
+			
+		}
+	}
+	
+	
+}
+

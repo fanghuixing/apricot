@@ -1,0 +1,62 @@
+StartApricot(
+  CompilationUnit(
+    Some(
+      PackageDec(
+        []
+      , PackageName(
+          [Id("com"), Id("fofo"), Id("apricot"), Id("model")]
+        )
+      )
+    )
+  , [ TypeImportDec(
+        TypeName(
+          PackageOrTypeName(
+            PackageOrTypeName(PackageOrTypeName(Id("com")), Id("fofo"))
+          , Id("core")
+          )
+        , Id("System")
+        )
+      )
+    ]
+  , [ ClassDec(
+        ClassDecHeadSuperOrImpl(
+          []
+        , []
+        , ClassOrInterfaceType(TypeName(Id("System")))
+        , Id("x")
+        )
+      , ClassBody(
+          [ FieldDec([], [], int(), [VarDec(Id("x"))])
+          , MethodDec(
+              MethodDecHead([], [], Void(), Id("Init"), [])
+            , Block(
+                [ ExprStm(
+                    Eq(
+                      DerivativeOverTime(Id("x"), Deci("1"))
+                    , Plus(Lit(Deci("1")), Lit(Deci("1")))
+                    )
+                  )
+                , ExprStm(
+                    Eq(
+                      DerivativeOverOVar(Id("x"), Id("x"), Deci("2"))
+                    , Invoke(
+                        Method(MethodName(Id("Min")))
+                      , [Lit(Deci("1")), Lit(Deci("2"))]
+                      )
+                    )
+                  )
+                , For(
+                    LocalVarDec([], int(), [VarDec(Id("i"))])
+                  , Some(Lt(ExprName(Id("i")), Lit(Deci("10"))))
+                  , [PostIncr(ExprName(Id("i")))]
+                  , Block([])
+                  )
+                ]
+              )
+            )
+          ]
+        )
+      )
+    ]
+  )
+)
