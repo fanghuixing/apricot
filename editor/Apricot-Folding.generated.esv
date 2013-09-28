@@ -23,9 +23,9 @@ folding Default folding definitions
   CompilationUnit.CompilationUnit
   PackageDec.PackageDec
   VarDecId.ArrayVarDecId
-  OptInterfaces30
+  OptInterfaces32
   Interfaces.ImplementsDec
-  OptExtendsInterfaces29
+  OptExtendsInterfaces31
   ExtendsInterfaces.ExtendsInterfaces
   SwitchTypes.SwitchTys
   Expr.Lit

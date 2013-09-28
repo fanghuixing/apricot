@@ -163,9 +163,9 @@ signature
     Requires                : Id * Amount * Type -> Requires
     AmOneOrZero             : Amount
     AmGeOne                 : Amount
+                            : Constant -> ConstantMod
                             : Public -> ConstantMod
-    ConstantDec             : List(ConstantMod) * Type * List(VarDec) -> ConstantDec
-    ConstantDec             : List(Anno) * Type * List(VarDec) -> ConstantDec
+    ConstantDec             : List(Anno) * List(ConstantMod) * Type * List(VarDec) -> ConstantDec
                             : Private -> ConstrMod
                             : Public -> ConstrMod
     QSuperConstrInv         : Expr * List(Expr) -> ConstrInv
@@ -265,6 +265,7 @@ signature
     AmbName                 : AmbName * Id -> AmbName
     AmbName                 : Id -> AmbName
     PackageName             : List(Id) -> PackageName
+    Constant                : Constant
     Native                  : Native
     Private                 : Private
     Public                  : Public

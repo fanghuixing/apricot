@@ -4,13 +4,16 @@ exports
     Public
     Private
     Native
+    Constant
 
   context-free syntax
     "Public"       -> Public       {cons("Public")}
     "Private"      -> Private      {cons("Private")}
 
     "Native"       -> Native       {cons("Native")}
+    "Constant"	   -> Constant	   {cons("Constant")}
 
     Public       -> Modifier
     Private      -> Modifier
     Native       -> Modifier
+    Constant 	 -> Modifier

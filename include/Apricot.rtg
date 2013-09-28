@@ -77,8 +77,8 @@ regular tree grammar
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListStarOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListPlusOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <cons>(InterfaceType,ListStarOfInterfaceType0)
-    OptInterfaces30               -> <some>(Interfaces)
-    OptInterfaces30               -> <none>()
+    OptInterfaces32               -> <some>(Interfaces)
+    OptInterfaces32               -> <none>()
     OptSuper0                     -> <some>(Super)
     OptSuper0                     -> <none>()
     ListStarOfClassMod0           -> ListPlusOfClassMod0
@@ -95,8 +95,8 @@ regular tree grammar
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListStarOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListPlusOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <cons>(ClassBodyDec,ListStarOfClassBodyDec0)
-    OptExtendsInterfaces29        -> <some>(ExtendsInterfaces)
-    OptExtendsInterfaces29        -> <none>()
+    OptExtendsInterfaces31        -> <some>(ExtendsInterfaces)
+    OptExtendsInterfaces31        -> <none>()
     ListStarOfInterfaceMod0       -> ListPlusOfInterfaceMod0
     ListStarOfInterfaceMod0       -> <nil>()
     ListStarOfInterfaceMod0       -> <conc>(ListStarOfInterfaceMod0,ListStarOfInterfaceMod0)
@@ -378,7 +378,7 @@ regular tree grammar
     Super                         -> SuperDec(ClassType)
     ClassMod                      -> Private
     ClassMod                      -> Public
-    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces30,Id)
+    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces32,Id)
     ClassBody                     -> ClassBody(ListStarOfClassBodyDec0)
     ClassDec                      -> ClassDec(ClassDecHead,ClassBody)
     InterfaceMod                  -> Private
@@ -392,7 +392,7 @@ regular tree grammar
     InterfaceMemberDec            -> Constraint
     InterfaceMemberDec            -> ConstantDec
     ExtendsInterfaces             -> ExtendsInterfaces(ListPlusOfInterfaceType0)
-    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces29,Id)
+    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces31,Id)
     InterfaceDec                  -> InterfaceDec(InterfaceDecHead,ListStarOfInterfaceMemberDec0)
     AbstractInvariant             -> AbstractInvariant()
     Invariant                     -> AbstractInvariant
@@ -418,9 +418,9 @@ regular tree grammar
     AnnoDecHead                   -> AnnoDecHead(ListStarOfInterfaceMod0,Id)
     AnnoDecHead                   -> AnnoDecHead(ListStarOfAnno0,Id)
     AnnoDec                       -> AnnoDec(AnnoDecHead,ListStarOfAnnoElemDec0)
+    ConstantMod                   -> Constant
     ConstantMod                   -> Public
-    ConstantDec                   -> ConstantDec(ListStarOfConstantMod0,Type,ListPlusOfVarDec0)
-    ConstantDec                   -> ConstantDec(ListStarOfAnno0,Type,ListPlusOfVarDec0)
+    ConstantDec                   -> ConstantDec(ListStarOfAnno0,ListStarOfConstantMod0,Type,ListPlusOfVarDec0)
     ConstrMod                     -> Private
     ConstrMod                     -> Public
     ConstrInv                     -> QSuperConstrInv(Expr,ListStarOfExpr0)
@@ -523,9 +523,11 @@ regular tree grammar
     AmbName                       -> AmbName(AmbName,Id)
     AmbName                       -> AmbName(Id)
     PackageName                   -> PackageName(ListPlusOfId0)
+    Modifier                      -> Constant
     Modifier                      -> Native
     Modifier                      -> Private
     Modifier                      -> Public
+    Constant                      -> Constant()
     Native                        -> Native()
     Private                       -> Private()
     Public                        -> Public()

@@ -25,7 +25,6 @@ outliner Default outliner
   Stm.Synchronized
   InterfaceDecHead.InterfaceDecHead
   ConstantDec.ConstantDec
-  ConstantDec.ConstantDec
   AbstractMethodDec.AbstractMethodDec
   AbstractMethodDec.AbstractMethodDec
   AbstractMethodDec.DeprAbstractMethodDec

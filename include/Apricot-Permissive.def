@@ -90,6 +90,7 @@ exports
     "|#Public|"                    -> Public              {completion}
     "|#Private|"                   -> Private             {completion}
     "|#Native|"                    -> Native              {completion}
+    "|#Constant|"                  -> Constant            {completion}
     "|#Keyword|"                   -> Keyword             {completion}
     "|#ID|"                        -> ID                  {completion}
     "|#ClassBody|"                 -> ClassBody           {completion}
@@ -669,9 +670,9 @@ exports
   sorts ConstantDec ConstantMod
 
   context-free syntax
-    Anno* Type {VarDec ","}+ ";"        -> ConstantDec {cons("ConstantDec")}
-    ConstantMod* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
-    Public                              -> ConstantMod 
+    Anno* ConstantMod* Type {VarDec ","}+ ";" -> ConstantDec {cons("ConstantDec")}
+    Public                                    -> ConstantMod 
+    Constant                                  -> ConstantMod 
 
 module interfaces/InterfaceDeclarations
 imports lexical/Identifiers lexical/Modifiers names/Main types/Main
@@ -939,15 +940,17 @@ exports
 
 module lexical/Modifiers
 exports
-  sorts Public Private Native
+  sorts Public Private Native Constant
 
   context-free syntax
-    "Public"  -> Public   {cons("Public")}
-    "Private" -> Private  {cons("Private")}
-    "Native"  -> Native   {cons("Native")}
-    Public    -> Modifier 
-    Private   -> Modifier 
-    Native    -> Modifier 
+    "Public"   -> Public   {cons("Public")}
+    "Private"  -> Private  {cons("Private")}
+    "Native"   -> Native   {cons("Native")}
+    "Constant" -> Constant {cons("Constant")}
+    Public     -> Modifier 
+    Private    -> Modifier 
+    Native     -> Modifier 
+    Constant   -> Modifier 
 
 module lexical/Keywords
 exports
