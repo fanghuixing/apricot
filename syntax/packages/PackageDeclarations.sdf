@@ -8,4 +8,4 @@ exports
     PackageDec
 
   context-free syntax
-    Anno* "package" PackageName ";" -> PackageDec {cons("PackageDec")}
+    Anno* "Package" PackageName ";" -> PackageDec {cons("PackageDec")}

@@ -19,13 +19,12 @@ exports
     InterfaceMod
 
   context-free syntax
-    AnnoDec -> InterfaceDec
+ 
 
     InterfaceDecHead "{" InterfaceMemberDec* "}" -> InterfaceDec {cons("InterfaceDec")}
 
-    (Anno)* ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
-    ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
-    (InterfaceMod)* "Interface" {InterfaceType ","}+ -> ExtendsInterfaces {cons("ExtendsInterfaces")}
+    Anno* InterfaceMod* "Interface"  ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
+    {InterfaceType ","}+ -> ExtendsInterfaces {cons("ExtendsInterfaces")}
 
   context-free syntax
     ConstantDec       -> InterfaceMemberDec

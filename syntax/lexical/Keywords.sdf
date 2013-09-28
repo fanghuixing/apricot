@@ -40,9 +40,13 @@ exports
     "native"        -> Keyword
     "new"           -> Keyword
     "package"       -> Keyword
+    "Package"		-> Keyword
     "private"       -> Keyword
+    "Private"		-> Keyword
     "protected"     -> Keyword
+    "Protected"		-> Keyword
     "public"        -> Keyword
+    "Public"		-> Keyword
     "real"			-> Keyword
     "Real"			-> Keyword
     "return"        -> Keyword
@@ -102,10 +106,13 @@ exports
     "long"       
     "native"     
     "new"        
-    "package"    
-    "private"    
+    "package"
+    "Package"    
+    "private"
+    "Private"    
     "protected"   
-    "public"      
+    "public"
+    "Public"      
     "real"
     "Real"
     "return"       

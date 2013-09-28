@@ -9,7 +9,7 @@ exports
     PackageDec
 
   context-free syntax
-    Anno* "package" PackageName ";" -> PackageDec {cons("PackageDec")}
+    Anno* "Package" PackageName ";" -> PackageDec {cons("PackageDec")}
 
 module packages/ImportDeclarations
 imports
@@ -680,13 +680,12 @@ exports
     InterfaceMod
 
   context-free syntax
-    AnnoDec -> InterfaceDec
+ 
 
     InterfaceDecHead "{" InterfaceMemberDec* "}" -> InterfaceDec {cons("InterfaceDec")}
 
-    (Anno)* ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
-    ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
-    (InterfaceMod)* "Interface" {InterfaceType ","}+ -> ExtendsInterfaces {cons("ExtendsInterfaces")}
+    Anno* InterfaceMod* "Interface"  ExtendsInterfaces? Id   -> InterfaceDecHead {cons("InterfaceDecHead")}
+    {InterfaceType ","}+ -> ExtendsInterfaces {cons("ExtendsInterfaces")}
 
   context-free syntax
     ConstantDec       -> InterfaceMemberDec
@@ -1126,9 +1125,13 @@ exports
     "native"        -> Keyword
     "new"           -> Keyword
     "package"       -> Keyword
+    "Package"		-> Keyword
     "private"       -> Keyword
+    "Private"		-> Keyword
     "protected"     -> Keyword
+    "Protected"		-> Keyword
     "public"        -> Keyword
+    "Public"		-> Keyword
     "real"			-> Keyword
     "Real"			-> Keyword
     "return"        -> Keyword
@@ -1188,10 +1191,13 @@ exports
     "long"       
     "native"     
     "new"        
-    "package"    
-    "private"    
+    "package"
+    "Package"    
+    "private"
+    "Private"    
     "protected"   
-    "public"      
+    "public"
+    "Public"      
     "real"
     "Real"
     "return"       

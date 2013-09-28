@@ -77,8 +77,8 @@ regular tree grammar
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListStarOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListPlusOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <cons>(InterfaceType,ListStarOfInterfaceType0)
-    OptInterfaces27               -> <some>(Interfaces)
-    OptInterfaces27               -> <none>()
+    OptInterfaces4                -> <some>(Interfaces)
+    OptInterfaces4                -> <none>()
     OptSuper0                     -> <some>(Super)
     OptSuper0                     -> <none>()
     ListStarOfClassMod0           -> ListPlusOfClassMod0
@@ -95,6 +95,8 @@ regular tree grammar
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListStarOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListPlusOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <cons>(ClassBodyDec,ListStarOfClassBodyDec0)
+    OptExtendsInterfaces4         -> <some>(ExtendsInterfaces)
+    OptExtendsInterfaces4         -> <none>()
     ListStarOfInterfaceMod0       -> ListPlusOfInterfaceMod0
     ListStarOfInterfaceMod0       -> <nil>()
     ListStarOfInterfaceMod0       -> <conc>(ListStarOfInterfaceMod0,ListStarOfInterfaceMod0)
@@ -102,8 +104,6 @@ regular tree grammar
     ListPlusOfInterfaceMod0       -> <conc>(ListPlusOfInterfaceMod0,ListStarOfInterfaceMod0)
     ListPlusOfInterfaceMod0       -> <conc>(ListPlusOfInterfaceMod0,ListPlusOfInterfaceMod0)
     ListPlusOfInterfaceMod0       -> <cons>(InterfaceMod,ListStarOfInterfaceMod0)
-    OptExtendsInterfaces5         -> <some>(ExtendsInterfaces)
-    OptExtendsInterfaces5         -> <none>()
     ListStarOfInterfaceMemberDec0 -> ListPlusOfInterfaceMemberDec0
     ListStarOfInterfaceMemberDec0 -> <nil>()
     ListStarOfInterfaceMemberDec0 -> <conc>(ListStarOfInterfaceMemberDec0,ListStarOfInterfaceMemberDec0)
@@ -364,7 +364,7 @@ regular tree grammar
     Super                         -> SuperDec(ClassType)
     ClassMod                      -> Private
     ClassMod                      -> Public
-    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces27,Id)
+    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces4,Id)
     ClassBody                     -> ClassBody(ListStarOfClassBodyDec0)
     ClassDec                      -> ClassDec(ClassDecHead,ClassBody)
     InterfaceMod                  -> Private
@@ -373,11 +373,9 @@ regular tree grammar
     InterfaceMemberDec            -> InterfaceDec
     InterfaceMemberDec            -> ClassDec
     InterfaceMemberDec            -> ConstantDec
-    ExtendsInterfaces             -> ExtendsInterfaces(ListStarOfInterfaceMod0,ListPlusOfInterfaceType0)
-    InterfaceDecHead              -> InterfaceDecHead(OptExtendsInterfaces5,Id)
-    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,OptExtendsInterfaces5,Id)
+    ExtendsInterfaces             -> ExtendsInterfaces(ListPlusOfInterfaceType0)
+    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces4,Id)
     InterfaceDec                  -> InterfaceDec(InterfaceDecHead,ListStarOfInterfaceMemberDec0)
-    InterfaceDec                  -> AnnoDec
     DefaultVal                    -> DefaultVal(ElemVal)
     AnnoElemDec                   -> Semicolon()
     AnnoElemDec                   -> AnnoDec

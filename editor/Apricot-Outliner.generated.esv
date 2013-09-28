@@ -23,11 +23,9 @@ outliner Default outliner
   Stm.For
   Stm.For
   Stm.Synchronized
-  AnnoDecHead.AnnoDecHead
-  AnnoDecHead.AnnoDecHead
-  ConstantDec.ConstantDec
-  ConstantDec.ConstantDec
   InterfaceDecHead.InterfaceDecHead
+  ConstantDec.ConstantDec
+  ConstantDec.ConstantDec
   ConstrHead.ConstrDecHead
   ConstrInv.QSuperConstrInv
   ArrayCreationExpr.NewArray

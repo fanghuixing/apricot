@@ -1,19 +1,7 @@
+Package com.fofo.core;
 
-Package core
-
-
-Class System{
-	int x;
-	Real r;
+Interface System{
 	
-    Discrete(){
-		x=1;
-		for (x=1;x<10;x++){
-			;
-		}
-		this.Discrete();
-	}
-	
-	
+	Requires Plants[1..*] : Plant;
 	
 }

@@ -141,19 +141,9 @@ signature
                             : InterfaceDec -> InterfaceMemberDec
                             : ClassDec -> InterfaceMemberDec
                             : ConstantDec -> InterfaceMemberDec
-    ExtendsInterfaces       : List(InterfaceMod) * List(InterfaceType) -> ExtendsInterfaces
-    InterfaceDecHead        : Option(ExtendsInterfaces) * Id -> InterfaceDecHead
-    InterfaceDecHead        : List(Anno) * Option(ExtendsInterfaces) * Id -> InterfaceDecHead
+    ExtendsInterfaces       : List(InterfaceType) -> ExtendsInterfaces
+    InterfaceDecHead        : List(Anno) * List(InterfaceMod) * Option(ExtendsInterfaces) * Id -> InterfaceDecHead
     InterfaceDec            : InterfaceDecHead * List(InterfaceMemberDec) -> InterfaceDec
-                            : AnnoDec -> InterfaceDec
-    Semicolon               : AnnoElemDec
-                            : AnnoDec -> AnnoElemDec
-                            : InterfaceDec -> AnnoElemDec
-                            : ClassDec -> AnnoElemDec
-                            : ConstantDec -> AnnoElemDec
-    AnnoDecHead             : List(InterfaceMod) * Id -> AnnoDecHead
-    AnnoDecHead             : List(Anno) * Id -> AnnoDecHead
-    AnnoDec                 : AnnoDecHead * List(AnnoElemDec) -> AnnoDec
                             : Public -> ConstantMod
     ConstantDec             : List(ConstantMod) * Type * List(VarDec) -> ConstantDec
     ConstantDec             : List(Anno) * Type * List(VarDec) -> ConstantDec

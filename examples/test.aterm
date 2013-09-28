@@ -2,35 +2,9 @@ StartApricot(
   CompilationUnit(
     None()
   , []
-  , [ ClassDec(
-        ClassDecHead(
-          []
-        , []
-        , Some(SuperDec(ClassType(TypeName(Id("Package")))))
-        , Some(ImplementsDec([InterfaceType(TypeName(Id("core")))]))
-        , Id("System")
-        )
-      , ClassBody(
-          [ FieldDec([], [], int(), [VarDec(Id("x"))])
-          , FieldDec([], [], RealMath(), [VarDec(Id("r"))])
-          , ConstrDec(
-              ConstrDecHead([], [], Id("Discrete"), [])
-            , ConstrBody(
-                None()
-              , [ ExprStm(Assign(ExprName(Id("x")), Lit(Deci("1"))))
-                , For(
-                    [Assign(ExprName(Id("x")), Lit(Deci("1")))]
-                  , Some(Lt(ExprName(Id("x")), Lit(Deci("10"))))
-                  , [PostIncr(ExprName(Id("x")))]
-                  , Block([Empty()])
-                  )
-                , ExprStm(Invoke(Method(This(), Id("Discrete")), []))
-                ]
-              )
-            )
-          ]
-        )
-      )
-    ]
+  , [InterfaceDec(
+       InterfaceDecHead([], [], None(), Id("x"))
+     , [Semicolon()]
+     )]
   )
 )
