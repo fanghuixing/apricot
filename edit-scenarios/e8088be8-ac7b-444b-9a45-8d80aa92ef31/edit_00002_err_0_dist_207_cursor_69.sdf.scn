@@ -1,6 +1,0 @@
-module interfaces/Main
-imports
-  interfaces/InterfaceDeclarations
-
-  interfaces/AnnotationTypes
-  interfaces/Annotations

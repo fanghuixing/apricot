@@ -1,9 +1,0 @@
-Class System{
-	int x;
-
-	
-    Discrete(){
-		x;
-	}
-	
-}

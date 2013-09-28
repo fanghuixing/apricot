@@ -77,8 +77,8 @@ regular tree grammar
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListStarOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <conc>(ListPlusOfInterfaceType0,ListPlusOfInterfaceType0)
     ListPlusOfInterfaceType0      -> <cons>(InterfaceType,ListStarOfInterfaceType0)
-    OptInterfaces4                -> <some>(Interfaces)
-    OptInterfaces4                -> <none>()
+    OptInterfaces30               -> <some>(Interfaces)
+    OptInterfaces30               -> <none>()
     OptSuper0                     -> <some>(Super)
     OptSuper0                     -> <none>()
     ListStarOfClassMod0           -> ListPlusOfClassMod0
@@ -95,8 +95,8 @@ regular tree grammar
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListStarOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <conc>(ListPlusOfClassBodyDec0,ListPlusOfClassBodyDec0)
     ListPlusOfClassBodyDec0       -> <cons>(ClassBodyDec,ListStarOfClassBodyDec0)
-    OptExtendsInterfaces4         -> <some>(ExtendsInterfaces)
-    OptExtendsInterfaces4         -> <none>()
+    OptExtendsInterfaces29        -> <some>(ExtendsInterfaces)
+    OptExtendsInterfaces29        -> <none>()
     ListStarOfInterfaceMod0       -> ListPlusOfInterfaceMod0
     ListStarOfInterfaceMod0       -> <nil>()
     ListStarOfInterfaceMod0       -> <conc>(ListStarOfInterfaceMod0,ListStarOfInterfaceMod0)
@@ -111,6 +111,27 @@ regular tree grammar
     ListPlusOfInterfaceMemberDec0 -> <conc>(ListPlusOfInterfaceMemberDec0,ListStarOfInterfaceMemberDec0)
     ListPlusOfInterfaceMemberDec0 -> <conc>(ListPlusOfInterfaceMemberDec0,ListPlusOfInterfaceMemberDec0)
     ListPlusOfInterfaceMemberDec0 -> <cons>(InterfaceMemberDec,ListStarOfInterfaceMemberDec0)
+    ListStarOfFormalParam0        -> ListPlusOfFormalParam0
+    ListStarOfFormalParam0        -> <nil>()
+    ListStarOfFormalParam0        -> <conc>(ListStarOfFormalParam0,ListStarOfFormalParam0)
+    ListPlusOfFormalParam0        -> <conc>(ListStarOfFormalParam0,ListPlusOfFormalParam0)
+    ListPlusOfFormalParam0        -> <conc>(ListPlusOfFormalParam0,ListStarOfFormalParam0)
+    ListPlusOfFormalParam0        -> <conc>(ListPlusOfFormalParam0,ListPlusOfFormalParam0)
+    ListPlusOfFormalParam0        -> <cons>(FormalParam,ListStarOfFormalParam0)
+    ListStarOfAbstractMethodMod0  -> ListPlusOfAbstractMethodMod0
+    ListStarOfAbstractMethodMod0  -> <nil>()
+    ListStarOfAbstractMethodMod0  -> <conc>(ListStarOfAbstractMethodMod0,ListStarOfAbstractMethodMod0)
+    ListPlusOfAbstractMethodMod0  -> <conc>(ListStarOfAbstractMethodMod0,ListPlusOfAbstractMethodMod0)
+    ListPlusOfAbstractMethodMod0  -> <conc>(ListPlusOfAbstractMethodMod0,ListStarOfAbstractMethodMod0)
+    ListPlusOfAbstractMethodMod0  -> <conc>(ListPlusOfAbstractMethodMod0,ListPlusOfAbstractMethodMod0)
+    ListPlusOfAbstractMethodMod0  -> <cons>(AbstractMethodMod,ListStarOfAbstractMethodMod0)
+    ListStarOfType0               -> ListPlusOfType0
+    ListStarOfType0               -> <nil>()
+    ListStarOfType0               -> <conc>(ListStarOfType0,ListStarOfType0)
+    ListPlusOfType0               -> <conc>(ListStarOfType0,ListPlusOfType0)
+    ListPlusOfType0               -> <conc>(ListPlusOfType0,ListStarOfType0)
+    ListPlusOfType0               -> <conc>(ListPlusOfType0,ListPlusOfType0)
+    ListPlusOfType0               -> <cons>(Type,ListStarOfType0)
     ListStarOfAnnoElemDec0        -> ListPlusOfAnnoElemDec0
     ListStarOfAnnoElemDec0        -> <nil>()
     ListStarOfAnnoElemDec0        -> <conc>(ListStarOfAnnoElemDec0,ListStarOfAnnoElemDec0)
@@ -134,13 +155,6 @@ regular tree grammar
     ListPlusOfConstantMod0        -> <cons>(ConstantMod,ListStarOfConstantMod0)
     OptConstrInv0                 -> <some>(ConstrInv)
     OptConstrInv0                 -> <none>()
-    ListStarOfFormalParam0        -> ListPlusOfFormalParam0
-    ListStarOfFormalParam0        -> <nil>()
-    ListStarOfFormalParam0        -> <conc>(ListStarOfFormalParam0,ListStarOfFormalParam0)
-    ListPlusOfFormalParam0        -> <conc>(ListStarOfFormalParam0,ListPlusOfFormalParam0)
-    ListPlusOfFormalParam0        -> <conc>(ListPlusOfFormalParam0,ListStarOfFormalParam0)
-    ListPlusOfFormalParam0        -> <conc>(ListPlusOfFormalParam0,ListPlusOfFormalParam0)
-    ListPlusOfFormalParam0        -> <cons>(FormalParam,ListStarOfFormalParam0)
     ListStarOfConstrMod0          -> ListPlusOfConstrMod0
     ListStarOfConstrMod0          -> <nil>()
     ListStarOfConstrMod0          -> <conc>(ListStarOfConstrMod0,ListStarOfConstrMod0)
@@ -364,18 +378,37 @@ regular tree grammar
     Super                         -> SuperDec(ClassType)
     ClassMod                      -> Private
     ClassMod                      -> Public
-    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces4,Id)
+    ClassDecHead                  -> ClassDecHead(ListStarOfAnno0,ListStarOfClassMod0,OptSuper0,OptInterfaces30,Id)
     ClassBody                     -> ClassBody(ListStarOfClassBodyDec0)
     ClassDec                      -> ClassDec(ClassDecHead,ClassBody)
     InterfaceMod                  -> Private
     InterfaceMod                  -> Public
     InterfaceMemberDec            -> Semicolon()
+    InterfaceMemberDec            -> Invariant
+    InterfaceMemberDec            -> Requires
+    InterfaceMemberDec            -> AbstractMethodDec
     InterfaceMemberDec            -> InterfaceDec
     InterfaceMemberDec            -> ClassDec
+    InterfaceMemberDec            -> Constraint
     InterfaceMemberDec            -> ConstantDec
     ExtendsInterfaces             -> ExtendsInterfaces(ListPlusOfInterfaceType0)
-    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces4,Id)
+    InterfaceDecHead              -> InterfaceDecHead(ListStarOfAnno0,ListStarOfInterfaceMod0,OptExtendsInterfaces29,Id)
     InterfaceDec                  -> InterfaceDec(InterfaceDecHead,ListStarOfInterfaceMemberDec0)
+    AbstractInvariant             -> AbstractInvariant()
+    Invariant                     -> AbstractInvariant
+    ClockConstraint               -> ClockConstraint()
+    Constraint                    -> ClockConstraint
+    AbstractMethodMod             -> Public
+    AbstractMethodDec             -> DeprAbstractMethodDec(ListStarOfAnno0,ListStarOfAbstractMethodMod0,ResultType,Id,ListStarOfFormalParam0,ListPlusOfDim0)
+    AbstractMethodDec             -> AbstractMethodDec(ListStarOfAnno0,ListStarOfAbstractMethodMod0,ResultType,Id,ListStarOfFormalParam0,RequiresComposition)
+    AbstractMethodDec             -> AbstractMethodDec(ListStarOfAnno0,ListStarOfAbstractMethodMod0,ResultType,Id,ListStarOfFormalParam0)
+    RequiresComposition           -> RequiresComp(Id,Amount,Asyactions,Amount,SwitchTypes,AbstractCondtion)
+    AbstractCondtion              -> AbstractCond()
+    SwitchTypes                   -> SwitchTys(ListPlusOfType0,ListPlusOfType0,ListPlusOfType0)
+    Asyactions                    -> Asynactions()
+    Requires                      -> Requires(Id,Amount,Type)
+    Amount                        -> AmOneOrZero()
+    Amount                        -> AmGeOne()
     DefaultVal                    -> DefaultVal(ElemVal)
     AnnoElemDec                   -> Semicolon()
     AnnoElemDec                   -> AnnoDec

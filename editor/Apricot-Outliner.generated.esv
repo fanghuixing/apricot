@@ -26,6 +26,9 @@ outliner Default outliner
   InterfaceDecHead.InterfaceDecHead
   ConstantDec.ConstantDec
   ConstantDec.ConstantDec
+  AbstractMethodDec.AbstractMethodDec
+  AbstractMethodDec.AbstractMethodDec
+  AbstractMethodDec.DeprAbstractMethodDec
   ConstrHead.ConstrDecHead
   ConstrInv.QSuperConstrInv
   ArrayCreationExpr.NewArray

@@ -1,0 +1,23 @@
+module interfaces/Requires
+imports
+	types/Main
+	
+exports
+	sorts
+		Requires
+		RequiresComposition
+		
+		
+	context-free syntax
+		"1..*" -> Amount {cons("AmGeOne")}
+		"0..1" -> Amount {cons("AmOneOrZero")}
+		
+		"Requires" Id "[" Amount "]" ":" Type ";" -> Requires {cons("Requires")}
+		
+		"(" "?" "|" "!" ")" -> Asyactions {cons("Asynactions")}
+		"(" {Type "|"}+ "," {Type "|"}+ "," {Type "|"}+ ")" -> SwitchTypes {cons("SwitchTys")}
+		
+		"Condition" "{" "}" ";" -> AbstractCondtion{cons("AbstractCond")}
+		
+		"Requires" Id "[" Amount "]" Asyactions "[" Amount "]" ":" SwitchTypes 
+		"{" AbstractCondtion  "}" ";" -> RequiresComposition {cons("RequiresComp")}

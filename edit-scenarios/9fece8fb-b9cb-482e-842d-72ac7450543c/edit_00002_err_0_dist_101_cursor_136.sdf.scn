@@ -1,6 +1,0 @@
-module lexical/literals/NullLiteral
-exports
-  sorts NullLiteral
-  context-free syntax
-    "null"  -> NullLiteral {cons("Null")}
-    "null"  -> NullLiteral {cons("Null")}

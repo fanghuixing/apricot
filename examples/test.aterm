@@ -1,10 +1,16 @@
 StartApricot(
   CompilationUnit(
-    None()
+    Some(
+      PackageDec(
+        []
+      , PackageName([Id("com"), Id("fofo"), Id("core")])
+      )
+    )
   , []
-  , [InterfaceDec(
-       InterfaceDecHead([], [], None(), Id("x"))
-     , [Semicolon()]
-     )]
+  , [ InterfaceDec(
+        InterfaceDecHead([], [], None(), Id("System"))
+      , [Requires(Id("plants"), AmGeOne(), ClassOrInterfaceType(TypeName(Id("controller"))))]
+      )
+    ]
   )
 )

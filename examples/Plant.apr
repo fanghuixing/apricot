@@ -1,0 +1,14 @@
+Package com.fofo.core;
+
+Interface Plant{
+	Requires dy[1..*] : Dynamic;
+	Requires ass[1..*] : Assignment;
+	Requires sy[0..1] : System;
+	
+	Void Composition(){
+		Requires coms[1..*](?|!)[0..1] : (Dynamic|System, Assignment, Dynamic|System)
+		{
+			Condition{};
+		};
+	};
+}

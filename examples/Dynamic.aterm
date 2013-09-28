@@ -1,0 +1,25 @@
+StartApricot(
+  CompilationUnit(
+    Some(
+      PackageDec(
+        []
+      , PackageName([Id("com"), Id("fofo"), Id("core")])
+      )
+    )
+  , []
+  , [ InterfaceDec(
+        InterfaceDecHead([], [], None(), Id("Dynamic"))
+      , [ AbstractMethodDec([], [], Void(), Id("Continuous"), [])
+        , AbstractInvariant()
+        , AbstractMethodDec(
+            []
+          , []
+          , ClassOrInterfaceType(TypeName(Id("Native")))
+          , Id("Start")
+          , []
+          )
+        ]
+      )
+    ]
+  )
+)

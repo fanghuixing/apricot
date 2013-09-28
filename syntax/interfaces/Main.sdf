@@ -3,3 +3,7 @@ imports
   interfaces/InterfaceDeclarations
   interfaces/AnnotationTypes
   interfaces/Annotations
+  interfaces/Requires
+  interfaces/AbstractMethodDeclarations
+  interfaces/Constraints
+  interfaces/Invariants

@@ -18,7 +18,7 @@ exports
 
     (Anno)* (MethodMod)* ResultType Id "(" {FormalParam ","}* ")"      -> MethodDecHead {cons("MethodDecHead")}    	
     Type   -> ResultType
-    "void" -> ResultType {cons("Void")}
+    "Void" -> ResultType {cons("Void")}
 
   sorts FormalParam
   context-free syntax

@@ -47,6 +47,15 @@ exports
     "|#FieldAccess|"               -> FieldAccess         {completion}
     "|#ArrayCreationExpr|"         -> ArrayCreationExpr   {completion}
     "|#DimExpr|"                   -> DimExpr             {completion}
+    "|#AbstractInvariant|"         -> AbstractInvariant   {completion}
+    "|#ClockConstraint|"           -> ClockConstraint     {completion}
+    "|#AbstractMethodDec|"         -> AbstractMethodDec   {completion}
+    "|#Amount|"                    -> Amount              {completion}
+    "|#Requires|"                  -> Requires            {completion}
+    "|#Asyactions|"                -> Asyactions          {completion}
+    "|#SwitchTypes|"               -> SwitchTypes         {completion}
+    "|#AbstractCondtion|"          -> AbstractCondtion    {completion}
+    "|#RequiresComposition|"       -> RequiresComposition {completion}
     "|#AnnoDec|"                   -> AnnoDec             {completion}
     "|#AnnoDecHead|"               -> AnnoDecHead         {completion}
     "|#AnnoElemDec|"               -> AnnoElemDec         {completion}
@@ -104,16 +113,18 @@ exports
     WATEREOF -/- ~[]
 
   lexical syntax
-    %% Lexical insertion recovery rules             
-                                        -> "import" {recover, cons("INSERTION")}
-                                        -> "."      {recover, cons("INSERTION")}
-                                        -> "class"  {recover, cons("INSERTION")}
-                                        -> ":"      {recover, cons("INSERTION")}
-                                        -> ";"      {recover, cons("INSERTION")}
-                                        -> ")"      {recover, cons("INSERTION")}
-                                        -> "]"      {recover, cons("INSERTION")}
-                                        -> "}"      {recover, cons("INSERTION")}
-                                        -> ","      {recover, cons("INSERTION")}
+    %% Lexical insertion recovery rules               
+                                        -> "import"   {recover, cons("INSERTION")}
+                                        -> "."        {recover, cons("INSERTION")}
+                                        -> "class"    {recover, cons("INSERTION")}
+                                        -> "|"        {recover, cons("INSERTION")}
+                                        -> "Requires" {recover, cons("INSERTION")}
+                                        -> ":"        {recover, cons("INSERTION")}
+                                        -> ";"        {recover, cons("INSERTION")}
+                                        -> ")"        {recover, cons("INSERTION")}
+                                        -> "]"        {recover, cons("INSERTION")}
+                                        -> "}"        {recover, cons("INSERTION")}
+                                        -> ","        {recover, cons("INSERTION")}
 
   syntax
     %% Kernel syntax insertion recovery rules                    
@@ -178,7 +189,9 @@ imports statements/Blocks statements/LocalVariableDeclarations
 
 module interfaces/Main
 imports interfaces/InterfaceDeclarations interfaces/AnnotationTypes
-        interfaces/Annotations
+        interfaces/Annotations interfaces/Requires
+        interfaces/AbstractMethodDeclarations interfaces/Constraints
+        interfaces/Invariants
 
 module names/Main
 imports lexical/Identifiers
@@ -581,6 +594,50 @@ exports
     "[" Expr "]"                       -> DimExpr           {cons("Dim")}
     "[" "]"                            -> Dim               {cons("Dim")}
 
+module interfaces/Invariants
+exports
+  sorts Invariant
+
+  context-free syntax
+    AbstractInvariant       -> Invariant         
+    "Invariant" "{" "}" ";" -> AbstractInvariant {cons("AbstractInvariant")}
+
+module interfaces/Constraints
+exports
+  sorts Constraint
+
+  context-free syntax
+    ClockConstraint          -> Constraint      
+    "Constraint" "clock" ";" -> ClockConstraint {cons("ClockConstraint")}
+
+module interfaces/AbstractMethodDeclarations
+imports lexical/Modifiers names/Main types/Main classes/MethodDeclarations
+        interfaces/Requires
+
+exports
+  sorts AbstractMethodDec AbstractMethodMod
+
+  context-free syntax
+    Anno* AbstractMethodMod* ResultType Id "(" {FormalParam ","}* ")" ";"                             -> AbstractMethodDec {cons("AbstractMethodDec")}
+    Anno* AbstractMethodMod* ResultType Id "(" {FormalParam ","}* ")" "{" RequiresComposition "}" ";" -> AbstractMethodDec {cons("AbstractMethodDec")}
+    Anno* AbstractMethodMod* ResultType Id "(" {FormalParam ","}* ")" Dim+ ";"                        -> AbstractMethodDec {cons("DeprAbstractMethodDec")}
+    Public                                                                                            -> AbstractMethodMod 
+
+module interfaces/Requires
+imports types/Main
+
+exports
+  sorts Requires RequiresComposition
+
+  context-free syntax
+    "1..*"                                                                                              -> Amount              {cons("AmGeOne")}
+    "0..1"                                                                                              -> Amount              {cons("AmOneOrZero")}
+    "Requires" Id "[" Amount "]" ":" Type ";"                                                           -> Requires            {cons("Requires")}
+    "(" "?" "|" "!" ")"                                                                                 -> Asyactions          {cons("Asynactions")}
+    "(" {Type "|"}+ "," {Type "|"}+ "," {Type "|"}+ ")"                                                 -> SwitchTypes         {cons("SwitchTys")}
+    "Condition" "{" "}" ";"                                                                             -> AbstractCondtion    {cons("AbstractCond")}
+    "Requires" Id "[" Amount "]" Asyactions "[" Amount "]" ":" SwitchTypes "{" AbstractCondtion "}" ";" -> RequiresComposition {cons("RequiresComp")}
+
 module interfaces/AnnotationTypes
 imports lexical/Identifiers classes/ClassDeclarations
         interfaces/InterfaceDeclarations interfaces/ConstantDeclarations
@@ -620,7 +677,9 @@ module interfaces/InterfaceDeclarations
 imports lexical/Identifiers lexical/Modifiers names/Main types/Main
         classes/ClassDeclarations classes/MethodDeclarations
         interfaces/ConstantDeclarations interfaces/AnnotationTypes
-        interfaces/Annotations
+        interfaces/Annotations interfaces/Requires
+        interfaces/AbstractMethodDeclarations interfaces/Constraints
+        interfaces/Invariants
 
 exports
   sorts InterfaceDec InterfaceDecHead ExtendsInterfaces InterfaceMemberDec
@@ -632,10 +691,14 @@ exports
     {InterfaceType ","}+                                  -> ExtendsInterfaces {cons("ExtendsInterfaces")}
 
   context-free syntax
-    ConstantDec  -> InterfaceMemberDec 
-    ClassDec     -> InterfaceMemberDec 
-    InterfaceDec -> InterfaceMemberDec 
-    ";"          -> InterfaceMemberDec {cons("Semicolon")}
+    ConstantDec       -> InterfaceMemberDec 
+    Constraint        -> InterfaceMemberDec 
+    ClassDec          -> InterfaceMemberDec 
+    InterfaceDec      -> InterfaceMemberDec 
+    AbstractMethodDec -> InterfaceMemberDec 
+    Requires          -> InterfaceMemberDec 
+    Invariant         -> InterfaceMemberDec 
+    ";"               -> InterfaceMemberDec {cons("Semicolon")}
 
   context-free syntax
     Public  -> InterfaceMod 
@@ -773,7 +836,7 @@ exports
     MethodDecHead MethodBody                                  -> MethodDec     {cons("MethodDec")}
     Anno* MethodMod* ResultType Id "(" {FormalParam ","}* ")" -> MethodDecHead {cons("MethodDecHead")}
     Type                                                      -> ResultType    
-    "void"                                                    -> ResultType    {cons("Void")}
+    "Void"                                                    -> ResultType    {cons("Void")}
 
   sorts FormalParam
 
@@ -879,8 +942,8 @@ exports
   sorts Public Private Native
 
   context-free syntax
-    "public"  -> Public   {cons("Public")}
-    "private" -> Private  {cons("Private")}
+    "Public"  -> Public   {cons("Public")}
+    "Private" -> Private  {cons("Private")}
     "Native"  -> Native   {cons("Native")}
     Public    -> Modifier 
     Private   -> Modifier 
@@ -903,8 +966,8 @@ exports
     "class"        -> Keyword 
     "Class"        -> Keyword 
     "const"        -> Keyword 
+    "Constraint"   -> Keyword 
     "continue"     -> Keyword 
-    "Controller"   -> Keyword 
     "default"      -> Keyword 
     "do"           -> Keyword 
     "double"       -> Keyword 
@@ -925,6 +988,7 @@ exports
     "Int"          -> Keyword 
     "interface"    -> Keyword 
     "Interface"    -> Keyword 
+    "Invariant"    -> Keyword 
     "long"         -> Keyword 
     "native"       -> Keyword 
     "new"          -> Keyword 
@@ -951,18 +1015,20 @@ exports
     "transient"    -> Keyword 
     "try"          -> Keyword 
     "void"         -> Keyword 
+    "Void"         -> Keyword 
     "volatile"     -> Keyword 
     "while"        -> Keyword 
 
   lexical restrictions
     "abstract" "assert" "boolean" "Boolean" "break" "byte" "case" "catch" "char"
-    "class" "Class" "const" "continue" "default" "do" "double" "else" "enum"
-    "extends" "final" "finally" "float" "for" "goto" "if" "implements" "import"
-    "instanceof" "in" "int" "Int" "real" "Real" "interface" "Interface" "long"
-    "native" "new" "package" "Package" "private" "Private" "protected" "public"
-    "Public" "real" "Real" "return" "short" "static" "strictfp" "super" "switch"
-    "synchronized" "this" "throw" "throws" "transient" "try" "void" "volatile"
-    "while" -/- [A-Za-z0-9\_\$]
+    "class" "Class" "const" "Constraint" "continue" "default" "do" "double"
+    "else" "enum" "extends" "final" "finally" "float" "for" "goto" "if"
+    "implements" "import" "instanceof" "in" "int" "Int" "real" "Real"
+    "interface" "Interface" "Invariant" "long" "native" "new" "package"
+    "Package" "private" "Private" "protected" "public" "Public" "real" "Real"
+    "return" "short" "static" "strictfp" "super" "switch" "synchronized" "this"
+    "throw" "throws" "transient" "try" "void" "Void" "volatile" "while"
+    -/- [A-Za-z0-9\_\$]
 
 module lexical/Identifiers
 imports lexical/Keywords

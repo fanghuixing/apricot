@@ -6,8 +6,8 @@ exports
     Native
 
   context-free syntax
-    "public"       -> Public       {cons("Public")}
-    "private"      -> Private      {cons("Private")}
+    "Public"       -> Public       {cons("Public")}
+    "Private"      -> Private      {cons("Private")}
 
     "Native"       -> Native       {cons("Native")}
 

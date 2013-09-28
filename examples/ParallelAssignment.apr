@@ -1,0 +1,5 @@
+Package com.fofo.core;
+
+Interface Assignment ParallelAssignment{
+	
+}

@@ -138,12 +138,31 @@ signature
                             : Private -> InterfaceMod
                             : Public -> InterfaceMod
     Semicolon               : InterfaceMemberDec
+                            : Invariant -> InterfaceMemberDec
+                            : Requires -> InterfaceMemberDec
+                            : AbstractMethodDec -> InterfaceMemberDec
                             : InterfaceDec -> InterfaceMemberDec
                             : ClassDec -> InterfaceMemberDec
+                            : Constraint -> InterfaceMemberDec
                             : ConstantDec -> InterfaceMemberDec
     ExtendsInterfaces       : List(InterfaceType) -> ExtendsInterfaces
     InterfaceDecHead        : List(Anno) * List(InterfaceMod) * Option(ExtendsInterfaces) * Id -> InterfaceDecHead
     InterfaceDec            : InterfaceDecHead * List(InterfaceMemberDec) -> InterfaceDec
+    AbstractInvariant       : AbstractInvariant
+                            : AbstractInvariant -> Invariant
+    ClockConstraint         : ClockConstraint
+                            : ClockConstraint -> Constraint
+                            : Public -> AbstractMethodMod
+    DeprAbstractMethodDec   : List(Anno) * List(AbstractMethodMod) * ResultType * Id * List(FormalParam) * List(Dim) -> AbstractMethodDec
+    AbstractMethodDec       : List(Anno) * List(AbstractMethodMod) * ResultType * Id * List(FormalParam) * RequiresComposition -> AbstractMethodDec
+    AbstractMethodDec       : List(Anno) * List(AbstractMethodMod) * ResultType * Id * List(FormalParam) -> AbstractMethodDec
+    RequiresComp            : Id * Amount * Asyactions * Amount * SwitchTypes * AbstractCondtion -> RequiresComposition
+    AbstractCond            : AbstractCondtion
+    SwitchTys               : List(Type) * List(Type) * List(Type) -> SwitchTypes
+    Asynactions             : Asyactions
+    Requires                : Id * Amount * Type -> Requires
+    AmOneOrZero             : Amount
+    AmGeOne                 : Amount
                             : Public -> ConstantMod
     ConstantDec             : List(ConstantMod) * Type * List(VarDec) -> ConstantDec
     ConstantDec             : List(Anno) * Type * List(VarDec) -> ConstantDec

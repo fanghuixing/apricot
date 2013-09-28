@@ -1,9 +1,0 @@
-module expressions/ClassInstanceCreation
-imports
-  expressions/Main
-  classes/ClassDeclarations
-
-exports
-  context-free syntax
-
-             "new" TypeArgs? ClassOrInterfaceType "(" {Expr ","}* ")" ClassBody? -> Expr {cons("NewInstance")}

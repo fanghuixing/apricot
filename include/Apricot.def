@@ -71,6 +71,10 @@ imports
   interfaces/InterfaceDeclarations
   interfaces/AnnotationTypes
   interfaces/Annotations
+  interfaces/Requires
+  interfaces/AbstractMethodDeclarations
+  interfaces/Constraints
+  interfaces/Invariants
 
 module names/Main
 imports
@@ -610,6 +614,78 @@ exports
     "[" Expr "]" -> DimExpr {cons("Dim")}
     "[" "]"      -> Dim     {cons("Dim")}
 
+module interfaces/Invariants
+
+exports
+	sorts
+		Invariant
+		
+		
+	context-free syntax
+		AbstractInvariant -> Invariant
+		"Invariant" "{" "}" ";" -> AbstractInvariant{cons("AbstractInvariant")}
+
+module interfaces/Constraints
+
+exports
+	sorts
+		Constraint
+		
+		
+		
+	context-free syntax
+		ClockConstraint -> Constraint
+		"Constraint" "clock" ";" -> ClockConstraint {cons("ClockConstraint")}
+
+module interfaces/AbstractMethodDeclarations
+imports
+  lexical/Modifiers
+  names/Main
+  types/Main
+  classes/MethodDeclarations
+  interfaces/Requires
+
+exports
+  sorts
+    AbstractMethodDec
+    AbstractMethodMod
+
+  context-free syntax
+    Anno* AbstractMethodMod* ResultType
+      Id "(" {FormalParam ","}* ")"  ";" -> AbstractMethodDec {cons("AbstractMethodDec")}
+
+	Anno* AbstractMethodMod* ResultType
+      Id "(" {FormalParam ","}* ")" "{" RequiresComposition "}" ";" -> AbstractMethodDec {cons("AbstractMethodDec")}
+	
+    Anno* AbstractMethodMod* ResultType
+      Id "(" {FormalParam ","}* ")" Dim+  ";" -> AbstractMethodDec {cons("DeprAbstractMethodDec")}
+
+    Public   -> AbstractMethodMod
+
+module interfaces/Requires
+imports
+	types/Main
+	
+exports
+	sorts
+		Requires
+		RequiresComposition
+		
+		
+	context-free syntax
+		"1..*" -> Amount {cons("AmGeOne")}
+		"0..1" -> Amount {cons("AmOneOrZero")}
+		
+		"Requires" Id "[" Amount "]" ":" Type ";" -> Requires {cons("Requires")}
+		
+		"(" "?" "|" "!" ")" -> Asyactions {cons("Asynactions")}
+		"(" {Type "|"}+ "," {Type "|"}+ "," {Type "|"}+ ")" -> SwitchTypes {cons("SwitchTys")}
+		
+		"Condition" "{" "}" ";" -> AbstractCondtion{cons("AbstractCond")}
+		
+		"Requires" Id "[" Amount "]" Asyactions "[" Amount "]" ":" SwitchTypes 
+		"{" AbstractCondtion  "}" ";" -> RequiresComposition {cons("RequiresComp")}
+
 module interfaces/AnnotationTypes
 imports
   lexical/Identifiers
@@ -670,6 +746,10 @@ imports
   interfaces/ConstantDeclarations
   interfaces/AnnotationTypes
   interfaces/Annotations
+  interfaces/Requires
+  interfaces/AbstractMethodDeclarations
+  interfaces/Constraints
+  interfaces/Invariants
 
 exports
   sorts
@@ -689,8 +769,12 @@ exports
 
   context-free syntax
     ConstantDec       -> InterfaceMemberDec
+    Constraint   	  -> InterfaceMemberDec
     ClassDec          -> InterfaceMemberDec
     InterfaceDec      -> InterfaceMemberDec
+    AbstractMethodDec -> InterfaceMemberDec
+    Requires		  -> InterfaceMemberDec
+    Invariant		  -> InterfaceMemberDec
     ";"               -> InterfaceMemberDec {cons("Semicolon")}
 
   context-free syntax
@@ -911,7 +995,7 @@ exports
 
     (Anno)* (MethodMod)* ResultType Id "(" {FormalParam ","}* ")"      -> MethodDecHead {cons("MethodDecHead")}    	
     Type   -> ResultType
-    "void" -> ResultType {cons("Void")}
+    "Void" -> ResultType {cons("Void")}
 
   sorts FormalParam
   context-free syntax
@@ -1073,8 +1157,8 @@ exports
     Native
 
   context-free syntax
-    "public"       -> Public       {cons("Public")}
-    "private"      -> Private      {cons("Private")}
+    "Public"       -> Public       {cons("Public")}
+    "Private"      -> Private      {cons("Private")}
 
     "Native"       -> Native       {cons("Native")}
 
@@ -1099,8 +1183,8 @@ exports
     "class"         -> Keyword
     "Class"         -> Keyword
     "const"         -> Keyword
+    "Constraint"	-> Keyword
     "continue"      -> Keyword
-    "Controller"	-> Keyword
     "default"       -> Keyword
     "do"            -> Keyword
     "double"        -> Keyword
@@ -1121,6 +1205,7 @@ exports
     "Int"           -> Keyword
     "interface"     -> Keyword
     "Interface"     -> Keyword
+    "Invariant"		-> Keyword
     "long"          -> Keyword
     "native"        -> Keyword
     "new"           -> Keyword
@@ -1147,6 +1232,7 @@ exports
     "transient"     -> Keyword
     "try"           -> Keyword
     "void"          -> Keyword
+    "Void"			-> Keyword
     "volatile"      -> Keyword
     "while"         -> Keyword
 
@@ -1164,7 +1250,8 @@ exports
     "char"     
     "class"
     "Class"
-    "const"    
+    "const"   
+    "Constraint" 
     "continue" 
     "default"  
     "do"       
@@ -1188,6 +1275,7 @@ exports
     "Real"        
     "interface"  
     "Interface"
+    "Invariant"
     "long"       
     "native"     
     "new"        
@@ -1212,7 +1300,8 @@ exports
     "throws"       
     "transient"    
     "try"          
-    "void"         
+    "void"    
+    "Void"     
     "volatile"     
     "while"       -/- [A-Za-z0-9\_\$]
 

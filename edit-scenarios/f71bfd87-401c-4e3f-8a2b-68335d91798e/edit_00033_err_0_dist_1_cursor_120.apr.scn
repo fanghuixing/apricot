@@ -1,0 +1,10 @@
+Package com.fofo.core;
+
+Interface System{
+	
+	Requires plants[1..*] : Plant;
+	Requires controllers[1..*] : Controller;
+	Void Init();
+	
+	
+}

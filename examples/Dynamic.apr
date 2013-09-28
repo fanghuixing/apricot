@@ -1,0 +1,7 @@
+Package com.fofo.core;
+
+Interface Dynamic{
+	Void Continuous();
+	Invariant{};
+	Native Start();	
+}

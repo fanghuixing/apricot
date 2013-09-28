@@ -1,0 +1,8 @@
+Package com.fofo.core;
+
+Interface System{
+	
+	Requires plants[1..*] : Controller;
+	
+	
+}

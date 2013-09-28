@@ -1,7 +1,0 @@
-Package com.fofo.core;
-
-Interface System{
-	
-	Requires Plants[1..*] : Plant;
-	
-}

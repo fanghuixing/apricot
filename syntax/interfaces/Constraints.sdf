@@ -1,0 +1,13 @@
+module interfaces/Constraints
+
+exports
+	sorts
+		Constraint
+		
+		
+		
+	context-free syntax
+		ClockConstraint -> Constraint
+		"Constraint" "clock" ";" -> ClockConstraint {cons("ClockConstraint")}
+		
+		

@@ -1,0 +1,21 @@
+StartApricot(
+  CompilationUnit(
+    Some(
+      PackageDec(
+        []
+      , PackageName([Id("com"), Id("fofo"), Id("core")])
+      )
+    )
+  , []
+  , [ InterfaceDec(
+        InterfaceDecHead(
+          []
+        , []
+        , Some(ExtendsInterfaces([InterfaceType(TypeName(Id("Assignment")))]))
+        , Id("SequentialAssignment")
+        )
+      , []
+      )
+    ]
+  )
+)

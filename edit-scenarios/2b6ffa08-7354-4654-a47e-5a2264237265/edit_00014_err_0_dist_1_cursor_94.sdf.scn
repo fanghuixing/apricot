@@ -1,9 +1,0 @@
-module Apricot
-
-imports 
-	expressions/Main
-	types/Main
-	lexical/Main
-	names/Main
-	interfaces/M
-

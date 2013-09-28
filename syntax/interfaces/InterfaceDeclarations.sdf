@@ -9,6 +9,10 @@ imports
   interfaces/ConstantDeclarations
   interfaces/AnnotationTypes
   interfaces/Annotations
+  interfaces/Requires
+  interfaces/AbstractMethodDeclarations
+  interfaces/Constraints
+  interfaces/Invariants
 
 exports
   sorts
@@ -28,8 +32,12 @@ exports
 
   context-free syntax
     ConstantDec       -> InterfaceMemberDec
+    Constraint   	  -> InterfaceMemberDec
     ClassDec          -> InterfaceMemberDec
     InterfaceDec      -> InterfaceMemberDec
+    AbstractMethodDec -> InterfaceMemberDec
+    Requires		  -> InterfaceMemberDec
+    Invariant		  -> InterfaceMemberDec
     ";"               -> InterfaceMemberDec {cons("Semicolon")}
 
   context-free syntax

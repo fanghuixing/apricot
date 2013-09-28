@@ -1,0 +1,38 @@
+StartApricot(
+  CompilationUnit(
+    Some(
+      PackageDec(
+        []
+      , PackageName([Id("com"), Id("fofo"), Id("core")])
+      )
+    )
+  , []
+  , [ InterfaceDec(
+        InterfaceDecHead([], [], None(), Id("Plant"))
+      , [ Requires(Id("dy"), AmGeOne(), ClassOrInterfaceType(TypeName(Id("Dynamic"))))
+        , Requires(Id("ass"), AmGeOne(), ClassOrInterfaceType(TypeName(Id("Assignment"))))
+        , Requires(Id("sy"), AmOneOrZero(), ClassOrInterfaceType(TypeName(Id("System"))))
+        , AbstractMethodDec(
+            []
+          , []
+          , Void()
+          , Id("Composition")
+          , []
+          , RequiresComp(
+              Id("coms")
+            , AmGeOne()
+            , Asynactions()
+            , AmOneOrZero()
+            , SwitchTys(
+                [ClassOrInterfaceType(TypeName(Id("Dynamic"))), ClassOrInterfaceType(TypeName(Id("System")))]
+              , [ClassOrInterfaceType(TypeName(Id("Assignment")))]
+              , [ClassOrInterfaceType(TypeName(Id("Dynamic"))), ClassOrInterfaceType(TypeName(Id("System")))]
+              )
+            , AbstractCond()
+            )
+          )
+        ]
+      )
+    ]
+  )
+)

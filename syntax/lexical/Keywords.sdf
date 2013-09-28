@@ -14,8 +14,8 @@ exports
     "class"         -> Keyword
     "Class"         -> Keyword
     "const"         -> Keyword
+    "Constraint"	-> Keyword
     "continue"      -> Keyword
-    "Controller"	-> Keyword
     "default"       -> Keyword
     "do"            -> Keyword
     "double"        -> Keyword
@@ -36,6 +36,7 @@ exports
     "Int"           -> Keyword
     "interface"     -> Keyword
     "Interface"     -> Keyword
+    "Invariant"		-> Keyword
     "long"          -> Keyword
     "native"        -> Keyword
     "new"           -> Keyword
@@ -62,6 +63,7 @@ exports
     "transient"     -> Keyword
     "try"           -> Keyword
     "void"          -> Keyword
+    "Void"			-> Keyword
     "volatile"      -> Keyword
     "while"         -> Keyword
 
@@ -79,7 +81,8 @@ exports
     "char"     
     "class"
     "Class"
-    "const"    
+    "const"   
+    "Constraint" 
     "continue" 
     "default"  
     "do"       
@@ -103,6 +106,7 @@ exports
     "Real"        
     "interface"  
     "Interface"
+    "Invariant"
     "long"       
     "native"     
     "new"        
@@ -127,6 +131,7 @@ exports
     "throws"       
     "transient"    
     "try"          
-    "void"         
+    "void"    
+    "Void"     
     "volatile"     
     "while"       -/- [A-Za-z0-9\_\$]

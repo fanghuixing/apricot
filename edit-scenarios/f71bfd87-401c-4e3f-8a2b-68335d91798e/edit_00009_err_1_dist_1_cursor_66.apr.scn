@@ -1,0 +1,10 @@
+Package com.fofo.core;
+
+Interface System{
+	
+	Requires dy[1..*] : D
+	Requires plants[1..*] : Controller;
+	
+	
+	
+}

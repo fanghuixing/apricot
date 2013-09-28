@@ -1,0 +1,15 @@
+Package com.fofo.core;
+
+Interface Controller{
+	Constraint clock;
+	Requires dy[1..*] : Dynamic;
+	Requires ass[1..*] : Assignment;
+	
+	Void Composition(){
+		Requires coms[1..*](?|!)[0..1] : (Dynamic,Assignment,Dynamic)
+		{
+			Condition{};
+		};
+	};
+	
+}

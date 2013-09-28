@@ -1,7 +1,0 @@
-module lexical/Main
-imports
-  lexical/Identifiers
-  lexical/Keywords
-  lexical/LineTerminators
-  lexical/WhiteSpace
-  lexical/literals/M

@@ -1,0 +1,10 @@
+Package com.fofo.core;
+
+Interface System{
+	
+	Requires dy[1..*] : Dynamic;
+	Requires a[1..*] : Controller;
+	Requires as
+	
+	
+}

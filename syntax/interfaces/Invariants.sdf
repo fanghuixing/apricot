@@ -1,0 +1,10 @@
+module interfaces/Invariants
+
+exports
+	sorts
+		Invariant
+		
+		
+	context-free syntax
+		AbstractInvariant -> Invariant
+		"Invariant" "{" "}" ";" -> AbstractInvariant{cons("AbstractInvariant")}
