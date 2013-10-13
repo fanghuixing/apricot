@@ -4,21 +4,28 @@ title: Apricot
 tagline: An object-oriented modeling language for hybrid systems
 ---
 
-#XtextApricot Update Site for Eclipse#
+###XtextApricot Update Site for Eclipse###
 XtextApricot is an Eclipse plugin for Apricot language, 
-you can install the plugin in Eclipse using this url, for more details, see   <a href="#Install the Plugin">'Install the Plugin'</a>:
+you can install the plugin in Eclipse using this URL (as below). 
+For more details, see   <a href="#Install the Plugin">'Install the Plugin'</a>:
 
     http://fanghuixing.github.io/XtextApricot/
 
 
 
----
-#Contents#
+----------
+#User Guide Contents for Apricot#
 1. <a href="#Install the Plugin">Install the Plugin</a>
 
 2. <a href="#Create New Apricot Project">Create New Apricot Project</a>
 
----
+3. Apricot Syntax
+
+4. Case Study -- Modeling Subway Control System in Apricot
+
+
+
+----------
 
 <br>
 ## <a name="Install the Plugin"> 1. Install the Plugin </a> ##
