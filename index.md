@@ -8,7 +8,17 @@ tagline: An object-oriented modeling language for hybrid systems
 
     http://fanghuixing.github.io/XtextApricot/
 
-## Install the Plugin##
+
+
+---
+#Contents#
+1. <a href="Install the Plugin">Install the Plugin</a>
+
+2. <a href="Create New Apricot Project">Create New Apricot Project</a>
+
+---
+
+## <a name="Install the Plugin"> 1. Install the Plugin </a> ##
 
 In the 'Help' menu of eclipse, select 'Install New Software...'
 
@@ -43,7 +53,7 @@ After the installation, you have to restart Eclipse.
 ![Install New Software](assets/figs/restart.jpg)
 
 
-##Create New Apricot Project##
+## <a name="Create New Apricot Project">2. Create New Apricot Project</a>##
 At first, select 'File'->'New'->'Project':
 
 ![Create New Project](assets/figs/newproject.jpg)
