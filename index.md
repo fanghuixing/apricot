@@ -18,6 +18,7 @@ tagline: An object-oriented modeling language for hybrid systems
 
 ---
 
+<br>
 ## <a name="Install the Plugin"> 1. Install the Plugin </a> ##
 
 In the 'Help' menu of eclipse, select 'Install New Software...'
@@ -53,6 +54,8 @@ After the installation, you have to restart Eclipse.
 ![Install New Software](assets/figs/restart.jpg)
 
 
+
+<br>
 ## <a name="Create New Apricot Project">2. Create New Apricot Project</a>##
 At first, select 'File'->'New'->'Project':
 
