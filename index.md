@@ -1,8 +1,10 @@
 ---
 layout: page
 title: Apricot
-tagline: An object-oriented language for hybrid systems
+tagline: An object-oriented modeling language for hybrid systems
 ---
+
+
 {% include JB/setup %}
 
 
