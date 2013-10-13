@@ -43,6 +43,26 @@ After the installation, you have to restart Eclipse.
 ![Install New Software](assets/figs/restart.jpg)
 
 
+##Create New Apricot Project##
+At first, select 'File'->'New'->'Project':
+
+![Create New Project](assets/figs/newproject.jpg)
+
+
+Select 'Apricot Project', then click 'Next':
+
+![Create New Project](assets/figs/selectapricot.jpg)
+
+
+Set the project name, then click 'Finish':
+
+
+![Create New Project](assets/figs/projectname.jpg)
+
+
+Now, we get the new Apricot project, the interfaces are listed in the package 'com.fofo.apricot', the example model class is in the package 'model':
+
+![Create New Project](assets/figs/projectview.jpg)
 
 {% include JB/setup %}
 
