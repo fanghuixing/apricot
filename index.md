@@ -14,10 +14,11 @@ For more details, see   <a href="#Install the Plugin">'Install the Plugin'</a>:
 
 
 ----------
-#User Guide Contents for Apricot#
+#User Guide Contents#
 1. <a href="#Install the Plugin">Install the Plugin</a>
 
 2. <a href="#Create New Apricot Project">Create New Apricot Project</a>
+
 
 3. Apricot Syntax
 
