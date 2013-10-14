@@ -88,6 +88,11 @@ Now, we get the new Apricot project, the interfaces are listed in the package 'c
 
 ![Create New Project](assets/figs/projectview.jpg)
 
+
+***
+<img src="http://fanghuixing.github.io/assets/images/name.jpg" style="FLOAT: right; MARGIN-BOTTOM: 0px; MARGIN-right: 5px;height: 30px;width: 82px;">
+<script type="text/javascript">
+
 {% include JB/setup %}
 
 
