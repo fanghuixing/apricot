@@ -3,7 +3,7 @@ layout: page
 title: <font color="blue">Apricot </font>
 ---
 <center>
-<font color="blue">#An object-oriented modeling language for hybrid systems#</font>
+<font color="blue">An object-oriented modeling language for hybrid systems</font>
 <center>
 <img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 450px;"/>
 </center>  
