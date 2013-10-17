@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Apricot : An object-oriented modeling language for hybrid systems
+title: Apricot 
+An object-oriented modeling language for hybrid systems
 ---
 
 ###XtextApricot Update Site for Eclipse###
