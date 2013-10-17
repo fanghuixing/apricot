@@ -9,11 +9,8 @@ title: Apricot
 
 ---
 
- 
-<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
-
 #The Architecture of Apricot#
-
+<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
 
 ---
 
