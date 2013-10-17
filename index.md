@@ -4,11 +4,8 @@ title: Apricot
 tagline: An object-oriented modeling language for hybrid systems
 ---
 
-<center>    
-<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
-</center>
 
----
+
 
 ###XtextApricot Update Site for Eclipse###
 XtextApricot is an Eclipse plugin for Apricot language, 
@@ -96,7 +93,9 @@ Now, we get the new Apricot project, the interfaces are listed in the package 'c
 
 
 ***
-
+<center>    
+<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
+</center>
 <img src="http://fanghuixing.github.io/assets/images/name.jpg" style="FLOAT: right; MARGIN-BOTTOM: 0px; MARGIN-right: 5px;height: 30px;width: 82px;">
 
 Author: Huixing Fang 
