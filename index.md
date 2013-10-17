@@ -1,9 +1,6 @@
 ---
 layout: page
-title: Apricot 
----
-An object-oriented modeling language for hybrid systems
-<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
+title: Apricot : An object-oriented modeling language for hybrid systems
 ---
 
 
