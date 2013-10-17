@@ -5,7 +5,7 @@ tagline: An object-oriented modeling language for hybrid systems
 ---
 
 <center>    
-<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
+<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 300px;"/>
 </center>
 
 ---
