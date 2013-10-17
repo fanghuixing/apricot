@@ -1,20 +1,18 @@
 ---
 layout: page
-<font style="color:blue">title: Apricot </font>
----
-<center>
-#<font style="color:blue">An object-oriented modeling language for hybrid systems</font>#
-<center>
-<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 450px;"/>
-</center>  
+title: Apricot 
 ---
 
-<center>  
-<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
+An object-oriented modeling language for hybrid systems
+<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
 
-#<font style="color:blue">The Architecture of Apricot</font>#
-</center>
 
+---
+
+##The Architecture of Apricot##
+<div align="center">
+<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 450px;"/>
+</div>
 ---
 
 ###XtextApricot Update Site for Eclipse###
