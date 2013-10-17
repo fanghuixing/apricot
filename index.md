@@ -1,9 +1,9 @@
 ---
 layout: page
-<font style="color:blue">title: Apricot </font>
+<font color="blue">title: Apricot </font>
 ---
 <center>
-<font style="color:blue" size="6"><b>An object-oriented modeling language for hybrid systems</b></font>
+<font color="blue" size="6"><b>An object-oriented modeling language for hybrid systems</b></font>
 <center>
 <img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 450px;"/>
 </center>  
@@ -12,7 +12,7 @@ layout: page
 <center>  
 <img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
 
-<font style="color:blue" size="6"><b>The Architecture of Apricot</b></font>
+<font color="blue" size="6"><b>The Architecture of Apricot</b></font>
 </center>
 
 ---
