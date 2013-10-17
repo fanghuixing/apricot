@@ -3,12 +3,15 @@ layout: page
 title: Apricot 
 ---
 
-##An object-oriented modeling language for hybrid systems##
 
-<div align="center">
-<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 450px;"/>
-</div>
 
+
+<table>
+    <tr>
+        <td><img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/></td>
+        <td>An object-oriented modeling language for hybrid systems/td>
+    </tr>
+</table>
 ---
 
 ##The Architecture of Apricot##
