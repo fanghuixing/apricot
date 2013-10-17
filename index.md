@@ -3,7 +3,9 @@ layout: page
 title: Apricot
 tagline: An object-oriented modeling language for hybrid systems
 ---
-
+<center>
+![APricot](assets/figs/apricot.jpg)
+</center>
 ###XtextApricot Update Site for Eclipse###
 XtextApricot is an Eclipse plugin for Apricot language, 
 you can install the plugin in Eclipse using this URL (as below). 
