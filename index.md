@@ -3,15 +3,18 @@ layout: page
 title: Apricot 
 ---
 
-#An object-oriented modeling language for hybrid systems#
+##An object-oriented modeling language for hybrid systems##
 
+<div align="center">
 <img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 450px;"/>
+</div>
 
 ---
 
-#The Architecture of Apricot#
+##The Architecture of Apricot##
+<div align="center">
 <img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
-
+</div>
 ---
 
 ###XtextApricot Update Site for Eclipse###
