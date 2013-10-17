@@ -6,7 +6,7 @@ layout: page
 title: Apricot 
 tagline: An object-oriented modeling language for hybrid systems
 ---
-  
+<center>  
 <img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
 </center>
 
