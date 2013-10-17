@@ -1,7 +1,13 @@
 ---
 layout: page
 title: Apricot 
-An object-oriented modeling language for hybrid systems
+tagline: An object-oriented modeling language for hybrid systems
+---
+
+<center>    
+<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
+</center>
+
 ---
 
 ###XtextApricot Update Site for Eclipse###
@@ -90,6 +96,7 @@ Now, we get the new Apricot project, the interfaces are listed in the package 'c
 
 
 ***
+
 <img src="http://fanghuixing.github.io/assets/images/name.jpg" style="FLOAT: right; MARGIN-BOTTOM: 0px; MARGIN-right: 5px;height: 30px;width: 82px;">
 
 Author: Huixing Fang 
@@ -97,7 +104,6 @@ Author: Huixing Fang
 fang.huixing@gmail.com
 
 {% include JB/setup %}
-
 
 
 
