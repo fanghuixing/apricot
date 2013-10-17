@@ -13,7 +13,7 @@ title: Apricot
 
 ##The Architecture of Apricot##
 <div align="center">
-<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 400px;"/>
+<img src="assets/figs/structure.jpg" alt="Apricot Architecture"  style="width: 450px;"/>
 </div>
 ---
 
