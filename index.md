@@ -131,7 +131,7 @@ fang.huixing@gmail.com
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>
-  
+<a href="http://www.apricotresearch.com#disqus_thread">Link</a>  
 	
 {% include JB/setup %}
 
