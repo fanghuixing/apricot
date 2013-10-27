@@ -1,5 +1,6 @@
 ---
 layout: page
+category : Great Food
 title: "Taguo"
 comments: true
 description: "Taguo"
