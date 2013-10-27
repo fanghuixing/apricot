@@ -5,9 +5,6 @@ comments: true
 title: "Taguo"
 description: "Taguo"
 ---
-
-
-
 <center>    
 <img src="assets/figs/taguo.jpg" alt="Taguo" width="450px"/>
 </center>
