@@ -18,8 +18,7 @@ Taguo has long been a traditional food in Huizhou of Anhui province. During the 
 
 In the 3rd Road of Laojie Street in the Tunxi district of Huangshan, there is a special snack store that provides Taguo of various types.
 Taguo is mainly made of wheat flour, but some are also made of rice flour or corn flour. The flavor of Taguo is decided by the fillings. Ingredients include Chinese toon sprouts, soy beans, flowers of the Chinese scholar tree, and cowpeas, leeks and carrots.
-
-
+***
 
 
 {% include JB/setup %}
