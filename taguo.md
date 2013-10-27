@@ -7,12 +7,11 @@ description: "Taguo"
 
 
 <center>    
-<img src="assets/figs/taguo.jpg" alt="Taguo"/>
+<img src="assets/figs/taguo.jpg" alt="Taguo" width="450px"/>
 </center>
 <center> 
-<img src="assets/figs/taguo2.jpg" alt="Taguo"/>
+<img src="assets/figs/taguo2.jpg" alt="Taguo" width="450px"/>
 </center>
-
 ***
 
 
