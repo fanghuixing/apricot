@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Taguo"
+comments: true
 description: "Taguo"
 ---
 
