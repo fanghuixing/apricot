@@ -1,0 +1,6 @@
+img.qtipImg {
+    max-width: 450px; 
+    width: 450px;
+    width:expression(this.width > 450 ? "450px" : this.width);
+    overflow:hidden;
+}
