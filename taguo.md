@@ -4,13 +4,13 @@ title: "Taguo"
 description: "Taguo"
 ---
 
-<link rel="stylesheet" type="text/css" href="assets/image.css">
+
 
 <center>    
-<img src="assets/figs/taguo.jpg" alt="Taguo" class="qtipImg"/>
+<img src="assets/figs/taguo.jpg" alt="Taguo"/>
 </center>
 <center> 
-<img src="assets/figs/taguo2.jpg" alt="Taguo" class="qtipImg"/>
+<img src="assets/figs/taguo2.jpg" alt="Taguo"/>
 </center>
 
 ***
