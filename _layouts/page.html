@@ -2,7 +2,8 @@
 layout: default
 ---
 
-% if page.comments %
+{% if page.comments %}
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -30,7 +31,8 @@ layout: default
     }());
 </script>
 <a href="http://www.apricotresearch.com#disqus_thread">Link</a>  
-% endif %
+
+{% endif %}
 
 {% include JB/setup %}
 {% include themes/twitter/page.html %}
