@@ -27,7 +27,7 @@ Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 
 
 3. <a href="#Apricot Syntax">Apricot Syntax</a>
 
-4. <a href="#Case Study">Case Study -- Modeling Subway Control System in Apricot</a>
+4. <a href="cases/subway/subwaycontrolsystems.html">Case Study -- Modeling Subway Control System in Apricot</a>
 
 
 
