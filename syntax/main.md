@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Main"
-description: ""
+title: "Apricot Syntax"
+description: "Apricot Syntax"
 ---
 {% include JB/setup %}
