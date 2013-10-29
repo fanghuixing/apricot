@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Subwaycontrolsystems"
-description: ""
+title: "Subway Control Systems"
+description: "Subway Control Systems"
 ---
 {% include JB/setup %}
