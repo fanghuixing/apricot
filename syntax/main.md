@@ -186,6 +186,6 @@ We provides a comprehensive collection of mathematical functions and operators. 
 * $log(b,x)$, the base b logarithm of $x$, i.e. $\log_b(x)$.
 * $erf(x)$, the error function (Gauss error function) at $x$, i.e. $erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x{e^{t^2}dt}$.
 * $gamma(x)$, the gamma function at $x$.
-* $max(x_1,...,x_n)$, the maximum value in the set ${x_i \mid 1 \leq i \leq n }$.
+* $max(x_1,...,x_n)$, the maximum value in the set $\\{x_i \mid 1 \leq i \leq n \\}$.
 * $min(x_1,...,x_n)$, the minimum value in the set $\\{x_i \mid 1 \leq i \leq n \\}$.
 {% include JB/setup %}
