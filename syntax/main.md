@@ -164,7 +164,7 @@ Special Symbol numbers:
 We provides a comprehensive collection of mathematical functions and operators. These mathematical operations are defined on Real numbers ($\mathcal{R}$).
 
 * $dot(x,n)$, n-th order derivative of $x$ over time ($t$), i.e. $dot(x,n)=\frac{d^n x}{dt^n}$.
-* $dot(x,y,n)$,n-th order derivative of $x$ over $y$, i.e. $dot(x,y,n)=\frac{d^n x}{d y^n}$.
+* $dot(x,y,n)$,n-th order derivative of $x$ over $y$, i.e. $dot(x,y,n)={d^n x}/{d y^n}$.
 * Standard trigonometric functions: $sin$,    $cos$,    $tan$,    $cot$,    $sec$ and    $csc$.
 * $round(x)$, round $x$ to the nearest integer, omitting decimal fractions smaller than $0.5$, e.g. $round(2.5)=3$, $round(0.4)=0$.
 * $floor(x)$, round $x$ towards $-Inf$, e.g. $round(2.5)=2$.
