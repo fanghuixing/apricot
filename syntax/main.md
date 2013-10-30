@@ -33,4 +33,14 @@ ${\tt W}$, ${\tt X}$, ${\tt Y}$, ${\tt Z}$
 $\\}$.
 
 ## Types, Values, and Variables
+The types of the Apricot  language are divided into two categories:
+mathematic types and reference types. 
+
+$$
+\begin{align*}
+ Type ::= & PrimitiveType \mid MathematicType  \\
+          & \mid  ReferenceType ;\\
+\end{align*}
+$$
+
 {% include JB/setup %}
