@@ -36,13 +36,6 @@ In which the letter is defied as the character in the set
 
 <h1>Types, Values, and Variables</h1>
 
-<p>The types of the Apricot  language are divided into two categories:
-mathematic types and reference types. 
-\[ \begin{align*}
- Type ::= & PrimitiveType \mid MathematicType  \\
-          & \mid  ReferenceType ;\\
-\end{align*}
- \]</p>
 
 
 {% include JB/setup %}
