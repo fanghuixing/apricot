@@ -12,8 +12,7 @@ $$
  Letter  &::=& {\tt a \mid b \mid ... \mid z \mid A \mid B \mid ... \mid Z} ;\\
  Digit  &::=& {\tt 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \mid 0};\\
  ValidChar  &::=&  Letter   ~\mid~  Digit ;\\
- IdChar &::=& Letter ~|~ \tt \_;\\
- Identifier  &::=&  IdChar  \{ IdChar  ~ \mid~  Digit  \}^*.
+ Identifier  &::=& \tt ^?(~a..z~|~A..Z~|~_~) (~a..z~|~A..Z~|~_~|~0..9~)*;.
 \end{eqnarray*}
 $$
 
@@ -164,7 +163,7 @@ Special Symbol numbers:
 We provides a comprehensive collection of mathematical functions and operators. These mathematical operations are defined on Real numbers ($\mathcal{R}$).
 
 * $dot(x,n)$, n-th order derivative of $x$ over time ($t$), i.e. $dot(x,n)=\frac{d^n x}{dt^n}$.
-* $dot(x,y,n)$,n-th order derivative of $x$ over $y$, i.e. $dot(x,y,n)={d^n x}/{d y^n}$.
+* $dot(x,y,n)$,n-th order derivative of $x$ over $y$, i.e. $dot(x,y,n)=\frac{d^n x}{d y^n}$.
 * Standard trigonometric functions: $sin$,    $cos$,    $tan$,    $cot$,    $sec$ and    $csc$.
 * $round(x)$, round $x$ to the nearest integer, omitting decimal fractions smaller than $0.5$, e.g. $round(2.5)=3$, $round(0.4)=0$.
 * $floor(x)$, round $x$ towards $-Inf$, e.g. $round(2.5)=2$.
