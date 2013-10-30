@@ -7,7 +7,7 @@ description: "Apricot Syntax"
 <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> 
 </script>
 
-<div>
+
 <h1>Identifiers</h1>
 <p>An <em>identifier</em> is an unlimited-length (but the length is greater than one) sequence of letters and digits, but not a Keyword:
 \[ \begin{eqnarray*}
@@ -43,6 +43,6 @@ mathematic types and reference types.
           & \mid  ReferenceType ;\\
 \end{align*}
  \]</p>
-</div>
+
 
 {% include JB/setup %}

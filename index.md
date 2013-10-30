@@ -4,10 +4,6 @@ comments: true
 title: Apricot 
 tagline: An object-oriented modeling language for hybrid systems
 ---
-
-
-
-
 ###XtextApricot Update Site for Eclipse###
 XtextApricot is an Eclipse plugin for Apricot language, 
 you can install the plugin in Eclipse using this URL (as below). 
@@ -19,7 +15,8 @@ The plugin is developed on <a href="http://www.eclipse.org">Eclipse</a> (Version
 Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 2.4.3
 
 ----------
-#User Guide Contents#
+
+# User Guide Contents
 
 1. <a href="#Install the Plugin">Install the Plugin</a>
 
@@ -35,7 +32,8 @@ Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 
 ----------
 
 <br>
-## <a name="Install the Plugin"> 1. Install the Plugin </a> ##
+
+## <a name="Install the Plugin"> 1. Install the Plugin </a> 
 
 In the 'Help' menu of eclipse, select 'Install New Software...'
 
@@ -72,7 +70,8 @@ After the installation, you have to restart Eclipse.
 
 
 <br>
-## <a name="Create New Apricot Project">2. Create New Apricot Project</a>##
+
+## <a name="Create New Apricot Project">2. Create New Apricot Project</a>
 At first, select 'File'->'New'->'Project':
 
 ![Create New Project](assets/figs/newproject.jpg)
