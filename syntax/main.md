@@ -9,7 +9,7 @@ description: "Apricot Syntax"
 
 
 An *identifier* is an unlimited-length (but the length is greater than one) sequence of letters and digits, but not a Keyword:
-$$latex
+$$
 \begin{eqnarray*}
  Letter  &::=& {\tt a \mid b \mid ... \mid z \mid A \mid B \mid ... \mid Z} ;\\
  Digit  &::=& {\tt 1 \mid 2 \mid 3 \mid4 \mid5 \mid6 \mid7 \mid8 \mid9 \mid0};\\
@@ -19,7 +19,7 @@ $$latex
 \end{eqnarray*}
 $$
 In which the letter is defied as the character in the set 
-$$latex
+$$
 \{{\tt a}, {\tt b}, {\tt c}, {\tt d}, 
 {\tt e}, {\tt f}, {\tt g}, {\tt h}, 
 {\tt i}, {\tt j}, {\tt k}, {\tt l}, {\tt m}, 
@@ -38,7 +38,7 @@ $$
 
 The types of the Apricot  language are divided into two categories:
 mathematic types and reference types. 
-$$latex
+$$
 \begin{align*}
  Type ::= & PrimitiveType \mid MathematicType  \\
           & \mid  ReferenceType ;\\
@@ -49,13 +49,13 @@ Primitive Type is the same as mathematicType except that, primitive type variabl
 can not be shared and has the feature of ``call-by-value" during method calls. 
 Call-by-value requires the evaluation of the arguments before passing them to the definition of the method. Another style is call-by-name which passing the arguments directly to the definition.
 For mathematic and reference types we take the call-by-name style argument passing for method invocation. In addition, there is a difference between mathematic type and reference type. Reference type variables can refer to another object with the same type by the assignment statement. But, the assignment can only change the mathematical value of the object for mathematic type variables. It means that, when a mathematic type variable refers to a methematic type object for the first time, the variable will hold this object all the time and only the mathematical value of this object can be updated.
-$$latex
+$$
 \begin{eqnarray*}
  MathematicType  &::=&   {\tt Int} \mid {\tt Real};\\
 \end{eqnarray*}
 $$
 Accordingly, the primitive type is defined by:
-$$latex
+$$
 \begin{eqnarray*}
  PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
 \end{eqnarray*}
@@ -74,7 +74,7 @@ created array. The values of a reference type are references to objects.
 ## Reference Types and Values
 
 There are four kinds of reference types: class types, interface types, type variables.
-$$latex
+$$
 \begin{align*}
  ReferenceType  ::=&  ClassType  \mid  InterfaceType   \\
                    &  \mid  ArrayType \mid IntervalType ;\\
