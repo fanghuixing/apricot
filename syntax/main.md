@@ -31,7 +31,8 @@ In which the letter is defied as the character in the set
 {\tt R}, {\tt S}, {\tt T}, {\tt U}, {\tt V}, 
 {\tt W}, {\tt X}, {\tt Y}, {\tt Z}
 \}.
- \]</p>
+ \]
+</p>
 
 <h1>Types, Values, and Variables</h1>
 

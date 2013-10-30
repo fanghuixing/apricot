@@ -20,6 +20,7 @@ Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 
 
 ----------
 #User Guide Contents#
+
 1. <a href="#Install the Plugin">Install the Plugin</a>
 
 2. <a href="#Create New Apricot Project">Create New Apricot Project</a>
