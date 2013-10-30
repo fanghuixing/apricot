@@ -43,7 +43,7 @@ $$
 $$
 
 
-### Mathematic Types and Values
+### 2.1 Mathematic Types and Values
 Primitive Type is the same as mathematicType except that, primitive type variable 
 can not be shared and has the feature of ``call-by-value" during method calls. 
 Call-by-value requires the evaluation of the arguments before passing them to the definition of the method. Another style is call-by-name which passing the arguments directly to the definition.
@@ -73,7 +73,7 @@ The numeric types are the integer type *Integer*, and the real number type
 An object is a dynamically created instance of a class type or a dynamically 
 created array. The values of a reference type are references to objects.
 
-### Reference Types and Values
+### 2.2 Reference Types and Values
 
 There are four kinds of reference types: class types, interface types, type variables.
 
@@ -91,7 +91,7 @@ $$
 $$
 
 
-### Variables
+### 2.3 Variables
 
 A variable is a physical quantity name in physical world or a storage location in the memory of computer, and has an associated type that is either a mathematic type or a reference type.
 
@@ -108,7 +108,7 @@ A variable of a reference type ${\tt R}$ can hold a null reference, a reference 
 
 ## 3. Mathematical Operations
 
-### Arithmetic Operators
+### 3.1 Arithmetic Operators
 For $x,y \in \mathcal{R}$, the following arithmetic operators are defined on Real numbers ($\mathcal{R}$):
 
 *  $x + y$,  binary plus, addition;
@@ -121,7 +121,7 @@ For $x,y \in \mathcal{R}$, the following arithmetic operators are defined on Rea
 
 
 
-### Boolean Operators
+### 3.2 Boolean Operators
 Standard boolean operators are defined for all *Boolean* type values $x, y$:
 
 * $==$, equality;
@@ -140,7 +140,7 @@ values are different;
 * ${\tt or}$, the result value of ($x~ {\tt or} ~y$) is ${\tt true}$ if one of the operand values is ${\tt true}$.
 
 
-### Numeric Comparisons
+### 3.3 Numeric Comparisons
  Standard comparison operations are defined for all Real numbers ($\mathcal{R}$), which result in a value of type *Boolean*:
 
 * $==$,   equality;
@@ -159,7 +159,7 @@ Special Symbol numbers:
 * $-Inf$ is stands for $-\infty$, which is equal to itself and less then any other number;
 
 
-### Mathematical Functions
+### 3.4 Mathematical Functions
 We provides a comprehensive collection of mathematical functions and operators. These mathematical operations are defined on Real numbers ($\mathcal{R}$).
 
 * $dot(x,n)$, n-th order derivative of $x$ over time ($t$), i.e. $dot(x,n)=\frac{d^n x}{dt^n}$.
