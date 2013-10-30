@@ -31,6 +31,8 @@ ${\tt R}$, ${\tt S}$, ${\tt T}$, ${\tt U}$, ${\tt V}$,
 ${\tt W}$, ${\tt X}$, ${\tt Y}$, ${\tt Z}$
 $\\}$.
 
+***
+
 ## 2. Types, Values, and Variables
 The types of the Apricot  language are divided into two categories:
 mathematic types and reference types. 
@@ -105,6 +107,8 @@ Mathematic type variables are always hold a mathematic value of that exact mathe
 
 #### Variables of Reference Type
 A variable of a reference type ${\tt R}$ can hold a null reference, a reference to an instance of class *C*, any class that is a subclass of *C*, any class that is a implementation of interface *C* or any array type.
+
+***
 
 ## 3. Mathematical Operations
 
@@ -187,4 +191,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 * $gamma(x)$, the gamma function at $x$.
 * $max(x_1,...,x_n)$, the maximum value in the set $\\{x_i \mid 1 \leq i \leq n \\}$.
 * $min(x_1,...,x_n)$, the minimum value in the set $\\{x_i \mid 1 \leq i \leq n \\}$.
+
+***
+
 {% include JB/setup %}
