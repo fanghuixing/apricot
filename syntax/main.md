@@ -173,7 +173,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 * $fld(x,y)$, floored division, quotient rounded towards $-Inf$.
 * $rem(x,y)$, remainder, satisfies $x = div(x,y)*y + rem(x,y)$, implying that sign of $rem(x,y)$ matches $x$.
 * $mod(x,y)$, modulus; satisfies $x = fld(x,y)*y + mod(x,y)$, implying that sign of $ mod(x,y)$ matches $y$.
-* $gcd(x_1,x_2,...,x_n)$, greatest common divisor of $x_1, x_2, ..., x_n$ with sign matching $x_1$.
+* $gcd(x_1,x_2,...,x_n)$, greatest common divisor of $$x_1, x_2, ..., x_n$$ with sign matching $x_1$.
 * $lcm(x_1,x_2,...,x_n)$, least common multiple of $x_1$, $x_2$, ..., $x_n$ with sign matching $x_1$.
 * $abs(x)$, a positive value with the magnitude of $x$.
 * $sign(x)$, indicates the sign of $x$, returning $-1$, $0$, or $+1$.
