@@ -183,7 +183,6 @@ values are different;</p></li>
 <li>\( max(x_1,...,x_n) \).</li>
 <li>\( min(x_1,...,x_n) \).</li>
 </ul>
-
 </div>
 
 {% include JB/setup %}
