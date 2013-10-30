@@ -1,5 +1,6 @@
 ---
 layout: page
+comments: true
 title: "Subway Control Systems"
 description: "Subway Control Systems"
 ---
