@@ -4,7 +4,7 @@ comments: true
 title: Apricot Syntax
 description: "Apricot Syntax"
 ---
-## Identifiers
+## 1. Identifiers
 An *identifier* is an unlimited-length (but the length is greater than one) sequence of letters and digits, but not a Keyword:
 
 $$
@@ -32,7 +32,7 @@ ${\tt R}$, ${\tt S}$, ${\tt T}$, ${\tt U}$, ${\tt V}$,
 ${\tt W}$, ${\tt X}$, ${\tt Y}$, ${\tt Z}$
 $\\}$.
 
-## Types, Values, and Variables
+## 2. Types, Values, and Variables
 The types of the Apricot  language are divided into two categories:
 mathematic types and reference types. 
 
@@ -106,7 +106,7 @@ Mathematic type variables are always hold a mathematic value of that exact mathe
 #### Variables of Reference Type
 A variable of a reference type ${\tt R}$ can hold a null reference, a reference to an instance of class *C*, any class that is a subclass of *C*, any class that is a implementation of interface *C* or any array type.
 
-## Mathematical Operations
+## 3. Mathematical Operations
 
 ### Arithmetic Operators
 For $x,y \in \mathcal{R}$, the following arithmetic operators are defined on Real numbers ($\mathcal{R}$):
