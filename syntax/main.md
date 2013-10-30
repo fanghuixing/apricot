@@ -17,7 +17,7 @@ description: "Apricot Syntax"
  IDChar &::=& Letter ~|~ \tt \_;\\
  Identifier  &::=&  IDChar  \{ IDChar  ~ \mid~  Digit  \}^*.
 \end{eqnarray*}
- \]
+\]
 </div>
 
 {% include JB/setup %}
