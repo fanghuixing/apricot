@@ -12,7 +12,7 @@ $$
  Letter  &::=& {\tt a \mid b \mid ... \mid z \mid A \mid B \mid ... \mid Z} ;\\
  Digit  &::=& {\tt 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \mid 0};\\
  ValidChar  &::=&  Letter   ~\mid~  Digit ;\\
- Identifier  &::=& \tt \^ ? (~a..z~|~A..Z~|~_~) (~a..z~|~A..Z~|~_~|~0..9~)*;.
+ Identifier  &::=& \tt \textasciicircum ? (~a..z~|~A..Z~|~_~) (~a..z~|~A..Z~|~_~|~0..9~)*;.
 \end{eqnarray*}
 $$
 
