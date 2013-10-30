@@ -55,6 +55,7 @@ $$
  MathematicType  &::=&   {\tt Int} \mid {\tt Real};\\
 \end{eqnarray*}
 $$
+
 Accordingly, the primitive type is defined by:
 
 $$
