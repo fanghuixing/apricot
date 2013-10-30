@@ -17,9 +17,7 @@ $$
 \end{eqnarray*}
 $$
 
-In which the letter is defied as the character in the set 
-$$
-\\{ {\tt a}, {\tt b}, {\tt c}, {\tt d}, 
+In which the letter is defied as the character in the set $$\\{ {\tt a}, {\tt b}, {\tt c}, {\tt d}, 
 {\tt e}, {\tt f}, {\tt g}, {\tt h}, 
 {\tt i}, {\tt j}, {\tt k}, {\tt l}, {\tt m}, 
 {\tt n}, {\tt o}, {\tt p}, {\tt q}, {\tt r}, 
@@ -30,7 +28,7 @@ $$
 {\tt M}, {\tt N}, {\tt O}, {\tt P}, {\tt Q}, 
 {\tt R}, {\tt S}, {\tt T}, {\tt U}, {\tt V}, 
 {\tt W}, {\tt X}, {\tt Y}, {\tt Z}
-\\}.
-$$
+\\}.$$
 
+# Types, Values, and Variables
 {% include JB/setup %}
