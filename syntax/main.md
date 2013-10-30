@@ -12,7 +12,7 @@ $$
  Letter  &::=& {\tt a .. z \mid A .. Z} ;\\
  Digit  &::=& {\tt 0 .. 9};\\
  ValidChar  &::=&  Letter   ~\mid~  Digit ;\\
- Identifier  &::=& \tt \verb!^! ? (~Letter~|~\_~) (~Letter~|~\_~|~Digit~)*;.
+ Identifier  &::=& \tt \verb!^! ? (~Letter~|~\_~) (~ValidChar~|~\_~)*;.
 \end{eqnarray*}
 $$
 
