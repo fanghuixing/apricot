@@ -217,8 +217,8 @@ The class declaration of train:
 		}
 		
 		//create dynamics with acceleration and boundaries
-		Dynamic 
-			createDynamics(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
+		Dynamic createDynamics
+			(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
 			TrainBehavior dy = createBaseDynamics(acceleration);
 			dy.setPosVelBound(fromPos,toPos,fromVel,toVel);
 			return dy; 
