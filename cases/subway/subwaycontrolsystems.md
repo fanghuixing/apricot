@@ -210,8 +210,8 @@ The class declaration of train:
 		
 		//create dynamics only with acceleration
 		Dynamic createBaseDynamics(real acceleration){
-			TrainBehavior
- 					dy = new TrainBehavior(this.position, this.velocity, this.direction);
+			TrainBehavior 
+            dy = new TrainBehavior(this.position, this.velocity, this.direction);
 			dy.setAcceleration(acceleration);
 			return dy;
 		}
