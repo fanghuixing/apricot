@@ -45,6 +45,11 @@ The subway line is depicted as:
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
 
 
+The structure of the model of subway control system:
+
+![Model Structure]({{ BASE_PATH }}/assets/figs/systemstructure.png)
+
+
 #### The continuous behavior of train:
 
 	package model.train;
