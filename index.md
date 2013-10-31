@@ -9,7 +9,7 @@ XtextApricot is an Eclipse plugin for Apricot language,
 you can install the plugin in Eclipse using this URL (as below). 
 For more details, see   <a href="#Install the Plugin">'Install the Plugin'</a>:
 
-    http://fanghuixing.github.io/XtextApricot/
+    http://www.fanghuixing.com/XtextApricot/
 
 The plugin is developed on <a href="http://www.eclipse.org">Eclipse</a> (Version: Kepler Release,
 Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 2.4.3
@@ -43,17 +43,21 @@ The 'Install' window will appear, and click 'Add' to add a new Repository.
 
 ![Install New Software](assets/figs/add.jpg)
 
-Type the name of the repository (we use 'Apricot' here), and the location 'http://fanghuixing.github.io/XtextApricot/', then click 'OK'
+Type the name of the repository (we use 'Apricot' here), and the location 'http://www.fanghuixing.com/XtextApricot/', then click 'OK'
 
 ![Install New Software](assets/figs/AddRepository.jpg)
 
-You will see the available software, the name and the version information, select  all as the below, and click 'next'
+You will see the available software, the name and the version information, select  all as the below, and click 'Next':
 
 ![Install New Software](assets/figs/availiable.jpg)
 
-It will calculate the dependency and requirement, at last, the 'Install Details' would come up, now click 'Finish'
+It will calculate the dependencies and requirements (about 5 minutes), at last, the 'Install Details' would come up, now click 'Next':
 
 ![Install New Software](assets/figs/install.jpg)
+
+Then, accept the license, click 'Finish':
+
+![Install New Software](assets/figs/acceptlicense.jpg)
 
 It will install the plugin,
 
