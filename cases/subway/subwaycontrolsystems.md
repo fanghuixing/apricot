@@ -99,7 +99,7 @@ The class declaration of train:
 			}
 			
 			
-			//from run and stablerun to near
+			//from run or stablerun to near
 			tau({run, stablerun},,near){
 				Condition{
 					abs(S-position) <= 500;	
@@ -121,7 +121,7 @@ The class declaration of train:
 				};
 			}
 			
-			//from near
+			//from near or urgent_recover
 			stop()({near,urgent_recover},,stopAtStation){
 				Condition{
 					abs(S-position) <= 1;  
