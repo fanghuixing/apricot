@@ -61,9 +61,7 @@ Then, accept the license, click 'Finish':
 
 It will install the plugin,
 
-<center>
-![Install New Software](assets/figs/installing.jpg)
-</center>
+->![Install New Software](assets/figs/installing.jpg)<-
 
 If you see a security warning, just click 'OK'.
 
