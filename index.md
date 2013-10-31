@@ -75,16 +75,19 @@ It will install the plugin,
 
 If you see a security warning, just click 'OK'.
 
-{:.center}
+<div style="text-align:center" markdown="1">
+
 ![Install New Software](assets/figs/warning.jpg)
 
+</div>
 
 After the installation, you have to restart Eclipse. 
 
-{:.center}
+<div style="text-align:center" markdown="1">
+
 ![Install New Software](assets/figs/restart.jpg)
 
-
+</div>
 
 <br>
 
@@ -98,15 +101,19 @@ At first, select 'File'->'New'->'Project':
 
 Select 'Apricot Project', then click 'Next':
 
-<center>
+<div style="text-align:center" markdown="1">
+
 ![Create New Project](assets/figs/selectapricot.jpg)
-</center>
+
+</div>
 
 Set the project name, then click 'Finish':
 
-<center>
+<div style="text-align:center" markdown="1">
+
 ![Create New Project](assets/figs/projectname.jpg)
-</center>
+
+</div>
 
 Now, we get the new Apricot project, the interfaces are listed in the package 'com.fofo.apricot', the example model class is in the package 'model':
 
