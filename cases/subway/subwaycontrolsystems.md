@@ -7,5 +7,218 @@ description: "Subway Control Systems"
 
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
 
+The class declaration of train:
+	package model.train;
+	import com.fofo.apricot.*;
+	import model.doorsystem.TrainDoorController;
+	import model.doorsystem.DoorSystem;  
+	import model.train.TrainBehavior;
+	import model.Wait;
+	import model.utility.Configure;
+	import model.utility.Physics;
+	class Train implements Plant{		
+
+		// add dynamics and controllers	
+		Constant int traindooramount = 3;
+		Constant int len = 2; // the length of a door, 2 m.
+		Constant int vel = 1; // the velocity of opening a door, 1 m/s.
+		real S;// position of station
+		
+		DoorSystem tds = new DoorSystem(traindooramount, new TrainDoorController(), len, vel);
+		Controller trainController;
+		
+		Real position;
+		Real velocity;
+		Int direction;
+		real DELAY;
+		int index;//the index for stations	
+		Configure cfg;
+		Physics phy;
+		private real maxpos;
+		
+		//Dynamics :
+		Wait init = new Wait([0,DELAY]);
+		Wait stopAtStation = new Wait([0,Inf]);
+		Wait changeDirection = new Wait([0,30]);
+		TrainBehavior run = createBaseDynamics(0.5);
+		TrainBehavior near = createBaseDynamics(0);
+		TrainBehavior stablerun = createBaseDynamics(0);
+		TrainBehavior urgent_dec = createBaseDynamic(-1.5);
+		TrainBehavior urgent_stop = createBaseDynamics(0);
+		TrainBehavior urgent_inc = createBaseDynamics(0.5);
+		TrainBehavior urgent_recover = createBaseDynamics(-0.5);
+		
+		
+		void Composition(){
+			//from init
+			stop()(init,,stopAtStation){
+				Condition{
+					init.getTime() == DELAY;	
+				};
+				Discrete{	
+					stopAtStation.reset();				
+				};
+			}
+			
+			//from stopAtStation
+			start()(stopAtStation,,changeDirection){
+				Condition{
+					(index==0 and direction==-1)
+					or
+					(index==getStationAmount() and direction==1);
+				};
+				Discrete{
+					changeDirection.reset();	
+				};
+			}
+			
+			start()(stopAtStation,,run){
+				Condition{
+					(index>0 and direction==-1)
+					or
+					(index<getStationAmount()-1 and direction==1);
+				};
+				Discrete{
+					index = index + direction;
+					//S refers to the target station's position
+					S = cfg.getStationPosOf(index);
+					this.setPosVelBound(run);
+				};
+			}
+			
+			//from changeDirection
+			stop()(changeDirection,,stopAtStation){
+				Condition{
+					changeDirection.getTime() == 30;
+				};
+				Discrete{
+					resetDirection();	
+					stopAtStation.reset();
+				};
+			}
+			
+			
+			//from run and stablerun to near
+			tau({run, stablerun},,near){
+				Condition{
+					abs(S-position) <= 500;	
+				};
+				Discrete{
+					near.setAcceleration(
+						phy.calAccFromVelAndDis(velocity, abs(S-position))
+					);	
+				};
+			}
+			
+			tau(run,,stablerun){
+				Condition{
+					velocity == 20;
+				};
+				Discrete{
+					stablerun.setAcceleration(0);
+					this.setPosVelBoundWithParas(stablerun,S,500,20,20);
+				};
+			}
+			
+			//from near
+			stop()({near,urgent_recover},,stopAtStation){
+				Condition{
+					abs(S-position) <= 1;  
+					velocity in [0, 0.1];
+				};
+				Discrete{
+					velocity = 0;
+					position = S;
+					stopAtStation.reset();
+				};
+			}
+						
+			urStop(?)( {stablerun, run , near, urgent_inc, urgent_recover}, , urgent_dec){
+				Condition{
+					true;
+				};
+				Discrete{
+					this.setPosVelBoundWithParas(urgent_dec,S,0,0,20);
+				};
+			}
+			
+			Train_Urstopped(urgent_dec,, urgent_stop){
+				Condition{
+					velocity <= 0.1;
+				};
+				Discrete{
+					velocity = 0;
+					this.setPosVelBoundWithParas(urgent_stop, S, 0, 0, 0);
+				};			
+			}
+			
+			urStart(?)(urgent_stop,,urgent_inc){
+				Condition{
+					abs(S-position) <= 800;
+				};		
+				Discrete{
+					maxpos = 0.5*(S+position);
+					this.setPosVelBoundWithParas(urgent_stop, maxpos, 0, 0, 20);
+				};
+			}
+			
+			urStart(?)(urgent_stop,,run){
+				Condition{
+					abs(S-position) > 800;
+				};		
+				Discrete{				
+					this.setPosVelBoundWithParas(run, S, 500, 0, 20);
+				};
+			}
+			
+			tau(urgent_inc,,urgent_recover){
+				Condition{
+					position == maxp;
+				};		
+				Discrete{				
+					this.setPosVelBoundWithParas(urgent_recover, S, -1, 0, 20);
+				};
+			}		
+		}
+	
+		void setPosVelBound(TrainBehavior tb){
+			this.setPosVelBoundWithParas(tb, S, 500, 0, 20);
+		}
+		
+		void setPosVelBoundWithParas(TrainBehavior tb, real target, real diff, real fromv, real tov){
+			if (direction==1){
+				tb.setPosVelBound(-Inf,target-diff,fromv,tov);
+			}
+			else{
+				tb.setPosVelBound(target+diff,Inf,fromv,tov);
+			}
+		}
+		
+		void resetDirection(){
+			this.direction = -1 * this.direction;
+		}
+		
+		void setDelay(real delay){
+			this.DELAY = delay;
+		}
+		
+		int getStationAmount(){
+			return cfg.getStationAmount();
+		}
+		
+		//create dynamics only with acceleration
+		Dynamic createBaseDynamics(real acceleration){
+			TrainBehavior dy = new TrainBehavior(this.position, this.velocity, this.direction);
+			dy.setAcceleration(acceleration);
+			return dy;
+		}
+		
+		//create dynamics with acceleration and boundaries
+		Dynamic createDynamics(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
+			TrainBehavior dy = createBaseDynamics(acceleration);
+			dy.setPosVelBound(fromPos,toPos,fromVel,toVel);
+			return dy; 
+		}
+	}
 
 {% include JB/setup %}
