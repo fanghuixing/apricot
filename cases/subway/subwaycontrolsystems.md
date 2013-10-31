@@ -7,6 +7,15 @@ description: "Subway Control Systems"
 We have four trains and four subway stations. The train runs from Station-1 to Station-4, then from Station-4 to Station-1, and so on. Station-1 and Station-4 are the first station and final station, respectively. The train will reach the final station in direction A, and stopped at platform A. After several minutes, it will leave from platform A to platform B. And, its direction will be changed from direction A to direction B, and the train will stop at platform B. Similarly, at the first station, the train will change
 the direction from B to A.
 
+
+| Station  | Position |
+| ---------  | ------ |
+| Station-1  | 0  |
+| Station-2  | 2284  |
+| Station-3  | 3292  |
+| Station-4  | 9097  |
+
+
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
 
 
