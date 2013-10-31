@@ -8,6 +8,7 @@ description: "Subway Control Systems"
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
 
 The class declaration of train:
+
 	package model.train;
 	import com.fofo.apricot.*;
 	import model.doorsystem.TrainDoorController;
@@ -185,7 +186,8 @@ The class declaration of train:
 			this.setPosVelBoundWithParas(tb, S, 500, 0, 20);
 		}
 		
-		void setPosVelBoundWithParas(TrainBehavior tb, real target, real diff, real fromv, real tov){
+		void setPosVelBoundWithParas
+			(TrainBehavior tb, real target, real diff, real fromv, real tov){
 			if (direction==1){
 				tb.setPosVelBound(-Inf,target-diff,fromv,tov);
 			}
@@ -208,13 +210,15 @@ The class declaration of train:
 		
 		//create dynamics only with acceleration
 		Dynamic createBaseDynamics(real acceleration){
-			TrainBehavior dy = new TrainBehavior(this.position, this.velocity, this.direction);
+			TrainBehavior
+ 					dy = new TrainBehavior(this.position, this.velocity, this.direction);
 			dy.setAcceleration(acceleration);
 			return dy;
 		}
 		
 		//create dynamics with acceleration and boundaries
-		Dynamic createDynamics(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
+		Dynamic createDynamics
+		(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
 			TrainBehavior dy = createBaseDynamics(acceleration);
 			dy.setPosVelBound(fromPos,toPos,fromVel,toVel);
 			return dy; 
