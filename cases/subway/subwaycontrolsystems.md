@@ -8,7 +8,7 @@ We have four trains and four subway stations. The train runs from Station-1 to S
 the direction from B to A.
 
 <div align="center">
-<table width="100%" border="1">
+<table width="80%" border="1">
 <thead>
 <tr>
   <th>Station</th>
