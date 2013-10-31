@@ -8,12 +8,12 @@ We have four trains and four subway stations. The train runs from Station-1 to S
 the direction from B to A.
 
 
-| Station  | Position |
-| ---------  | ------ |
-| Station-1  | 0  |
-| Station-2  | 2284  |
-| Station-3  | 3292  |
-| Station-4  | 9097  |
+ Station    | Position 
+ ---------- | ------ 
+ Station-1  | 0  
+ Station-2  | 2284  
+ Station-3  | 3292  
+ Station-4  | 9097  
 
 
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
