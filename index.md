@@ -61,19 +61,26 @@ Then, accept the license, click 'Finish':
 
 It will install the plugin,
 
-->![Install New Software](assets/figs/installing.jpg)<-
+{:.center}
+![Install New Software](assets/figs/installing.jpg) 
+
+
+.center {
+  text-align: center;
+}
+
 
 If you see a security warning, just click 'OK'.
 
-<center>
+{:.center}
 ![Install New Software](assets/figs/warning.jpg)
-</center>
+
 
 After the installation, you have to restart Eclipse. 
 
-<center>
+{:.center}
 ![Install New Software](assets/figs/restart.jpg)
-</center>
+
 
 
 <br>
