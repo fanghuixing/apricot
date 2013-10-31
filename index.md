@@ -61,13 +61,16 @@ Then, accept the license, click 'Finish':
 
 It will install the plugin,
 
-{:.center}
+<div style="text-align:center" markdown="1">
+
+
 ![Install New Software](assets/figs/installing.jpg) 
 
 
-.center {
-  text-align: center;
-}
+</div>
+
+
+
 
 
 If you see a security warning, just click 'OK'.
