@@ -50,7 +50,7 @@ The structure of the model of subway control system:
 
 <div style="text-align:center" markdown="1">
 
-![Model Structure]({{ BASE_PATH }}/assets/figs/systemstructure.png)
+![Model Structure]({{ BASE_PATH }}/assets/figs/systemstructure.jpg)
 
 </div>
 
