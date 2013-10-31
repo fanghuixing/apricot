@@ -38,6 +38,7 @@ The positions of these four stations are:
 </table>
 </div>
 
+
 The subway line is depicted as:
 
 ![Subway Line]({{ BASE_PATH }}/assets/figs/sbwl.jpg)
