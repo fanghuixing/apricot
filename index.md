@@ -96,8 +96,11 @@ After the installation, you have to restart Eclipse.
 ## <a name="Create New Apricot Project">2. Create New Apricot Project</a>
 At first, select 'File'->'New'->'Project':
 
+<div style="text-align:center" markdown="1">
+
 ![Create New Project](assets/figs/newproject.jpg)
 
+</div>
 
 Select 'Apricot Project', then click 'Next':
 
