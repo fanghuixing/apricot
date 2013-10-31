@@ -47,8 +47,11 @@ The subway line is depicted as:
 
 The structure of the model of subway control system:
 
+<div align="center">
+
 ![Model Structure]({{ BASE_PATH }}/assets/figs/systemstructure.png)
 
+</div>
 
 #### The continuous behavior of train:
 
