@@ -14,7 +14,7 @@ The positions of these four stations are:
 <thead>
 <tr>
   <th>Station</th>
-  <th>Position</th>
+  <th>Position (m)</th>
 </tr>
 </thead>
 <tbody align="center">
@@ -38,6 +38,7 @@ The positions of these four stations are:
 </table>
 </div>
 
+<br>
 
 The subway line is depicted as:
 
