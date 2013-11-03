@@ -52,7 +52,11 @@ Type the name of the repository (we use 'Apricot' here), and the location 'http:
 
 ![Install New Software](assets/figs/AddRepository.jpg)
 
->note: if you want to add the repository by an 'Archive', you can download the update file from 'http://xtextapricot.apricotresearch.com/download/XtextApricot.zip'. Download the file XtextApricot.zip, and put it in a local folder, and click 'Archive...' in the 'Add Repository' window, select the zip file, and so on.
+*note: if you want to add the repository by an 'Archive', you can download the update file from* 
+	
+    http://xtextapricot.apricotresearch.com/download/XtextApricot.zip 
+
+*Download XtextApricot.zip, put it in a local folder, and then click 'Archive...' in the 'Add Repository' window, select the zip file you downloaded, and so on.*
 
 
 You will see the available software, the name and the version information, select  all as the below, and click 'Next':
