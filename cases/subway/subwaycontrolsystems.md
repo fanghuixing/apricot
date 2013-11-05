@@ -112,39 +112,39 @@ import model.utility.Configure;
 import model.utility.Physics;
 class Train implements Plant{		
 
-	// add dynamics and controllers	
-	Constant int traindooramount = 3;
-	Constant int len = 2; // the length of a door, 2 m.
-	Constant int vel = 1; // the velocity of opening a door, 1 m/s.
-	real S;// position of station
-	
-	DoorSystem tds = new DoorSystem(traindooramount, new TrainDoorController(), len, vel);
-	Controller trainController;
-	
-	Real position;
-	Real velocity;
-	Int direction;
-	real DELAY;
-	int index;//the index for stations	
-	Configure cfg;
-	Physics phy;
-	private real maxpos;
-	
-	//Dynamics :
-	Wait init = new Wait([0,DELAY]);
-	Wait stopAtStation = new Wait([0,Inf]);
-	Wait changeDirection = new Wait([0,30]);
-	TrainBehavior run = createBaseDynamics(0.5);
-	TrainBehavior near = createBaseDynamics(0);
-	TrainBehavior stablerun = createBaseDynamics(0);
-	TrainBehavior urgent_dec = createBaseDynamic(-1.5);
-	TrainBehavior urgent_stop = createBaseDynamics(0);
-	TrainBehavior urgent_inc = createBaseDynamics(0.5);
-	TrainBehavior urgent_recover = createBaseDynamics(-0.5);
-		
-		
-	  void Composition(){
-      //from init
+  // add dynamics and controllers	
+  Constant int traindooramount = 3;
+  Constant int len = 2; // the length of a door, 2 m.
+  Constant int vel = 1; // the velocity of opening a door, 1 m/s.
+  real S;// position of station
+  
+  DoorSystem tds = new DoorSystem(traindooramount, new TrainDoorController(), len, vel);
+  Controller trainController;
+  
+  Real position;
+  Real velocity;
+  Int direction;
+  real DELAY;
+  int index;//the index for stations	
+  Configure cfg;
+  Physics phy;
+  private real maxpos;
+  
+  //Dynamics :
+  Wait init = new Wait([0,DELAY]);
+  Wait stopAtStation = new Wait([0,Inf]);
+  Wait changeDirection = new Wait([0,30]);
+  TrainBehavior run = createBaseDynamics(0.5);
+  TrainBehavior near = createBaseDynamics(0);
+  TrainBehavior stablerun = createBaseDynamics(0);
+  TrainBehavior urgent_dec = createBaseDynamic(-1.5);
+  TrainBehavior urgent_stop = createBaseDynamics(0);
+  TrainBehavior urgent_inc = createBaseDynamics(0.5);
+  TrainBehavior urgent_recover = createBaseDynamics(-0.5);
+  	
+  	
+    void Composition(){
+	  //from init
       stop()(init,,stopAtStation){
         Condition{
           init.getTime() == DELAY;  
@@ -271,10 +271,10 @@ class Train implements Plant{
         };    
         Discrete{        
           this.setPosVelBoundWithParas(urgent_recover, S, -1, 0, 20);
-        };
-      }    
+          };
+        }    
     }
-  
+    
     void setPosVelBound(TrainBehavior tb){
       this.setPosVelBoundWithParas(tb, S, 500, 0, 20);
     }
@@ -317,8 +317,8 @@ class Train implements Plant{
       return dy; 
     }
   }
-</code>
-</pre>
+  
+  </code></pre>
 
 
 
