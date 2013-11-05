@@ -55,7 +55,7 @@ The structure of the model of subway control system:
 </div>
 
 #### The continuous behavior of train:
-<pre class="prettyprint"><code>
+<pre class="prettyprint linenums"><code>
 package model.train;
 import com.fofo.apricot.Dynamic;
 class TrainBehavior implements Dynamic{
