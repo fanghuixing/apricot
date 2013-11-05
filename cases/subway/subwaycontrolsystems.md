@@ -318,11 +318,15 @@ The structure of the model of subway control system:
 		}
 	}
 
+
+
 <pre class="prettyprint">
-    $(window).load(function(){
-     $("pre").addClass("prettyprint");
-     prettyPrint();
-	})
+
+$(window).load(function(){
+$("pre").addClass("prettyprint");
+prettyPrint();
+})
+
 </pre>
 
 
