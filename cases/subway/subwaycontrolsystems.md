@@ -319,7 +319,10 @@ The structure of the model of subway control system:
 	}
 
 <pre class="prettyprint">
-    Code
+    $(window).load(function(){
+     $("pre").addClass("prettyprint");
+     prettyPrint();
+	})
 </pre>
 
 <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
