@@ -317,7 +317,6 @@ class Train implements Plant{
       return dy; 
     }
   }
-  
 </pre>
 
 
