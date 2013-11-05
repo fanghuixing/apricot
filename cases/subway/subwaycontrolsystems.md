@@ -88,8 +88,8 @@ class TrainBehavior implements Dynamic{
 	
 	void Continuous(){
 		dot(pos,1) == dir*vel;
-		dot(vel,1) == acc;								
-	}
+		dot(vel,1) == acc;
+    }
 	
 	Invariant{
 		pos in [pos1,pos2]; // the limitation can be set in an Assignment
