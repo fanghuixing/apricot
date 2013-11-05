@@ -325,7 +325,6 @@ The structure of the model of subway control system:
 	})
 </pre>
 
-<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
-<script src="prettify.js" type="text/javascript"></script>
+
 
 {% include JB/setup %}
