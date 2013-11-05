@@ -101,7 +101,7 @@ class TrainBehavior implements Dynamic{
 
 
 #### The class declaration of train:
-<pre class="prettyprint"><code>
+<pre class="prettyprint linenums"><code>
 package model.train;
 import com.fofo.apricot.*;
 import model.doorsystem.TrainDoorController;
