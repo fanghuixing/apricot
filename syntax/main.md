@@ -193,6 +193,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 * $min(x_1,...,x_n)$, the minimum value in the set $\\{x_i \mid 1 \leq i \leq n \\}$.
 * $pause(x)$, make a pause for $x$ seconds.
 * $size(x)$, the size of $x$ ($x$ is an array).  
+
 ***
 
 {% include JB/setup %}
