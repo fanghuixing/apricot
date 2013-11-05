@@ -103,15 +103,15 @@ The structure of the model of subway control system:
 #### The class declaration of train:
 <pre class="prettyprint">
 <code>
-	package model.train;
-	import com.fofo.apricot.*;
-	import model.doorsystem.TrainDoorController;
-	import model.doorsystem.DoorSystem;  
-	import model.train.TrainBehavior;
-	import model.Wait;
-	import model.utility.Configure;
-	import model.utility.Physics;
-	class Train implements Plant{		
+package model.train;
+import com.fofo.apricot.*;
+import model.doorsystem.TrainDoorController;
+import model.doorsystem.DoorSystem;  
+import model.train.TrainBehavior;
+import model.Wait;
+import model.utility.Configure;
+import model.utility.Physics;
+class Train implements Plant{		
 
 	// add dynamics and controllers	
 	Constant int traindooramount = 3;
