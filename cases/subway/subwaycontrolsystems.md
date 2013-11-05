@@ -72,8 +72,8 @@ class TrainBehavior implements Dynamic{
     
     TrainBehavior(Real pos, Real vel, Int dir){
         this.pos = pos;
-	    this.vel = vel;
-	    this.dir = dir;
+        this.vel = vel;
+        this.dir = dir;
     }
     
     void setAcceleration(real acc){
