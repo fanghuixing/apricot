@@ -101,7 +101,8 @@ The structure of the model of subway control system:
 
 
 #### The class declaration of train:
-
+<pre class="prettyprint">
+<code>
 	package model.train;
 	import com.fofo.apricot.*;
 	import model.doorsystem.TrainDoorController;
@@ -317,7 +318,8 @@ The structure of the model of subway control system:
 			return dy; 
 		}
 	}
-
+</code>
+</pre>
 
 <pre class="prettyprint">
 <code>
