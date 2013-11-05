@@ -130,7 +130,13 @@ Set the project name, then click 'Finish':
 
 </div>
 
-Now, we get the new Apricot project, the interfaces are listed in the package 'com.fofo.apricot', the example model class is in the package 'model':
+Now, we get the new Apricot project, the interfaces are listed in the package 'com.fofo.apricot', the example model class is in the package 'model'.
+
+---
+
+
+
+As follow, the model code view for our subway control system in Eclipse with XtextApricot installed: 
 
 ![Create New Project](assets/figs/projectview.jpg)
 
