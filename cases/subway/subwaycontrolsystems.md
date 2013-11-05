@@ -55,53 +55,49 @@ The structure of the model of subway control system:
 </div>
 
 #### The continuous behavior of train:
-<pre class="prettyprint">
-<code>
+<pre class="prettyprint"><code>
+package model.train;
+import com.fofo.apricot.Dynamic;
+class TrainBehavior implements Dynamic{
 
-	package model.train;
-	import com.fofo.apricot.Dynamic;
-	class TrainBehavior implements Dynamic{
-
-		Real pos;
-		Real vel;
-		Int dir;	
-		real acc;//acceleration
+	Real pos;
+	Real vel;
+	Int dir;	
+	real acc;//acceleration
+	
+	real pos1; 
+	real pos2;
+	real vel1;
+	real vel2;
+	
+	TrainBehavior(Real pos, Real vel, Int dir){
 		
-		real pos1; 
-		real pos2;
-		real vel1;
-		real vel2;
-		
-		TrainBehavior(Real pos, Real vel, Int dir){
-			
-		}
-		
-		void setAcceleration(real acc){
-			this.acc = acc;
-		}
-		
-		void setPosVelBound(real pos1, real pos2, real vel1, real vel2){
-			this.pos1 = pos1;
-			this.pos2 = pos2;
-			this.vel1 = vel1;
-			this.vel2 = vel2;
-		}
-		
-		
-		void Continuous(){
-			dot(pos,1) == dir*vel;
-			dot(vel,1) == acc;								
-		}
-		
-		Invariant{
-			pos in [pos1,pos2]; // the limitation can be set in an Assignment
-			vel in [vel1,vel2];		
-		};
-
 	}
+	
+	void setAcceleration(real acc){
+		this.acc = acc;
+	}
+	
+	void setPosVelBound(real pos1, real pos2, real vel1, real vel2){
+		this.pos1 = pos1;
+		this.pos2 = pos2;
+		this.vel1 = vel1;
+		this.vel2 = vel2;
+	}
+	
+	
+	void Continuous(){
+		dot(pos,1) == dir*vel;
+		dot(vel,1) == acc;								
+	}
+	
+	Invariant{
+		pos in [pos1,pos2]; // the limitation can be set in an Assignment
+		vel in [vel1,vel2];		
+	};
 
-</code>
-</pre>
+}
+</code></pre>
 
 
 #### The class declaration of train:
