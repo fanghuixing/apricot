@@ -1,0 +1,7 @@
+package com.fofo.apricot;
+import com.fofo.apricot.Assignment;
+
+interface  ParallelAssignment extends Assignment{
+	
+	
+}

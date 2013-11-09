@@ -1,0 +1,19 @@
+package model;
+import com.fofo.apricot.*;
+import model.Wait;
+class ResetTime implements SequentialAssignment{
+	
+	Wait dy1;
+	Wait dy2;
+	
+	ResetTime(Wait dy1, Wait dy2){
+		this.dy1 = dy1;
+		this.dy2 = dy2;
+	}
+	
+	void Discrete(){
+		dy1.reset();
+		dy2.reset();
+	}
+	
+}

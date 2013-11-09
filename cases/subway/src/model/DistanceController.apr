@@ -1,0 +1,42 @@
+package model;
+import model.*;
+import com.fofo.apricot.*;
+import model.train.*;
+
+class DistanceController implements Controller{
+	Train[] train;
+	
+	Wait delay = new Wait([0,100]);
+	
+	Wait wait= new Wait([0,1]);
+	
+	Assignment caldistance = new Calculating(train);
+	
+	DistanceController(Train[] train){
+		this.train = train;
+	}
+	
+	void Composition(){
+		tau(delay, caldistance, wait) {
+			Condition{
+				delay.getTime()==100;
+			};
+			Discrete{
+				wait.reset();	
+			};
+		}
+		tau(wait, caldistance, wait) {
+			Condition{
+				wait.getTime()==1;
+			};
+			Discrete{
+				wait.reset();
+			};
+		}
+	}
+	
+	void setTrains(Train[] train){
+		this.train = train;
+	}
+	
+}

@@ -1,0 +1,7 @@
+package model.utility;
+
+class Physics{
+	real calAccFromVelAndDis(real velocity, real distance){
+		real acc = pow(velocity,2) / (2*distance); 
+	}
+}

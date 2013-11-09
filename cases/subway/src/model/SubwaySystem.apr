@@ -1,0 +1,35 @@
+package model;
+import com.fofo.apricot.*;
+import model.train.Train;
+import model.station.Station;
+import model.DistanceController;
+
+class SubwaySystem implements System{
+	//trains + stations + distance controller
+	Constant real[] DELAY={0, 50, 100, 150};
+	Constant int trainAmount = 4;
+	Constant int stationAmount = 4; 
+	
+	Train[] trains = new Train[trainAmount];
+	Station[] stations = new Station[stationAmount];
+	
+	DistanceController distcon;
+	
+	SubwaySystem(){
+		int i;
+		for(i=0;i<size(trains); i=i+1){
+			trains[i] = new Train(this.DELAY[i]);
+		}		
+		this.distcon = new DistanceController(trains);
+				
+		for(i=0;i<size(stations);i=i+1){
+			stations[i] = new Station();
+		}		
+		
+	}
+	
+	
+	void Init(){
+		//TD
+	}
+}

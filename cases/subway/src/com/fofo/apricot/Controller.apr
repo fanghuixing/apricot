@@ -1,0 +1,22 @@
+package com.fofo.apricot;
+import com.fofo.apricot.Dynamic;
+import com.fofo.apricot.Assignment;
+
+interface Controller{
+	Constraint clock;		
+	Requires dy[1..*] : Dynamic;
+	Requires ass[1..*] : Assignment;
+		
+	
+	void Composition(){		
+		Requires coms[1..*](?|!)[0..1] : 
+		(dys[1..*] : Dynamic, ass[0..1] : Assignment, dyd[1..*] : Dynamic)
+		{
+			Condition{};
+			Discrete{};
+		};
+	};
+	
+}
+
+

@@ -1,0 +1,49 @@
+package model.doorsystem;
+import com.fofo.apricot.*;
+import model.doorsystem.*;
+
+class ScreenDoorSystem extends DoorSystem{
+	Door[] PADoors; // doors on platform A
+	Door[] PBDoors; // doors on platform B
+	DoorController PADController = new DoorController(); //controller for doors on platform A
+	DoorController PBDController = new DoorController(); //controller for doors on platform B
+	
+	ScreenDoorSystem(int amount,int len, int vel){
+		this.doorAmount = amount;
+		PADController.setDoorAmount(amount);
+		PBDController.setDoorAmount(amount);
+		this.len = len;
+		this.vel =vel;
+		PADoors = initDoors(len, vel);
+		PBDoors = initDoors(len, vel);		
+	} 	
+	
+	Door initDoors(real len, real vel){
+		Door[] tmp=new Door[doorAmount];
+		int i;
+		for (i=0;i<doorAmount;i=i+1){			
+			door[i] = new Door(len,vel);					
+		}
+		return tmp;
+	}
+	
+	void setController(Controller padc, Controller pbdc){
+		this.PADController = padc;
+		this.PBDController = pbdc;
+		PADController.setDoorAmount(doorAmount);
+		PBDController.setDoorAmount(doorAmount);
+	}	
+	
+	void Init(){
+		registerComposition(PADoors,PADController);
+		registerComposition(PBDoors,PBDController);
+		
+		PADoors.closed.Start();	//start dynamic closed of doors on platform A	
+		PBDoors.closed.Start();	//start dynamic closed of doors on platform B
+			
+		PADController.closed.Start();	 //start controller of platform A
+		PBDController.closed.Start();	 //start controller of platform B
+	}
+	
+	
+}

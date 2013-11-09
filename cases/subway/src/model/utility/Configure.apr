@@ -1,0 +1,32 @@
+package model.utility;
+
+
+class Configure{
+	Constant int stationAmount = 4;
+	Constant int trainAmount = 4;
+	Constant real[] posStations = {0, 2284, 3292, 9097};
+	real[] delays;
+	
+	
+	
+	Configure(){
+		int i;
+		delays[0] = 0;
+		for(i=1;i<trainAmout;i=i+1){
+			delays[i] = delays[i-1] + 60;			
+		}
+	}
+	
+	//index is a subscript of the array posStations
+	real getStationPosOf(int index){
+		return posStations[index];
+	}
+	
+	real getDelayOf(int index){
+		return delays[index];
+	}
+	
+	int getStationAmount(){
+		return stationAmount;
+	}
+}

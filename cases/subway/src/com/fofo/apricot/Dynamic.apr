@@ -1,0 +1,7 @@
+package com.fofo.apricot;
+
+interface Dynamic{				
+	void Continuous();	
+	Invariant{};		
+	Native void Start();	
+}

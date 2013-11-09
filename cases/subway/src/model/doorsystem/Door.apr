@@ -1,0 +1,52 @@
+package model.doorsystem;
+import com.fofo.apricot.Plant;
+import com.fofo.apricot.Dynamic;
+import model.doorsystem.DoorBehavior;
+class Door implements Plant{
+	real len; // the length of door
+	real vel; // open/close velocity
+	Real distance = 0;
+	Dynamic open;
+	Dynamic closed;
+	Dynamic part;
+	Dynamic shut;
+	
+	
+	Door(real len, real vel){		
+		this.len = len;
+		this.vel = vel;
+		open = new DoorBehavior(distance, 0, [len,len]);
+		closed = new DoorBehavior(distance, 0, [0,0]);
+		part = new DoorBehavior(distance, vel, [0,len]);
+		shut = new DoorBehavior(distance, -vel,[0,len]);
+	}
+	
+	void Composition(){		
+		
+		closeDoor(?)(open, , shut){
+			Condition{true;};
+		}
+		
+		doorClosed(shut,,closed){
+			Condition{
+				distance == 0;
+			};
+		}
+		
+		openDoor(?)(closed,,part){
+			Condition{true;};
+		}
+			
+		doorOpened(part,,open){
+			Condition{
+				distance==2;
+			};
+		}
+		
+		clamping(shut,,part){
+			Condition{
+				distance>=0;
+			};
+		}
+	}
+}

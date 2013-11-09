@@ -1,0 +1,32 @@
+package model.doorsystem;
+import com.fofo.apricot.System;
+import model.doorsystem.DoorController;
+import model.doorsystem.Door;
+
+class DoorSystem implements System{	
+	int doorAmount;
+	real len; // the length of door
+	real vel; // open/close velocity
+	
+	DoorSystem(int amount, real len, real vel){
+		this.doorAmount = amount;
+		this.len = len;
+		this.vel = velicity; 
+	}
+	
+	int getDoorAmount(){
+		return doorAmount;	
+	}
+	
+	void registerComposition(Door[] doors, DoorController controller){
+		for (i=0;i<doorAmount;i=i+1){	
+			doors[i].Composition();															
+			doors[i].closeDoor(!) ~ controller.closeDoor(?);	
+			doors[i].openDoor(?) ~ controller.openDoor(!);	
+		}
+	}
+	
+	void init(){
+		
+	}	
+}

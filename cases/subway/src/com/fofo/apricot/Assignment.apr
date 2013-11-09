@@ -1,0 +1,5 @@
+package com.fofo.apricot;
+
+interface Assignment{			
+	void Discrete();		
+}

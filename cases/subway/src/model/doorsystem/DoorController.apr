@@ -1,0 +1,72 @@
+package model.doorsystem;
+import com.fofo.apricot.*;
+import model.*;
+import model.doorsystem.*;
+class DoorController implements Controller{
+	
+	Wait closed = new Wait([0, Inf]);
+	Wait open = new Wait([0, Inf]);
+	Wait wait = new Wait([0, 1]);
+	CountDoorClosed countDoorClosed = new CountDoorClosed(wait);	
+	int doorAmount;
+	//count the closed doors
+	
+	boolean openflag = false;
+	boolean closeflag = false;
+
+	void setOpenFlag(boolean flag){
+		this.openflag = falg;
+	}
+	
+	void setCloseFlag(boolean flag){
+		this.closeflag = falg;
+	}
+	
+	
+	void setDoorAmount(int amount){
+		this.doorAmount = amount;
+		countDoorClosed.setAmount(amount);
+	}
+
+
+	
+	void Composition(){
+		openDoor(!)(closed,,open){
+			Condition{
+				openflag;
+			};
+			
+			Discrete{
+				openflag = false;
+				open.reset();
+			};
+		}
+		
+		tau(wait, countdoorclosed, wait){
+			Condition{
+				wait.getTime()>=1;
+				count.getAmount() < doorAmount;
+			};			
+		}
+
+		returnBack(wait,,closed){
+			Condition{
+				countdoorclosed.getCount()==doorAmount;
+			};	
+			Discrete{
+				countdoorclosed.setCount() = 0;	
+			};
+		}
+		
+		closeDoor(!)(open,,wait){
+			Condition{
+				closeflag;
+			};
+			
+			Discrete{
+				wait.reset();	
+				closeflag=false;
+			};
+		}					
+	}
+}

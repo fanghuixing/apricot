@@ -1,0 +1,20 @@
+package com.fofo.apricot;
+import com.fofo.apricot.Dynamic;
+import com.fofo.apricot.Assignment;
+import com.fofo.apricot.System;
+import com.fofo.apricot.Controller;
+interface Plant{
+	Requires dy[1..*] : Dynamic;
+	Requires ass[1..*] : Assignment;
+	Requires sy[0..1] : System;	
+	Requires controller[0..1] : Controller;
+	
+	void Composition(){		
+		Requires coms[1..*](?|!)[0..1] : 
+		(dss[1..*] : Dynamic|System, ass[0..1] : Assignment, dsd[1..*] : Dynamic|System)
+		{
+			Condition{};
+			Discrete{};
+		};
+	};
+}

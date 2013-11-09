@@ -1,0 +1,37 @@
+package model;
+import com.fofo.apricot.SequentialAssignment;
+import model.train.Train;
+class Calculating implements SequentialAssignment{
+  Train[] train;  
+  Calculating(Train[] train){
+    this.train = train;    
+  }
+  void Discrete(){
+    int mindis = Inf;
+    for(Train currTrain : train){
+      int currdir = currTrain.getCurrentDirection();
+      real currpos = currTrain.getCurrentPosition();
+      for(Train otherTrain : train){
+        int otherdir = otherTrain.getCurrentDirection();
+        real otherpos = otherTrain.getCurrentPosition();        
+        if(currTrain!=otherTrain and currdir == otherdir){
+          //when two trains are different, but in same direction
+          //calculate the distance between them
+          real distance = currdir * (otherpos - currpos);
+          if(distance<=300 and distance>=0 and distance < mindis){
+            mindis = distance;  
+          }          
+        }//end calculate of distance
+      }      
+      if(mindis < Inf){//the initial value of mindis is Inf
+        currTrain.urStop(!);
+        mindis = Inf;
+      }
+      else if(currTrain in currTrain.urgent_stop){
+        //currTrain can be restart
+        currTrain.urStart(!);
+      }
+    }//end for-loop
+  }//end discrete()
+}//end class Calculating
+

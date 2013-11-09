@@ -1,0 +1,79 @@
+package model.train;
+
+import com.fofo.apricot.*;
+import model.Wait;
+import model.train.Train;
+import model.station.Station;
+import model.doorsystem.ScreenDoorSystem;
+import model.doorsystem.DoorController;
+
+class TrainController implements Controller{
+	Int index;
+	Int direction;
+	
+	Wait idle = new Wait([0,Inf]);
+	Wait wait = new Wait([0,Inf]);
+	
+	Train train;	
+	Station[] stations; 
+	DoorController PSDController;
+	DoorController TDController;
+	
+	
+	TrainController(Train train, Int index, Int direction){
+		this.train = train;
+		this.index = index;
+		this.direction = direction;
+	}
+	
+	void setDoorController(Controller controller){
+		this.TDController = controller;
+	}
+	
+	void Composition(){
+		stop(?)(idle,,preclosecreendoors){
+			Discrete{				
+				idle.reset();
+				pause(5);
+				station = stations[i];				
+				setPSDController(stations[i].getSystem());
+				PSDController.setOpenFlag(true);
+				pause(1);
+				train.openTrainDoors(!);	
+				pause([25,35]);		
+				TDController.setCloseflag(true);		
+			};	
+		}
+		
+		closeScreenDoors(preclosecreendoors,,wait){
+			Condition{
+				TDController in TDController.closed;
+			};
+			Discrete{
+				pause(5);
+				PSDController.setCloseFlag(true);
+			};
+		}
+		
+		start(wait,,idle){
+			Condition{
+				PSDController in PSDController.closed;
+			};			
+			Discrete{
+				pause(5);
+				idle.reset();
+			};
+		}
+		
+	}
+	
+	void setPSDController(ScreenDoorSystem PSDSystem){
+		if(direction==1){
+			PSDControler = PSDSystem.PAController;					
+		}				
+		else{
+			PSDControler = PSDSystem.PBController;
+		}
+	}
+	
+}

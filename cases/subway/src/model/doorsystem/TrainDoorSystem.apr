@@ -1,0 +1,27 @@
+package model.doorsystem;
+import com.fofo.apricot.*;
+import model.doorsystem.*;
+class TrainDoorSystem extends DoorSystem{
+	Door[] doors;		
+	DoorController controller = new DoorController();
+	TrainDoorSystem(int amount, int len, int vel){
+		this.doorAmount = amount;
+		this.len = len;
+		this.vel =vel;
+		controller.setDoorAmount(doorAmount);
+		Door[] tmp=new Door[doorAmount];
+		doors = tmp;
+		int i;
+		for (i=0;i<doorAmount;i=i+1){			
+			doors[i] = new Door(len,vel);					
+		}
+	} 	
+	
+	void Init(){
+		registerComposition(doors,controller);
+		doors.closed.Start();	//start dynamic closed	
+		controller.closed.Start();	 //start controller
+	}
+	
+	
+}

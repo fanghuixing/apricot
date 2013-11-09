@@ -1,0 +1,5 @@
+package com.fofo.apricot;
+import com.fofo.apricot.Assignment;
+interface SequentialAssignment extends Assignment{
+	
+}

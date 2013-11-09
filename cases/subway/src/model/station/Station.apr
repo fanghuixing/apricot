@@ -1,0 +1,24 @@
+package model.station;
+import com.fofo.apricot.*;
+
+import model.doorsystem.ScreenDoorSystem;
+import model.Wait;
+
+//Each station has two platforms
+class Station implements Plant{
+	//Dynamics + PSD System
+	//int amount, Controller padc,  Controller pbdc, int len, int vel
+	Constant int doorAmount=5;
+	Constant int length = 2;
+	Constant int velocity = 1;
+	ScreenDoorSystem psds = new ScreenDoorSystem(doorAmount, length, velocity);	
+	Wait init = new Wait([0,0]);
+	
+	
+	void Composition(){
+		start(init,,psds){}		
+	}
+	
+	
+	
+}

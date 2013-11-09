@@ -1,0 +1,29 @@
+package model.doorsystem;
+import com.fofo.apricot.Dynamic;
+class DoorBehavior implements Dynamic{
+	Real y;
+	
+	int rate;
+	
+	Interval itl;
+	
+	DoorBehavior(Real y, int r, Interval itl){
+		this.y = y;
+    		this.rate = r;
+    		this.itl = irl;
+    }
+    
+	real getDoorSideDistance(){
+		return y;
+	}
+	
+    
+	
+	void Continuous(){
+		dot(y,1) == rate;
+	}
+	
+	Invariant{
+		y in itl;
+	};		
+}
