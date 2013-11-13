@@ -16,7 +16,7 @@ or, you can use this URL:
     http://www.fanghuixing.com/XtextApricot/
 
 XtextApricot is developed on <a href="http://www.eclipse.org">Eclipse</a> (Version: Kepler Release,
-Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 2.4.3. You can get the source code of from <a href="https://github.com/fanghuixing/XtextApricot/tree/gh-pages/source">here</a>.
+Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 2.4.3. You can get the source code of XtextApricot from <a href="https://github.com/fanghuixing/XtextApricot/tree/gh-pages/source">here</a>.
 
 ----------
 
