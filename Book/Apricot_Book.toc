@@ -1,12 +1,27 @@
-\contentsline {chapter}{Preliminary Background of Hybrid Systems}{15}{chapter*.5}
-\contentsline {chapter}{Apricot: An Object-Oriented Modeling Language for Hybrid Systems}{17}{chapter*.6}
-\contentsline {section}{Case Study: Subway Control Systems}{17}{section*.7}
-\contentsline {chapter}{XtextApricot: A Modeling Tool for Apricot}{19}{chapter*.8}
-\contentsline {chapter}{Formal Verification for Apricot Models}{21}{chapter*.9}
-\contentsline {chapter}{Simulation and Analysis for Apricot Models}{23}{chapter*.10}
-\contentsline {chapter}{Animation and Visualization for Apricot Models}{25}{chapter*.11}
-\contentsline {chapter}{Feedback-Advancement Framework in Apricot}{27}{chapter*.12}
-\contentsline {chapter}{Discussions}{29}{chapter*.13}
-\contentsline {chapter}{Conclusions}{31}{chapter*.14}
-\contentsline {chapter}{Useful Links}{33}{chapter*.15}
-\contentsfinish 
+\contentsline {schapter}{List of Figures}{xi}{chapter*.3}
+\contentsline {schapter}{List of Tables}{xiii}{chapter*.4}
+\contentsline {schapter}{Foreword}{xv}{chapter*.5}
+\contentsline {schapter}{Introduction}{xvii}{chapter*.6}
+\contentsline {part}{I\hspace {1em}The Modeling Language}{1}{part.1}
+\contentsline {chapter}{\numberline {1}The Syntax of Apricot}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Identifiers}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Types, Values, and Variables}{3}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Mathematic Types and Values}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Reference Types and Values}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Variables}{5}{subsection.1.2.3}
+\contentsline {subsubsection}{\numberline {1.2.3.1}Variables of Mathematic Type}{5}{subsubsection.1.2.3.1}
+\contentsline {subsubsection}{\numberline {1.2.3.2}Variables of Reference Type}{5}{subsubsection.1.2.3.2}
+\contentsline {section}{\numberline {1.3}Mathematical Operations}{5}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Arithmetic Operators}{5}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Boolean Operators}{6}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Numeric Comparisons}{6}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {1.3.4}Mathematical Functions}{6}{subsection.1.3.4}
+\contentsline {chapter}{\numberline {2}Operational Semantics for Apricot}{9}{chapter.2}
+\contentsline {chapter}{\numberline {3}The Application on Subway Control Systems}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Case Study: Subway Control Systems}{11}{section.3.1}
+\contentsline {part}{II\hspace {1em}Verification and Synthesis}{13}{part.2}
+\contentsline {chapter}{\numberline {4}Formal Verification}{15}{chapter.4}
+\contentsline {part}{III\hspace {1em}Simulation and Analysis}{17}{part.3}
+\contentsline {part}{IV\hspace {1em}Animation and Visualization}{19}{part.4}
+\contentsline {part}{V\hspace {1em}Feedback-Advancement Framework}{21}{part.5}
+\contentsline {part}{VI\hspace {1em}Conclusion}{23}{part.6}
