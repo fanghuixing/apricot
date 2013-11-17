@@ -46,7 +46,7 @@ $$
 
 
 ### 2.1 Mathematic Types and Values
-Primitive Type is the same as mathematicType except that, primitive type variable 
+Primitive type variable 
 can not be shared and has the feature of ``call-by-value" during method calls. 
 Call-by-value requires the evaluation of the arguments before passing them to the definition of the method. Another style is call-by-name which passing the arguments directly to the definition.
 For mathematic and reference types we take the call-by-name style argument passing for method invocation. In addition, there is a difference between mathematic type and reference type. Reference type variables can refer to another object with the same type by the assignment statement. But, the assignment can only change the mathematical value of the object for mathematic type variables. It means that, when a mathematic type variable refers to a methematic type object for the first time, the variable will hold this object all the time and only the mathematical value of this object can be updated.
