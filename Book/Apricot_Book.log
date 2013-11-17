@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.21)  17 NOV 2013 23:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2013.1.21)  17 NOV 2013 23:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -447,7 +447,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 305.
  [3]
-Underfull \vbox (badness 3884) has occurred while \output is active []
+Underfull \vbox (badness 1655) has occurred while \output is active []
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -568,7 +568,7 @@ texlive/2012/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><d:/texlive/2012/t
 exmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><d:/texlive/2012/texmf-dist/fonts
 /type1/urw/times/utmb8a.pfb><d:/texlive/2012/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb><d:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Apricot_Book.pdf (42 pages, 530524 bytes).
+Output written on Apricot_Book.pdf (42 pages, 530508 bytes).
 PDF statistics:
  526 PDF objects out of 1000 (max. 8388607)
  443 compressed objects within 5 object streams

@@ -44,8 +44,18 @@ $$
 \end{align*}
 $$
 
+### 2.1 Primitive Types
 
-### 2.1 Mathematic Types and Values
+The primitive type is defined by:
+$$
+\begin{eqnarray*}
+ PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
+\end{eqnarray*}
+$$
+
+The Boolean type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
+
+### 2.2 Mathematic Types and Values
 Primitive type variable 
 can not be shared and has the feature of ``call-by-value" during method calls. 
 Call-by-value requires the evaluation of the arguments before passing them to the definition of the method. Another style is call-by-name which passing the arguments directly to the definition.
@@ -57,15 +67,6 @@ $$
 \end{eqnarray*}
 $$
 
-Accordingly, the primitive type is defined by:
-
-$$
-\begin{eqnarray*}
- PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
-\end{eqnarray*}
-$$
-
-
 * Mathematic types : Numeric types. 
 The numeric types are the integer type *Int*, and the real number type
 *Real*;
@@ -74,7 +75,7 @@ The numeric types are the integer type *Int*, and the real number type
 An object is a dynamically created instance of a class type or a dynamically 
 created array. The values of a reference type are references to objects.
 
-### 2.2 Reference Types and Values
+### 2.3 Reference Types and Values
 
 There are four kinds of reference types: class types, interface types, type variables.
 
@@ -92,7 +93,7 @@ $$
 $$
 
 
-### 2.3 Variables
+### 2.4 Variables
 
 A variable is a physical quantity name in physical world or a storage location in the memory of computer, and has an associated type that is either a mathematic type or a reference type.
 
