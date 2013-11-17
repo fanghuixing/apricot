@@ -54,7 +54,7 @@ $$
 \end{eqnarray*}
 $$
 
-The Boolean type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
+The Boolean type represents a logical quantity in the literals set $\\{ {\tt true}, {\tt false}\\}$.
 
 ### 2.2 Mathematic Types and Values
 Primitive type variable 
