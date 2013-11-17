@@ -34,7 +34,7 @@ $\\}$.
 ***
 
 ## 2. Types, Values, and Variables
-The types of the Apricot  language are divided into two categories:
+The types of the Apricot  language are divided into three categories: primitive type,
 mathematic types and reference types. 
 
 $$
