@@ -47,6 +47,7 @@ $$
 ### 2.1 Primitive Types
 
 The primitive type is defined by:
+
 $$
 \begin{eqnarray*}
  PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
