@@ -6,11 +6,12 @@
 \contentsline {chapter}{\numberline {1}The Syntax of Apricot}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Identifiers}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Types, Values, and Variables}{3}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Mathematic Types and Values}{4}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}Reference Types and Values}{4}{subsection.1.2.2}
-\contentsline {subsection}{\numberline {1.2.3}Variables}{5}{subsection.1.2.3}
-\contentsline {subsubsection}{\numberline {1.2.3.1}Variables of Mathematic Type}{5}{subsubsection.1.2.3.1}
-\contentsline {subsubsection}{\numberline {1.2.3.2}Variables of Reference Type}{5}{subsubsection.1.2.3.2}
+\contentsline {subsection}{\numberline {1.2.1}Primitive Types}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Mathematic Types and Values}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Reference Types and Values}{4}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Variables}{5}{subsection.1.2.4}
+\contentsline {subsubsection}{\numberline {1.2.4.1}Variables of Mathematic Type}{5}{subsubsection.1.2.4.1}
+\contentsline {subsubsection}{\numberline {1.2.4.2}Variables of Reference Type}{5}{subsubsection.1.2.4.2}
 \contentsline {section}{\numberline {1.3}Mathematical Operations}{5}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Arithmetic Operators}{5}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}Boolean Operators}{6}{subsection.1.3.2}

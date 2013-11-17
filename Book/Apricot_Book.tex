@@ -297,40 +297,36 @@ $\}$.
 
 
 \section{Types, Values, and Variables}
-The types of the Apricot  language are divided into three categories: primitive type,
+The types of the Apricot  language are divided into three categories: primitive types,
 mathematic types and reference types. 
 
 \begin{align*}
- Type ::= & PrimitiveType \mid MathematicType  \\
-          & \mid  ReferenceType ;\\
+ Type ::= & PrimitiveType \mid MathematicType  \mid  ReferenceType ;\\
 \end{align*}
 
+\subsection{Primitive Types}
 
+
+The primitive type is defined by:
+\begin{eqnarray*}
+ PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
+\end{eqnarray*}
+The Boolean
+type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
 
 \subsection{Mathematic Types and Values}
-Primitive Type is the same as mathematicType except that, primitive type variable 
+Primitive type variable 
 can not be shared and has the feature of ``call-by-value" during method calls. 
 Call-by-value requires the evaluation of the arguments before passing them to the definition of the method. Another style is call-by-name which passing the arguments directly to the definition.
 For mathematic and reference types we take the call-by-name style argument passing for method invocation. In addition, there is a difference between mathematic type and reference type. Reference type variables can refer to another object with the same type by the assignment statement. But, the assignment can only change the mathematical value of the object for mathematic type variables. It means that, when a mathematic type variable refers to a methematic type object for the first time, the variable will hold this object all the time and only the mathematical value of this object can be updated.
-
 
 \begin{eqnarray*}
  MathematicType  &::=&   {\tt Int} \mid {\tt Real};\\
 \end{eqnarray*}
 
-
-Accordingly, the primitive type is defined by:
-
-
-\begin{eqnarray*}
- PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
-\end{eqnarray*}
-
-
 \begin{enumerate}
-\item Mathematic types : Boolean type and the numeric types. The Boolean
-type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
-The numeric types are the integer type Integer, and the real number type
+\item Mathematic types : Numeric types. 
+The numeric types are the integer type Int, and the real number type
 Real;
 \item  Reference types : class types, interface types, and array types.
 \end{enumerate}

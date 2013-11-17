@@ -66,9 +66,8 @@ $$
 $$
 
 
-* Mathematic types : *Boolean* type and the numeric types. The *Boolean*
-type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
-The numeric types are the integer type *Integer*, and the real number type
+* Mathematic types : Numeric types. 
+The numeric types are the integer type *Int*, and the real number type
 *Real*;
 * Reference types : class types, interface types, and array types.
 
