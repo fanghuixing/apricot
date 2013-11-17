@@ -145,6 +145,15 @@
 \usepackage{makeidx}
 \makeindex
 
+\titleformat{\section}%
+  {\normalfont\Large\itshape\color{blue}}% format applied to label+text
+  {\llap{\colorbox{orange}{\parbox{1.5cm}{\hfill\color{white}\thesection}}}}% label
+  {1em}% horizontal separation between label and title body
+  {}% before the title body
+  []% after the title body
+
+
+\setcaptionfont{\itshape\sffamily\color{blue}}
 
 
 \begin{document}
@@ -256,15 +265,29 @@ and \mbox{Donald E.~Knuth}.
 \label{ch:Hybrid Systems}
 
 \chapter{Apricot: An Object-Oriented Modeling Language for Hybrid Systems}
-
+\label{ch:Apricot}
 
 %%
 % The back matter contains appendices, bibliographies, indices, glossaries, etc.
 
 
+\section{Case Study: Subway Control Systems}\label{sec:case study}
+\newthought{In this section},
+
+
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=1\linewidth]{./figs/systemstructure}
+\caption[][-8mm]{The Architecture of Subway Control System}
+\label{fig:systemstructure}
+\end{figure*}
+
 
 
 \chapter{XtextApricot: A Modeling Tool for Apricot}
+
 
 
 
@@ -288,6 +311,14 @@ and \mbox{Donald E.~Knuth}.
 \chapter{Conclusions}
 
 \chapter{Useful Links}
+
+
+Apricot Home Page:\\
+\url{http://www.apricotresearch.com/}
+
+\noindent
+XtextApricot Update Site for Eclipse:\\
+\url{http://xtextapricot.apricotresearch.com/}
 
 \backmatter
 
