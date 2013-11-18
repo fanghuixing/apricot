@@ -18,6 +18,10 @@ class Dispatcher implements Controller{
 	
 	int id = 0;
 	
+	Dispatcher(Train[] trains){
+		this.trains = trains;
+	}
+	
 	void Composition(){
 		wakeUp(init,,idle){
 			Condition{

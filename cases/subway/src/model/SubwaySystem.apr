@@ -22,8 +22,10 @@ class SubwaySystem implements System{
 		for(i=0;i<size(trains); i=i+1){
 			trains[i] = new Train(this.DELAY[i]);
 		}		
-		this.distcon = new DistanceController(trains);
-				
+		
+		this.dispatcher = new Dispatcher(trains);	
+		this.distcon = new DistanceController(trains,this.dispatcher);
+					
 		for(i=0;i<size(stations);i=i+1){
 			stations[i] = new Station();
 		}		
