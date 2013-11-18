@@ -152,7 +152,12 @@ class Train implements Plant{
   TrainBehavior urgent_stop = createBaseDynamics(0);
   TrainBehavior urgent_inc = createBaseDynamics(0.5);
   TrainBehavior urgent_recover = createBaseDynamics(-0.5);
-  	
+  
+  Train(real delay){
+		this.DELAY = delay;
+		init = new Wait([0,this.DELAY]);
+		trainController.setDoorController(doorsystem.controller);
+   }
   	
     void Composition(){
 	  //from init
