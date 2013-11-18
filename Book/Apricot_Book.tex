@@ -312,7 +312,7 @@ The primitive type is defined by:
  PrimitiveType &::=&  {\tt int} \mid {\tt real} \mid {\tt boolean} \mid {\tt String};\\
 \end{eqnarray*}
 The Boolean
-type represents a logical quantity in the literals set $\\{ {\tt true}, {\tt false}\\}$.
+type represents a logical quantity in the literals set $\{ {\tt true}, {\tt false}\}$.
 
 \subsection{Mathematic Types and Values}
 Primitive type variable 
@@ -482,6 +482,8 @@ The train starts running from platform-A of Station-1, and goes through Station-
 At each platform, the train stops for some time and picks up passengers.
 When it leaves the platform-A of Station-4, the direction of the trains has to change from A to B, and stops at the platform-B of Station-4 at last. Then, the train goes thought Station-3 and 2, stops at the platform-B of Station-1. When it leaves the platform, the train shall change the direction from B to A, and stops at the platform-A of Station-1, and so on.
 
+In Fig.~\ref{fig:distance}, where train A and B have the same running direction from left to right, and the distance between A and B is 300 meters.
+This distance is a urgent distance that we have to stop A with deceleration of $-1.5~m/s^2$ when this situation occurs.
 \begin{figure}
 \centering
 \includegraphics[width=1\linewidth]{./figs/systemstructure}
@@ -497,6 +499,12 @@ We use four key elements (i.e., System, Plant, Controller, and Dynamic) of {\apr
 \label{fig:sbwl}
 \end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{./figs/distance}
+\caption{Urgent Distance Control.}
+\label{fig:distance}
+\end{figure}
 
 
 \part[Verification and Synthesis]{Formal Verification and Controller Synthesis}
