@@ -484,6 +484,12 @@ When it leaves the platform-A of Station-4, the direction of the trains has to c
 
 In Fig.~\ref{fig:distance}, where train A and B have the same running direction from left to right, and the distance between A and B is 300 meters.
 This distance is a urgent distance that we have to stop A with deceleration of $-1.5~m/s^2$ when this situation occurs.
+
+The subway control system consists of several trains, stations, one distance controller for urgent distance control between trains, and a dispatcher for controlling the running order of trains.
+For each train, it consists of a subsystem for the train doors, a controller for the train and some {\em Dynamic} objects. The train-door system contains several trains and a controller for the doors. Similarly, for the stations, each has two platforms, A and B, the reader can review the detailed structure in Fig.~\ref{fig:systemstructure}.
+
+
+
 \begin{figure}
 \centering
 \includegraphics[width=1\linewidth]{./figs/systemstructure}
@@ -501,7 +507,7 @@ We use four key elements (i.e., System, Plant, Controller, and Dynamic) of {\apr
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{./figs/distance}
+\includegraphics[width=0.8\linewidth]{./figs/distance}
 \caption{Urgent Distance Control.}
 \label{fig:distance}
 \end{figure}

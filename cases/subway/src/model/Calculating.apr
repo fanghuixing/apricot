@@ -6,6 +6,11 @@ class Calculating implements SequentialAssignment{
   Calculating(Train[] train){
     this.train = train;    
   }
+  
+  void setTrains(Train[] train){
+    this.train = train;   
+  }
+  
   void Discrete(){
     int mindis = Inf;
     for(Train currTrain : train){
@@ -33,5 +38,8 @@ class Calculating implements SequentialAssignment{
       }
     }//end for-loop
   }//end discrete()
+  
+
+  
 }//end class Calculating
 

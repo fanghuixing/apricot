@@ -6,14 +6,19 @@ import model.train.*;
 class DistanceController implements Controller{
 	Train[] train;
 	
+	Dispatcher dispatch;
+	
 	Wait delay = new Wait([0,100]);
 	
 	Wait wait= new Wait([0,1]);
 	
 	Assignment caldistance = new Calculating(train);
 	
-	DistanceController(Train[] train){
+	
+	
+	DistanceController(Train[] train, Dispatcher dispatch){
 		this.train = train;
+		this.dispatch = dispatch;
 	}
 	
 	void Composition(){
@@ -22,6 +27,7 @@ class DistanceController implements Controller{
 				delay.getTime()==100;
 			};
 			Discrete{
+				caldistance.setTrains(dispatch.getRunningTrains());
 				wait.reset();	
 			};
 		}
@@ -30,6 +36,7 @@ class DistanceController implements Controller{
 				wait.getTime()==1;
 			};
 			Discrete{
+				caldistance.setTrains(dispatch.getRunningTrains());
 				wait.reset();
 			};
 		}

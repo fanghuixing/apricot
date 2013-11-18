@@ -1,0 +1,57 @@
+package model;
+import com.fofo.apricot.*;
+import model.Wait;
+import model.train.Train;
+class Dispatcher implements Controller{
+	Constant real delay = 50; 
+	Wait init = new Wait([0,delay]);
+	
+	Constant real idletime = 10;
+	Wait idle = new Wait([0,idletime]);
+	
+	Wait sleep = new Wait([0,Inf]);
+	
+	
+	Train[] trains;
+	
+	Train[] trainsInRun;
+	
+	int id = 0;
+	
+	void Composition(){
+		wakeUp(init,,idle){
+			Condition{
+				init.getTime()==delay;
+			};	
+			Discrete{				
+				updateRunningTrains(trains[id]);
+			};
+		}		
+		tau(idle,,idle){
+			Condition{
+				idle.getTime>=idletime;
+				id < size(trains);
+			};
+			Discrete{
+				if (trains[id].getCurrentPosition() > 0){
+					id = id + 1;
+					if (id < size(trains))  
+						updateRunningTrains(trains[id]);
+					else
+						idle = sleep;
+				}	
+				idle.reset();
+			};
+		}		
+	}
+	
+	private void updateRunningTrains(Train train){
+		train.go(!);
+		trainsInRun = trainsInRun.append(train);
+	}
+	
+	Train[] getRunningTrains(){
+		return trainsInRun;
+	}
+	
+}

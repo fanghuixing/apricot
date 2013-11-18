@@ -3,6 +3,7 @@ import com.fofo.apricot.*;
 import model.train.Train;
 import model.station.Station;
 import model.DistanceController;
+import model.Dispatcher;
 
 class SubwaySystem implements System{
 	//trains + stations + distance controller
@@ -14,6 +15,7 @@ class SubwaySystem implements System{
 	Station[] stations = new Station[stationAmount];
 	
 	DistanceController distcon;
+	Dispatcher dispatcher;
 	
 	SubwaySystem(){
 		int i;
@@ -30,6 +32,9 @@ class SubwaySystem implements System{
 	
 	
 	void Init(){
-		//TD
+		trains.init.Start();
+		stations.init.Start();
+		distcon.delay.Start();
+		dispatcher.init.Start();
 	}
 }

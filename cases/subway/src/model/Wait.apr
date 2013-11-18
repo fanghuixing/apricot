@@ -2,6 +2,7 @@ package model;
 import com.fofo.apricot.Dynamic;
 class Wait implements Dynamic{
 	real t;
+	
 	Interval itl;
 	
 	Wait(Interval itl){
