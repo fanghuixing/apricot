@@ -390,7 +390,7 @@ For $x,y \in \mathcal{R}$, the following arithmetic operators are defined on Rea
 
 
 \subsection{Boolean Operators}
-Standard boolean operators are defined for all *Boolean* type values $x, y$:
+Standard boolean operators are defined for all {\em Boolean}  type values $x, y$:
 
 \begin{enumerate}
 \item $==$, equality;
@@ -470,6 +470,33 @@ We provides a comprehensive collection of mathematical functions and operators. 
 \item $size(x)$, the size of $x$ ($x$ is an array).  
 \end{enumerate}
 
+\section{Expressions}
+
+\subsection{Primary Expressions}
+\begin{align*}	
+Primary ::= & ~Literal ~|~ ParExpression ~|~ NewObjectExpression ~|~ NewArrayExpression\\
+	&\mid ~'this'~('.' Identifier~(DimExpr)^*)^*~(IdentifierSuffix)? \\
+	&\mid ~Identifier~ (DimExpr)^* ~('.' ~Identifier ~(DimExpr)^*)^* ~(IdentifierSuffix)?\\
+IdentifierSuffix ::=& ~('[]')^+ ~ '.class' ~|~Arguments ~|~ '.class' ~|~ '.this'  ~|~ '.super'~Arguments	\\
+&~|~ '.at' Arguments ~|~ '.Composition()' ~|~ '.Start()' ~|~ '(!)' ~|~ '(?)' \\
+Arguments ::=&~ '('~ ExpressionList? ~')'\\
+ExpressionList ::=& ~Expression ~(',' Expression)^*\\
+DimExpr ::=&~ '['~Expression~ ']'\\
+Literal ::=& ~'Inf' ~|~ IntegerLiteral ~|~ FLOATING\_POINT\_LITERAL ~|~ CHARACTER\_LITERAL \\ 
+  & |~ STRING\_LITERAL ~|~ BooleanLiteral ~|~ 'null'
+\end{align*}
+
+\subsection{Boolean Expressions}
+
+
+
+\subsection{Conditional Expressions}
+
+\subsection{Loop Expressions}
+
+\subsection{Continuous Flow Expressions}
+
+
 
 \chapter[Operational Semantics for Apricot]{Operational Semantics for Apricot}
 
@@ -508,7 +535,7 @@ We use four key elements (i.e., System, Plant, Controller, and Dynamic) of {\apr
 \begin{figure}
 \centering
 \includegraphics[width=0.8\linewidth]{./figs/distance}
-\caption{Urgent Distance Control.}
+\caption[Urgent Distance Control]{Urgent Distance Control.}
 \label{fig:distance}
 \end{figure}
 
