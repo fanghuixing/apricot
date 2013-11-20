@@ -129,7 +129,7 @@ class Train implements Plant{
 		}
 		
 		//from near or urgent_recover
-		stop()({near,urgent_recover},,stopAtStation){
+		stop(!)({near,urgent_recover},,stopAtStation){
 			Condition{
 				abs(S-position) <= 1;  
 				velocity in [0, 0.1];
