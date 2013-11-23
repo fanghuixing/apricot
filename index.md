@@ -41,7 +41,7 @@ Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 
 
 In the 'Help' menu of eclipse, select 'Install New Software...'
 
-<img src="{{ASSET_PATH}}/figs/InstallNewSoftware.jpg" alt="Install New Software">
+<img src="{{ ASSET_PATH }}/figs/InstallNewSoftware.jpg" alt="Install New Software">
 
 
 
