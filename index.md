@@ -15,7 +15,7 @@ or, you can use this URL:
 	
     http://www.fanghuixing.com/XtextApricot/
 
-A mirror URL:
+or, you can use the mirror URL:
 
 	http://zl.hwpan.com/u53460366/
 
