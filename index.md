@@ -15,6 +15,9 @@ or, you can use this URL:
 	
     http://www.fanghuixing.com/XtextApricot/
 
+A mirror URL:
+
+	http://zl.hwpan.com/u53460366/
 XtextApricot is developed on <a href="http://www.eclipse.org">Eclipse</a> (Version: Kepler Release,
 Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 2.4.3. You can get the source code of XtextApricot from <a href="https://github.com/fanghuixing/XtextApricot/tree/gh-pages/source">here</a>.
 
@@ -55,6 +58,10 @@ Type the name of the repository (we use 'Apricot' here), and the location 'http:
 *note: if you want to add the repository by an 'Archive', you can download the update file from* 
 	
     http://xtextapricot.apricotresearch.com/download/XtextApricot.zip 
+
+or from the mirror URL:
+
+	http://zl.hwpan.com/u53460366/download/XtextApricot.zip
 
 *Download XtextApricot.zip, put it in a local folder, and then click 'Archive...' in the 'Add Repository' window, select the zip file you downloaded, and so on.*
 
