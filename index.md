@@ -43,7 +43,7 @@ In the 'Help' menu of eclipse, select 'Install New Software...'
 
 ![Install New Software](  http://zl.hwpan.com/u53460366/assets/figs/InstallNewSoftware.jpg)
 
-[ASSET_PATH]
+<p>{{ ASSET_PATH }}</p>
 
 The 'Install' window will appear, and click 'Add' to add a new Repository.
 
@@ -68,6 +68,7 @@ You will see the available software, the name and the version information, selec
 It will calculate the dependencies and requirements (about 5 minutes), at last, the 'Install Details' would come up, now click 'Next':
 
 ![Install New Software](assets/figs/install.jpg)
+
 
 Then, accept the license, click 'Finish':
 
