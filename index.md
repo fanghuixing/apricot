@@ -60,7 +60,7 @@ Type the name of the repository (we use 'Apricot' here), and the location 'http:
 	
     http://xtextapricot.apricotresearch.com/download/XtextApricot.zip 
 
-or from the mirror URL:
+or from the mirror URL (in China):
 
 	http://zl.hwpan.com/u53460366/download/XtextApricot.zip
 
