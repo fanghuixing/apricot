@@ -15,7 +15,7 @@ or, you can use this URL:
 	
     http://www.fanghuixing.com/XtextApricot/
 
-or, you can use the mirror URL:
+or, you can use the mirror URL (in China):
 
 	http://zl.hwpan.com/u53460366/
 
@@ -45,16 +45,16 @@ Build id: 20130614-0229) with <a href="http://www.eclipse.org/Xtext/">Xtext</a> 
 
 In the 'Help' menu of eclipse, select 'Install New Software...'
 
-![Install New Software](  http://zl.hwpan.com/u53460366/assets/figs/InstallNewSoftware.jpg)
+![Install New Software]( assets/figs/InstallNewSoftware.jpg)
 
 The 'Install' window will appear, and click 'Add' to add a new Repository.
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/add.jpg)
+![Install New Software](assets/figs/add.jpg)
 
 
 Type the name of the repository (we use 'Apricot' here), and the location 'http://www.fanghuixing.com/XtextApricot/' (or 'http://xtextapricot.apricotresearch.com/'), then click 'OK'
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/AddRepository.jpg)
+![Install New Software](assets/figs/AddRepository.jpg)
 
 *note: if you want to add the repository by an 'Archive', you can download the update file from* 
 	
@@ -69,23 +69,23 @@ or from the mirror URL:
 
 You will see the available software, the name and the version information, select  all as the below, and click 'Next':
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/availiable.jpg)
+![Install New Software](assets/figs/availiable.jpg)
 
 It will calculate the dependencies and requirements (about 5 minutes), at last, the 'Install Details' would come up, now click 'Next':
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/install.jpg)
+![Install New Software](assets/figs/install.jpg)
 
 
 Then, accept the license, click 'Finish':
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/acceptlicense.jpg)
+![Install New Software](assets/figs/acceptlicense.jpg)
 
 It will install the plugin,
 
 <div style="text-align:center" markdown="1">
 
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/installing.jpg) 
+![Install New Software](assets/figs/installing.jpg) 
 
 
 </div>
@@ -98,7 +98,7 @@ If you see a security warning, just click 'OK'.
 
 <div style="text-align:center" markdown="1">
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/warning.jpg)
+![Install New Software](assets/figs/warning.jpg)
 
 </div>
 
@@ -106,7 +106,7 @@ After the installation, you have to restart Eclipse.
 
 <div style="text-align:center" markdown="1">
 
-![Install New Software]( http://zl.hwpan.com/u53460366/assets/figs/restart.jpg)
+![Install New Software](assets/figs/restart.jpg)
 
 </div>
 
@@ -119,7 +119,7 @@ At first, select 'File'->'New'->'Project':
 
 <div style="text-align:center" markdown="1">
 
-![Create New Project]( http://zl.hwpan.com/u53460366/assets/figs/newproject.jpg)
+![Create New Project](assets/figs/newproject.jpg)
 
 </div>
 
@@ -127,7 +127,7 @@ Select 'Apricot Project', then click 'Next':
 
 <div style="text-align:center" markdown="1">
 
-![Create New Project]( http://zl.hwpan.com/u53460366/assets/figs/selectapricot.jpg)
+![Create New Project](assets/figs/selectapricot.jpg)
 
 </div>
 
@@ -135,7 +135,7 @@ Set the project name, then click 'Finish':
 
 <div style="text-align:center" markdown="1">
 
-![Create New Project]( http://zl.hwpan.com/u53460366/assets/figs/projectname.jpg)
+![Create New Project](assets/figs/projectname.jpg)
 
 </div>
 
@@ -147,12 +147,12 @@ Now, we get the new Apricot project, the interfaces are listed in the package 'c
 
 As follow, the model code view for our subway control system in Eclipse with XtextApricot installed: 
 
-![Create New Project]( http://zl.hwpan.com/u53460366/assets/figs/projectview.jpg)
+![Create New Project](assets/figs/projectview.jpg)
 
 
 ***
 <center>    
-<img src=" http://zl.hwpan.com/u53460366/assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
+<img src="assets/figs/apricot.jpg" alt="Apricot"  style="width: 100px;"/>
 </center>
 ***
 
