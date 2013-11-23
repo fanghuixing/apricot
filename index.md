@@ -43,7 +43,7 @@ In the 'Help' menu of eclipse, select 'Install New Software...'
 
 ![Install New Software](  http://zl.hwpan.com/u53460366/assets/figs/InstallNewSoftware.jpg)
 
-<img src="{{ ASSET_PATH }}/figs/InstallNewSoftware.jpg" alt="Install New Software">
+<img src="{{ ASSET_PATH }}/figs/InstallNewSoftware.jpg" alt="Install New Software"/>
 
 The 'Install' window will appear, and click 'Add' to add a new Repository.
 
