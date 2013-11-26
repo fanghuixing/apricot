@@ -210,7 +210,7 @@ BExpr ::= {\tt true} ~|~ {\tt false} ~|~ Exp ~\circ~ Exp
 \end{align*}
 $$
 
-where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `{$\tt !=$}' is for inequality. `$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
+where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `${\tt !=}$' is for inequality. `$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
 The last one, `$${\tt in}$$' is employed in two scenarios. 
 
 $$
@@ -220,7 +220,8 @@ Exp ~{\tt in}~ & ~Exp
 \end{align*}
 $$
 
-The first one is for interval checking. Expressions `$$Exp_1$$' and `$$Exp_2$$' are the left and right endpoints  of the closed interval `$$[~Exp_1,~ Exp_2~]$$', respectively.
+
+The first one is for interval checking. Expressions $Exp_1$  and $Exp_2$ are the left and right endpoints  of the closed interval `$[~Exp_1,~ Exp_2~]$', respectively.
 For example, let x be a variable,  `$$x ~{\tt ~in~[0,10]}$$' denotes that $$x \in [0,10]$$.
 The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific {\em Dynamic} object (RHS). Let {\tt door} be a plant, {\tt closed} be one of the {\em Dynamic} objects of {\tt door}, if the expression `{\tt Door in closed}' is evaluated to true, 
 then the control of {\tt door} is in the {\em Dynamic} object {\tt closed} (thus the door is currently closed).
