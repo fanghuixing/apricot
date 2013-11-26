@@ -202,7 +202,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 
 ### 4.1 Boolean Expressions
 The boolean expressions are used as conditions when we write if-statements, for-loops, while-loops, invariant blocks, condition blocks, etc. 
-In Apricot, we have two boolean constants, `$$\tt true$$'  and 	`$\tt false$'. 
+In Apricot, we have two boolean constants, $$\tt true$$  and 	$$\tt false$$. 
 
 $$
 \begin{align*}
@@ -210,7 +210,7 @@ BExpr ::= {\tt true} ~|~ {\tt false} ~|~ Exp ~\circ~ Exp
 \end{align*}
 $$
 
-where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `$${\tt !=}$$' is for inequality.
+where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `$$\tt !=$$' is for inequality.
 `$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
 The last one, `$${\tt in}$$' is employed in two scenarios. 
 
