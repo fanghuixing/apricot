@@ -198,11 +198,11 @@ We provides a comprehensive collection of mathematical functions and operators. 
 ***
 
 
-## Expressions
+## 4. Expressions
 
-### Boolean Expressions
+### 4.1 Boolean Expressions
 The boolean expressions are used as conditions when we write if-statements, for-loops, while-loops, invariant blocks, condition blocks, etc. 
-In {\apricot}, we have two boolean constants, `{\tt True}' and 	`{\tt False}'. 
+In Apricot, we have two boolean constants, `${\tt True}$' and 	`${\tt False}$'. 
 
 $$
 \begin{align*}
@@ -210,9 +210,9 @@ BExpr ::= {\tt True} ~|~ {\tt False} ~|~ Exp ~\circ~ Exp
 \end{align*}
 $$
 
-where, $\circ$ is a relation operator, and $\circ \in \{ \tt ==, <, >, <=, >=, !=, in \}$.
-`{\tt ==}' is used for equality judgement, while `{\tt !=}' is for inequality.
-`{\tt <}' is used to specify the LHS is less than RHS, `{\tt >}', `{\tt <=}', and `{\tt <=}' have similar meaning.
+where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$.
+`${\tt ==}$' is used for equality judgement, while `${\tt !=}$' is for inequality.
+`${\tt <}$' is used to specify the LHS is less than RHS, `${\tt >}$', `${\tt <=}$', and `{\tt <=}' have similar meaning.
 The last one, `{\tt in}' is employed in two scenarios. 
 
 $$
@@ -227,7 +227,7 @@ For example, let x be a variable,  `$x ~{\tt ~in~[0,10]}$' denotes that $x \in [
 The second one (\ref{lab:in-dynamic}) is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific {\em Dynamic} object (RHS). Let {\tt door} be a plant, {\tt closed} be one of the {\em Dynamic} objects of {\tt door}, if the expression `{\tt Door in closed}' is evaluated to true, 
 then the control of {\tt door} is in the {\em Dynamic} object {\tt closed} (thus the door is currently closed).
 
-### Continuous Flow Expressions
+### 4.2 Continuous Flow Expressions
 The continuous behavior in {\apricot} is declared by the general form of differential equations.
 The first one (\ref{lab:dot-tr}) is the traditional differential equation that defines the $o$-th derivative of variable $v$  over time. The derivative order $o$ can be any natural number.
 The second one (\ref{lab:dot-ntr}) defines the $o$-th derivative of $v$ over another continuous variable $v'$.
