@@ -5,12 +5,13 @@ title: Apricot Syntax
 description: "Apricot Syntax"
 ---
 
-## Overview
+## Overview Architecture of Apricot
 
 
 ![architecture](../assets/figs/architecture.png)
 
-We have five primary built-in interfaces in Apricot: $System$, $Plant$, $Controller$, $Dynamic$ and $Assignment$. $SequentialAssignment$ and $ParallelAssignment$ are the sub-interface of $Assignment$.
+We have five primary built-in interfaces in Apricot: $System$, $Plant$, $Controller$, $Dynamic$ and $Assignment$. 
+As depicted in the above fig, $SequentialAssignment$ and $ParallelAssignment$ are the sub-interface of $Assignment$.
 
 
 ## 1. Identifiers
