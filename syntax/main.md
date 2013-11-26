@@ -4,6 +4,15 @@ comments: true
 title: Apricot Syntax
 description: "Apricot Syntax"
 ---
+
+## Overview
+
+
+![architecture](../assets/figs/architecture.png)
+
+We have five primary built-in interfaces in Apricot: $System$, $Plant$, $Controller$, $Dynamic$ and $Assignment$. $SequentialAssignment$ and $ParallelAssignment$ are the sub-interface of $Assignment$.
+
+
 ## 1. Identifiers
 An *identifier* is an unlimited-length (but the length is greater than one) sequence of letters and digits, but not a Keyword:
 
