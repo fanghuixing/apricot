@@ -223,7 +223,7 @@ $$
 
 The first one is for interval checking. Expressions $Exp_1$  and $Exp_2$ are the left and right endpoints  of the closed interval $[~Exp_1,~ Exp_2~]$, respectively.
 For example, let x be a variable,  $$x ~{\tt ~in~[0,10]}$$ denotes that $$x \in [0,10]$$.
-The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific $Dynamic$ object (RHS). Let ${\tt door}$ be a plant, ${\tt closed}$ be one of the $Dynamic$ objects of ${\tt door}$, if the expression ${\tt Door in closed}$ is evaluated to true, 
+The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific $Dynamic$ object (RHS). Let ${\tt door}$ be a plant, ${\tt closed}$ be one of the $Dynamic$ objects of ${\tt door}$, if the expression ${\tt door~in~closed}$ is evaluated to true, 
 then the control of ${\tt door}$ is in the $Dynamic$ object ${\tt closed}$ (thus the door is currently closed).
 
 ### 4.2 Continuous Flow Expressions
@@ -239,6 +239,6 @@ $$
 $$
 
 
-For example, `{\tt dot(x,2)==x+dot(y,1)+2}' is equivalent to the differential equation: $\frac{d^2x}{dt^2}=x+ \frac{dy}{dt} +2$, $t$ is for time.
+For example, ${\tt dot(x,2)==x+dot(y,1)+2}$ is equivalent to the differential equation: $\frac{d^2x}{dt^2}=x+ \frac{dy}{dt} +2$, $t$ is for time.
 
 {% include JB/setup %}
