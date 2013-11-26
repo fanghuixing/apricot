@@ -202,7 +202,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 
 ### 4.1 Boolean Expressions
 The boolean expressions are used as conditions when we write if-statements, for-loops, while-loops, invariant blocks, condition blocks, etc. 
-In Apricot, we have two boolean constants, `$$\tt true$$' and 	`$\tt false$'. 
+In Apricot, we have two boolean constants, `$$\tt true$$'  and 	`$\tt false$'. 
 
 $$
 \begin{align*}
@@ -228,13 +228,13 @@ then the control of {\tt door} is in the {\em Dynamic} object {\tt closed} (thus
 
 ### 4.2 Continuous Flow Expressions
 The continuous behavior in {\apricot} is declared by the general form of differential equations.
-The first one (\ref{lab:dot-tr}) is the traditional differential equation that defines the $o$-th derivative of variable $v$  over time. The derivative order $o$ can be any natural number.
-The second one (\ref{lab:dot-ntr}) defines the $o$-th derivative of $v$ over another continuous variable $v'$.
+The first one is the traditional differential equation that defines the $o$-th derivative of variable $v$  over time. The derivative order $o$ can be any natural number.
+The second one defines the $o$-th derivative of $v$ over another continuous variable $v'$.
 
 $$
 \begin{align*}
-\label{lab:dot-tr} {\tt dot}(v,o) == Exp \\
-\label{lab:dot-ntr} {\tt dot}(v,v',o) == Exp
+{\tt dot}(v,o) == Exp \\
+{\tt dot}(v,v',o) == Exp
 \end{align*}
 $$
 
