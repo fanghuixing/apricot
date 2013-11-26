@@ -223,11 +223,11 @@ $$
 
 The first one is for interval checking. Expressions $Exp_1$  and $Exp_2$ are the left and right endpoints  of the closed interval $[~Exp_1,~ Exp_2~]$, respectively.
 For example, let x be a variable,  $$x ~{\tt ~in~[0,10]}$$ denotes that $$x \in [0,10]$$.
-The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific $\emph{Dynamic}$ object (RHS). Let {\tt door} be a plant, ${\tt closed}$ be one of the ${\em Dynamic}$ objects of ${\tt door}$, if the expression ${\tt Door in closed}$ is evaluated to true, 
-then the control of ${\tt door}$ is in the ${\em Dynamic}$ object ${\tt closed}$ (thus the door is currently closed).
+The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific $Dynamic$ object (RHS). Let ${\tt door}$ be a plant, ${\tt closed}$ be one of the $Dynamic$ objects of ${\tt door}$, if the expression ${\tt Door in closed}$ is evaluated to true, 
+then the control of ${\tt door}$ is in the $Dynamic$ object ${\tt closed}$ (thus the door is currently closed).
 
 ### 4.2 Continuous Flow Expressions
-The continuous behavior in {\apricot} is declared by the general form of differential equations.
+The continuous behavior in Apricot is declared by the general form of differential equations.
 The first one is the traditional differential equation that defines the $o$-th derivative of variable $v$  over time. The derivative order $o$ can be any natural number.
 The second one defines the $o$-th derivative of $v$ over another continuous variable $v'$.
 
