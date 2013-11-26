@@ -6,7 +6,7 @@ class Wait implements Dynamic{
 	Interval itl;
 	
 	Wait(Interval itl){
-		this.itl == itl;
+		this.itl = itl;
 	}
 	
 	void reset(){
