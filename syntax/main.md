@@ -210,8 +210,7 @@ BExpr ::= {\tt true} ~|~ {\tt false} ~|~ Exp ~\circ~ Exp
 \end{align*}
 $$
 
-where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `$$\tt !=$$' is for inequality.
-`$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
+where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `{$\tt !=$}' is for inequality. `$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
 The last one, `$${\tt in}$$' is employed in two scenarios. 
 
 $$
