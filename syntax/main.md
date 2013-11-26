@@ -202,28 +202,28 @@ We provides a comprehensive collection of mathematical functions and operators. 
 
 ### 4.1 Boolean Expressions
 The boolean expressions are used as conditions when we write if-statements, for-loops, while-loops, invariant blocks, condition blocks, etc. 
-In Apricot, we have two boolean constants, `$\tt True$' and 	`$\tt False$'. 
+In Apricot, we have two boolean constants, `$$\tt true$$' and 	`$\tt false$'. 
 
 $$
 \begin{align*}
-BExpr ::= {\tt True} ~|~ {\tt False} ~|~ Exp ~\circ~ Exp
+BExpr ::= {\tt true} ~|~ {\tt false} ~|~ Exp ~\circ~ Exp
 \end{align*}
 $$
 
-where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `${\tt !=}$' is for inequality.
-`${\tt <}$' is used to specify the LHS is less than RHS, `${\tt >}$', `${\tt <=}$', and `{\tt <=}' have similar meaning.
-The last one, `{\tt in}' is employed in two scenarios. 
+where, $\circ$ is a relation operator, and $\circ \in \\{\tt ==, <, >, <=, >=, !=, in \\}$. '${\tt ==}$' is used for equality judgement, while `$${\tt !=}$$' is for inequality.
+`$${\tt <}$$' is used to specify the LHS is less than RHS, `$${\tt >}$$', `$${\tt <=}$$', and `$${\tt <=}$$' have similar meaning.
+The last one, `$${\tt in}$$' is employed in two scenarios. 
 
 $$
-\begin{align}
-\label{lab:in-interval} Exp ~{\tt in}~ & ~[~Exp_1,~ Exp_2~]\\
-\label{lab:in-dynamic} Exp ~{\tt in}~ & ~Exp
-\end{align}
+\begin{align*}
+Exp ~{\tt in}~ & ~[~Exp_1,~ Exp_2~]\\
+Exp ~{\tt in}~ & ~Exp
+\end{align*}
 $$
 
-The first one (\ref{lab:in-interval}) is for interval checking. Expressions `$Exp_1$' and `$Exp_2$' are the left and right endpoints  of the closed interval `$[~Exp_1,~ Exp_2~]$', respectively.
-For example, let x be a variable,  `$x ~{\tt ~in~[0,10]}$' denotes that $x \in [0,10]$.
-The second one (\ref{lab:in-dynamic}) is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific {\em Dynamic} object (RHS). Let {\tt door} be a plant, {\tt closed} be one of the {\em Dynamic} objects of {\tt door}, if the expression `{\tt Door in closed}' is evaluated to true, 
+The first one is for interval checking. Expressions `$$Exp_1$$' and `$$Exp_2$$' are the left and right endpoints  of the closed interval `$$[~Exp_1,~ Exp_2~]$$', respectively.
+For example, let x be a variable,  `$$x ~{\tt ~in~[0,10]}$$' denotes that $$x \in [0,10]$$.
+The second one is for checking whether the control of one object (LHS, e.g. plant, controller) is in a specific {\em Dynamic} object (RHS). Let {\tt door} be a plant, {\tt closed} be one of the {\em Dynamic} objects of {\tt door}, if the expression `{\tt Door in closed}' is evaluated to true, 
 then the control of {\tt door} is in the {\em Dynamic} object {\tt closed} (thus the door is currently closed).
 
 ### 4.2 Continuous Flow Expressions
@@ -232,10 +232,10 @@ The first one (\ref{lab:dot-tr}) is the traditional differential equation that d
 The second one (\ref{lab:dot-ntr}) defines the $o$-th derivative of $v$ over another continuous variable $v'$.
 
 $$
-\begin{align}
+\begin{align*}
 \label{lab:dot-tr} {\tt dot}(v,o) == Exp \\
 \label{lab:dot-ntr} {\tt dot}(v,v',o) == Exp
-\end{align}
+\end{align*}
 $$
 
 
