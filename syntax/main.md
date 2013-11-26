@@ -202,7 +202,7 @@ We provides a comprehensive collection of mathematical functions and operators. 
 
 ### 4.1 Boolean Expressions
 The boolean expressions are used as conditions when we write if-statements, for-loops, while-loops, invariant blocks, condition blocks, etc. 
-In Apricot, we have two boolean constants, `${\tt True}$' and 	`${\tt False}$'. 
+In Apricot, we have two boolean constants, `$\tt True$' and 	`$\tt False$'. 
 
 $$
 \begin{align*}
