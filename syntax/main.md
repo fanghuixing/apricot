@@ -88,11 +88,11 @@ created array. The values of a reference type are references to objects.
 
 ### 2.3 Reference Types and Values
 
-There are four kinds of reference types: class types, interface types, type variables and interval types.
+There are four kinds of reference types: class types, interface types, array types, type variables and interval types.
 
 $$
 \begin{align*}
- ReferenceType  ::=&  ClassType  \mid  InterfaceType   \\
+ ReferenceType  ::=&  ClassType  \mid  InterfaceType \mid TypeVariable  \\
                    &  \mid  ArrayType \mid IntervalType ;\\
  ClassType  ::=&  Identifier ;\\
  InterfaceType  ::=&  Identifier  \mid {\tt System} \mid {\tt Plant} \\
