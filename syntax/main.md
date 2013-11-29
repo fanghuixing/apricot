@@ -88,7 +88,7 @@ created array. The values of a reference type are references to objects.
 
 ### 2.3 Reference Types and Values
 
-There are four kinds of reference types: class types, interface types, array types, type variables and interval types.
+There are five kinds of reference types: class types, interface types, array types, type variables and interval types.
 
 $$
 \begin{align*}
