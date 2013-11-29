@@ -22,7 +22,8 @@ $$
  Letter  &::=& {\tt a .. z \mid A .. Z} ;\\
  Digit  &::=& {\tt 0 .. 9};\\
  ValidChar  &::=&  Letter   ~\mid~  Digit ;\\
- Identifier  &::=& {\tt \verb!^!} ? (~Letter~|~{\tt \_}~) (~ValidChar~|~{\tt \_}~)*;.
+ Identifier  &::=& {\tt \verb!^!} ? (~Letter~|~{\tt \_}~) (~ValidChar~|~{\tt \_}~)*;
+ QualifiedIdentifier &::=& Identifier~(~.~ Identifier)*.
 \end{eqnarray*}
 $$
 
@@ -94,8 +95,8 @@ $$
 \begin{align*}
  ReferenceType  ::=&  ClassType  \mid  InterfaceType \mid TypeVariable  \\
                    &  \mid  ArrayType \mid IntervalType ;\\
- ClassType  ::=&  Identifier ;\\
- InterfaceType  ::=&  Identifier  \mid {\tt System} \mid {\tt Plant} \\
+ ClassType  ::=&  Identifier \mid QualifiedIdentifier;\\
+ InterfaceType  ::=&  Identifier \mid QualifiedIdentifier \mid {\tt System} \mid {\tt Plant} \\
 & \mid  {\tt Controller}\\
 & \mid {\tt Dynamic} \mid {\tt Assignment} \\
 & \mid {\tt ParallelAssignment} \\
