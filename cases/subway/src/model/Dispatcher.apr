@@ -33,7 +33,7 @@ class Dispatcher implements Controller{
 		}		
 		tau(idle,,idle){
 			Condition{
-				idle.getTime>=idletime;
+				idle.getTime()>=idletime;
 				id < size(trains);
 			};
 			Discrete{
