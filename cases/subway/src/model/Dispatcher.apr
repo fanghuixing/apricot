@@ -50,7 +50,7 @@ class Dispatcher implements Controller{
 	}
 	
 	private void updateRunningTrains(Train train){
-		train.go(!);
+		train.go=true;
 		trainsInRun = trainsInRun.append(train);
 	}
 	
