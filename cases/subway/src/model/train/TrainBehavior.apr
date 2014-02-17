@@ -5,7 +5,7 @@ class TrainBehavior implements Dynamic{
 	Real pos;
 	Real vel;
 	Int dir;	
-	real acc;//acceleration
+	Interval acc;//acceleration
 	
 	real pos1; 
 	real pos2;
@@ -18,7 +18,7 @@ class TrainBehavior implements Dynamic{
 		this.dir = dir;
 	}
 	
-	void setAcceleration(real acc){
+	void setAcceleration(Interval acc){
 		this.acc = acc;
 	}
 	

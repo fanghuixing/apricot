@@ -28,13 +28,13 @@ class Train implements Plant{
 	Wait init = new Wait([0,Inf]);
 	Wait stopAtStation = new Wait([0,Inf]);
 	Wait changeDirection = new Wait([0,30]);
-	TrainBehavior run = createBaseDynamics(0.5);
-	TrainBehavior near = createBaseDynamics(0);
-	TrainBehavior stablerun = createBaseDynamics(0);
-	TrainBehavior urgent_dec = createBaseDynamic(-1.5);
-	TrainBehavior urgent_stop = createBaseDynamics(0);
-	TrainBehavior urgent_inc = createBaseDynamics(0.5);
-	TrainBehavior urgent_recover = createBaseDynamics(-0.5);
+	TrainBehavior run = createBaseDynamics([0.5,0.5]);
+	TrainBehavior near = createBaseDynamics([-0.4,0]);
+	TrainBehavior stablerun = createBaseDynamics([0,0]);
+	TrainBehavior urgent_dec = createBaseDynamic([-1.5,-1.5]);
+	TrainBehavior urgent_stop = createBaseDynamics([0,0]);
+	TrainBehavior urgent_inc = createBaseDynamics([0.5,0.5]);
+	TrainBehavior urgent_recover = createBaseDynamics([-0.5,-0.5]);
 	boolean go=false;
 	
 	Train(){
@@ -217,14 +217,14 @@ class Train implements Plant{
 	}
 	
 	//create dynamics only with acceleration
-	Dynamic createBaseDynamics(real acceleration){
+	Dynamic createBaseDynamics(Interval acceleration){
 		TrainBehavior dy = new TrainBehavior(this.position, this.velocity, this.direction);
 		dy.setAcceleration(acceleration);
 		return dy;
 	}
 	
 	//create dynamics with acceleration and boundaries
-	Dynamic createDynamics(real acceleration, real fromPos, real toPos, real fromVel, real toVel){
+	Dynamic createDynamics(Interval acceleration, real fromPos, real toPos, real fromVel, real toVel){
 		TrainBehavior dy = createBaseDynamics(acceleration);
 		dy.setPosVelBound(fromPos,toPos,fromVel,toVel);
 		return dy; 
